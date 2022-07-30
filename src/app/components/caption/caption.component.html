@@ -1,0 +1,19 @@
+<span class="magical-underline" 
+        [class]="[displayClass]" 
+        [@showIntro]="text" 
+        [@changeIntroPosition]="{   value:page>0,
+                                    params:{
+                                        FirstPositionTop:firstPosition?.captionStyle?.top, 
+                                        FirstPositionLeft:firstPosition?.captionStyle?.left, 
+                                        FirstPositionTransform: firstPosition?.captionStyle?.transform,
+                                        FirstPositionFontSize: firstPosition?.captionStyle?.fontSize,
+
+                                        SecondPositionTop: secondPosition?.captionStyle?.top,
+                                        SecondPositionLeft: secondPosition?.captionStyle?.left,
+                                        SecondPositionTransform: secondPosition?.captionStyle?.transform,
+                                        SecondPositionFontSize: secondPosition?.captionStyle?.fontSize
+
+                                    }
+                                }"
+        
+        >{{text}}</span>

@@ -1,0 +1,36 @@
+  .natural {
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    font-size: 120px;
+    color: black;
+  }
+
+  .formal {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  p {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:x-large;
+  }
+  .aspect{
+    font-family:monospace;
+    font-weight:bold;
+  }
+  section {
+    width: 100%;
+    height: 300vh;
+
+    /* Scroll Snap */
+  }
+  .intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .aspect-alignment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }

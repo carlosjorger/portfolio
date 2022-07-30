@@ -1,0 +1,27 @@
+.magical-underline{
+    color:black;
+    background-image: linear-gradient(120deg, #000000 0%, #000000 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0%;
+    background-position: 100% 0%;
+    padding-bottom: 10px;
+    font-family: Montserrat;
+    display: inline-block;
+    position: fixed;
+    white-space: pre-line; 
+  }
+.firstPosition{
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.secondPosition{
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.thirdPosition{
+  top: 54%;
+  left: 50%;
+  transform: translateX(-50%);
+}
