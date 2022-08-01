@@ -25,6 +25,8 @@ export class ServiceScrollService {
     let relativeScrollOffset=scrollOffset/scrollOffsetMax;
     this.realPage=relativeScrollOffset*this.pageNumber;
     this.page=Math.floor(this.realPage);
+    //there is not a this.pageNumber caption
+    this.page=this.page>=this.pageNumber?this.pageNumber-1:this.page;
     this.subject.next(this.page);
 	}
   keepTrackScroll():Observable<number>{ 
