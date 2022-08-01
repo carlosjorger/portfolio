@@ -1,6 +1,9 @@
 <span class="magical-underline" 
 [class]="[displayClass]" 
-    [@showIntro]="text" 
+    [@showIntro]="{
+        page:text
+      
+    }" 
     [@changeIntroPosition]="{   value:page>0,
                             params:{
                                 FirstPosition:firsPosition,
@@ -13,7 +16,9 @@
                                 SecondPositionLeft: secondPosition?.captionStyle?.left,
                                 SecondPositionTransform: secondPosition?.captionStyle?.transform,
                                 SecondPositionFontSize: secondPosition?.captionStyle?.fontSize
-
+                                
+                                
+                                
                             }
                         }"
 >{{text}}</span>

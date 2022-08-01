@@ -1,33 +1,33 @@
-import { Caption, CaptionStyle } from "src/app/utils/caption-position/caption-position";
+import { Caption, CaptionState, CaptionStateStyle } from "src/app/utils/caption-position/caption-position";
 
-const titleFirstPosition = new CaptionStyle('30%', '50%', 'translateX(-50%)', '80px');
-const titleSecondPosition = new CaptionStyle('30%', '5%', 'translateX(0%)', '50px');
+const titleFirstPosition = new CaptionStateStyle('30%', '50%', 'translateX(-50%)', '80px');
+const titleSecondPosition = new CaptionStateStyle('30%', '5%', 'translateX(0%)', '50px');
 
-const descriptionFirstPosition = new CaptionStyle('45%', '50%', 'translateX(-50%)', '60px');
-const descriptionSecondPosition = new CaptionStyle('42%', '5%', 'translateX(0%)', '30px');
+const descriptionFirstPosition = new CaptionStateStyle('45%', '50%', 'translateX(-50%)', '60px');
+const descriptionSecondPosition = new CaptionStateStyle('42%', '5%', 'translateX(0%)', '30px');
 
 const name:string='Carlos Jorge';
 const about:string="About";
 const profetion:string='FullStack Engineer';
 const profetionPlus:string='FullStack Engineer - Computer Scientific'
-export const titleStates = [
-    new Caption(name,
+export const title =new Caption([
+    new CaptionState(name,
         titleFirstPosition),
-    new Caption(name,
+    new CaptionState(name,
         titleSecondPosition),
-    new Caption('Some Works',
+    new CaptionState('Some Works',
             titleSecondPosition),
-    new Caption(about,
+    new CaptionState(about,
         titleSecondPosition),
-];
-export const descriptionStates = [
-    new Caption(profetion,
+],1.5,0);
+export const description = new Caption([
+    new CaptionState(profetion,
         descriptionFirstPosition),
-    new Caption(profetion,
+    new CaptionState(profetion,
         descriptionSecondPosition),
-    new Caption('Some Projects',
+    new CaptionState('Some Projects',
             descriptionSecondPosition),
-    new Caption('My contacs',
+    new CaptionState('My contacs',
         descriptionSecondPosition),
 
-];
+],1.5,0.5);

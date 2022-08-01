@@ -3,9 +3,9 @@ import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import {BehaviorSubject, delay, interval, Observable, of, Subscription} from 'rxjs'
 import { changeIntroPosition } from './animations/animations';
-import { Caption,  CaptionStyle } from './utils/caption-position/caption-position';
+import { Caption, CaptionState,  CaptionStateStyle } from './utils/caption-position/caption-position';
 import { ServiceScrollService } from './services/service-scroll.service';
-import { descriptionStates, titleStates } from './core/constans/captions-states';
+import { description, title } from './core/constans/captions-states';
 
 
 // import { showIntro } from './animations/animations';
@@ -24,8 +24,8 @@ export class AppComponent implements OnInit {
   pageNumber: number=3;
   realPage:number=0;
   page:number=0;
-  appTitleStates:Caption[]=titleStates;
-  appDescriptionStates:Caption[]=descriptionStates;
+  appTitle:Caption=title;
+  appDescription:Caption=description;
   pageEmitter$ = new BehaviorSubject<number>(this.page);
   ngOnInit() {
     

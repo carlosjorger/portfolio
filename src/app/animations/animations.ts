@@ -9,7 +9,7 @@ export let showIntro=trigger('showIntro', [
       })
     ),
     transition(':enter', [
-      animate('1.5s cubic-bezier(0.3,0.8,0.8,0.3)',keyframes([
+      animate('1s cubic-bezier(0.3,0.8,0.8,0.3)',keyframes([
         style({
            color:'transparent',
            backgroundSize: '100% 0%',
@@ -31,7 +31,7 @@ export let showIntro=trigger('showIntro', [
       ]))
     ]),
     transition('*=>*', [
-      animate('1s cubic-bezier(0.3,0.8,0.8,0.3)',keyframes([
+      animate('{{Seconds}}s cubic-bezier(0.3,0.8,0.8,0.3)',keyframes([
         style({
           color:'transparent',
            backgroundPosition: '0% 0%',
@@ -52,7 +52,11 @@ export let showIntro=trigger('showIntro', [
           offset: 1
         })
       ]))
-    ])
+    ],{
+      params:{
+        Seconds:'1.5'
+      }
+    })
   ]);
 
 export let changeIntroPosition=trigger('changeIntroPosition', [
@@ -89,7 +93,12 @@ export let changeIntroPosition=trigger('changeIntroPosition', [
     }
   ),
   transition('false<=>true', [
-    animate('1s')
-  ]),
+    animate('{{Seconds}}s {{Delay}}s')
+  ],{
+    params:{
+      Delay:'0',
+      Seconds:'1'
+    }
+  }),
  
 ]);
