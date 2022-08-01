@@ -18,12 +18,20 @@ import { Caption, CaptionStyle } from '../../utils/caption-position/caption-posi
 
 export class CaptionComponent implements OnInit {
   @Input() displayClass:String="";
-  @Input() firstPosition:Caption | undefined;
-  @Input() secondPosition:Caption | undefined;
-  @Input() thirdPosition:Caption | undefined;
-  text:String | undefined="";
+  @Input() positions:Caption[]|undefined;
+  public get firsPosition():Caption|undefined{
+    var value=(this.page-1)<0?0:this.page-1;
+    return this.GetPosition(value);
+    
+  }
+  public get secondPosition():Caption|undefined{
+    return this.GetPosition(this.page);
+    
+  }
+  
+  text:String | undefined=""; 
   page:number=0;
-  GetTextDictionary: Map<number,Caption| undefined>=new Map<number,Caption|undefined>([]);  
+  GetTextDictionary=new Map<number,Caption|undefined>([]);  
 
    constructor (private serviceScrollService: ServiceScrollService,
     private ref: ChangeDetectorRef) {
@@ -31,19 +39,27 @@ export class CaptionComponent implements OnInit {
   }
  
   ngOnInit(): void {
-    this.GetTextDictionary=new Map<number,Caption|undefined>([
-      [0,this.firstPosition],
-      [1,this.secondPosition],
-      [2,this.thirdPosition]  
-    ]);
-    this.text=this.GetTextDictionary.get(this.page)?.text;
-    this.serviceScrollService.keepTrackScroll().subscribe(
-      value=>{
-        this.page=value;
-        this.text=this.GetTextDictionary.get(this.page)?.text;
-        this.ref.detectChanges();
-      }
-    );
+    if(this.positions!=undefined){
+      this.GetTextDictionary= new Map<number,Caption|undefined>(
+        this.positions.map(
+          (caption:Caption,i:number)=>
+            [i,caption])
+      );
+      this.text=this.GetTextDictionary.get(this.page)?.text;
+      this.serviceScrollService.keepTrackScroll().subscribe(
+        value=>{
+          this.page=value;
+          this.text=this.GetTextDictionary.get(this.page)?.text;
+          this.ref.detectChanges();
+        }
+      );
+    }
+    
+  }
+  private GetPosition(pos:number):Caption|undefined{
+    return (this.positions!=undefined&&this.positions.length>0)?
+            this.positions[pos]
+            :undefined
   }
 
 }

@@ -10,18 +10,3 @@
     position: fixed;
     white-space: pre-line; 
   }
-.firstPosition{
-  top: 30%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.secondPosition{
-  top: 45%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.thirdPosition{
-  top: 54%;
-  left: 50%;
-  transform: translateX(-50%);
-}

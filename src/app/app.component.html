@@ -4,24 +4,15 @@
     <div>
       <app-caption
         [displayClass]="'display-1'"
-        
-        [firstPosition]="appTitleStates[0]"
-        [secondPosition]="appTitleStates[1]"
-        [thirdPosition]="appTitleStates[2]">
+        [positions]="appTitleStates"
+        >
       </app-caption>
       <br>
       <app-caption 
         [displayClass]="'display-1'"
-
-        [firstPosition]="appDescriptionStates[0]"
-        [secondPosition]="appDescriptionStates[1]"
-        [thirdPosition]="appDescriptionStates[2]"
+        [positions]="appDescriptionStates"
         >
       </app-caption>
-      <!-- <app-caption [text]="'FullStack Engineer'" [displayClass]="'display-5'"></app-caption>
-      <br>
-      <app-caption [text]="'&'" [displayClass]="'display-5'"></app-caption>
-      -->
       <br>
     </div>
   </section>

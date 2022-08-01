@@ -1,19 +1,20 @@
 <span class="magical-underline" 
-        [class]="[displayClass]" 
-        [@showIntro]="text" 
-        [@changeIntroPosition]="{   value:page>0,
-                                    params:{
-                                        FirstPositionTop:firstPosition?.captionStyle?.top, 
-                                        FirstPositionLeft:firstPosition?.captionStyle?.left, 
-                                        FirstPositionTransform: firstPosition?.captionStyle?.transform,
-                                        FirstPositionFontSize: firstPosition?.captionStyle?.fontSize,
+[class]="[displayClass]" 
+[@showIntro]="text" 
+    [@changeIntroPosition]="{   value:page>0,
+                            params:{
+                                FirstPosition:firsPosition,
+                                FirstPositionTop:firsPosition?.captionStyle?.top, 
+                                FirstPositionLeft:firsPosition?.captionStyle?.left, 
+                                FirstPositionTransform: firsPosition?.captionStyle?.transform,
+                                FirstPositionFontSize: firsPosition?.captionStyle?.fontSize,
 
-                                        SecondPositionTop: secondPosition?.captionStyle?.top,
-                                        SecondPositionLeft: secondPosition?.captionStyle?.left,
-                                        SecondPositionTransform: secondPosition?.captionStyle?.transform,
-                                        SecondPositionFontSize: secondPosition?.captionStyle?.fontSize
+                                SecondPositionTop: secondPosition?.captionStyle?.top,
+                                SecondPositionLeft: secondPosition?.captionStyle?.left,
+                                SecondPositionTransform: secondPosition?.captionStyle?.transform,
+                                SecondPositionFontSize: secondPosition?.captionStyle?.fontSize
 
-                                    }
-                                }"
-        
-        >{{text}}</span>
+                            }
+                        }"
+>{{text}}</span>
+       
