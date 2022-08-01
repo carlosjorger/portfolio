@@ -136,7 +136,7 @@ export let vanishText = trigger('vanishText', [
     })
   ),
   transition('false<=>true', [
-    animate('0.8s')
+    animate('0.8s ease')
   ]),
 
 ]);
