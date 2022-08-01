@@ -117,8 +117,26 @@ export let changeIntroPosition = trigger('changeIntroPosition', [
     animate('{{Seconds}}s')
   ], {
     params: {
-      Seconds: '2'
+      Seconds: '1.5'
     }
   }),
+
+]);
+
+export let vanishText = trigger('vanishText', [
+  // ...
+  state('false',
+    style({
+      opacity: 1,
+    })
+  ),
+  state('true',
+    style({
+      opacity: 0,
+    })
+  ),
+  transition('false<=>true', [
+    animate('0.8s')
+  ]),
 
 ]);

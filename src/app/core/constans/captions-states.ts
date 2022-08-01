@@ -36,7 +36,7 @@ export const subtitle = new Caption([
 
 ],1.5,0.3);
 export const description = new Caption([
-    new CaptionState("",
+    new CaptionState("I'm a software engineer and bachelor of Computer Science \n  of the University of Havana.",
     descriptionFirstPosition),
     new CaptionState("I'm a software engineer and bachelor of Computer Science \n  of the University of Havana.",
     descriptionSecondPosition),

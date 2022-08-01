@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, Input, NgZone, OnInit } from '@angular/co
 
 import { firstValueFrom } from 'rxjs';
 import { ServiceScrollService } from 'src/app/services/service-scroll.service';
-import { changeIntroPosition, showIntro } from '../../animations/animations';
+import { changeIntroPosition, showIntro, vanishText } from '../../animations/animations';
 import { AppComponent } from '../../app.component';
 import { Caption, CaptionState, CaptionStateStyle } from '../../utils/caption-position/caption-position';
 
@@ -14,6 +14,7 @@ import { Caption, CaptionState, CaptionStateStyle } from '../../utils/caption-po
     // animation triggers go here
     showIntro,
     changeIntroPosition,
+    vanishText
   ]
 })
 
@@ -49,20 +50,19 @@ export class CaptionComponent implements OnInit {
     this.text=this.GetTextDictionary.get(this.page)?.text??"";
     this.serviceScrollService.keepTrackScroll().subscribe(
       async value=>{
-        var old=this.page;
         if(value<=1){
           this.page=value;
+          this.text=this.GetTextDictionary.get(this.page)?.text??"";
         }
-        console.log(this.page)
-        if(old!=value){
+        if(this.page!=value){
           await this.delay(this.captionStates.delay*1000).then(
             ()=>{
               this.page=value;
               this.text=this.GetTextDictionary.get(this.page)?.text??"";
             });
           
+          }
           this.ref.detectChanges();
-        }
         
       }
     );
