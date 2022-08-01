@@ -1,8 +1,10 @@
 <span class="magical-underline" 
 [class]="[displayClass]" 
     [@showIntro]="{
-        page:text
-      
+        value:text,
+        params:{
+            FirstPositionFontWeight: firsPosition?.captionStyle?.fontweight
+        }
     }" 
     [@changeIntroPosition]="{   value:page>0,
                             params:{
@@ -10,16 +12,26 @@
                                 FirstPositionTop:firsPosition?.captionStyle?.top, 
                                 FirstPositionLeft:firsPosition?.captionStyle?.left, 
                                 FirstPositionTransform: firsPosition?.captionStyle?.transform,
-                                FirstPositionFontSize: firsPosition?.captionStyle?.fontSize,
+                                FirstPositionFontSize: firsPosition?.captionStyle?.fontSize
+                                ,FirstPositionFontWeight: firsPosition?.captionStyle?.fontweight
+                                ,SecondPositionTop: secondPosition?.captionStyle?.top
+                                ,SecondPositionLeft: secondPosition?.captionStyle?.left
+                                ,SecondPositionTransform: secondPosition?.captionStyle?.transform
+                                ,SecondPositionFontSize: secondPosition?.captionStyle?.fontSize
+                                ,SecondPositionFontWeight: secondPosition?.captionStyle?.fontweight
 
-                                SecondPositionTop: secondPosition?.captionStyle?.top,
-                                SecondPositionLeft: secondPosition?.captionStyle?.left,
-                                SecondPositionTransform: secondPosition?.captionStyle?.transform,
-                                SecondPositionFontSize: secondPosition?.captionStyle?.fontSize
                                 
                                 
                                 
                             }
                         }"
->{{text}}</span>
+><div *ngIf="(page>captionStates.states.length-2&&isDescription); else other_content">
+    <app-contact >
+    </app-contact>
+</div>
+<ng-template #other_content>
+    {{text}}
+</ng-template>
+
+</span>
        

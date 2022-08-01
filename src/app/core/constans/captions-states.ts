@@ -1,14 +1,14 @@
 import { Caption, CaptionState, CaptionStateStyle } from "src/app/utils/caption-position/caption-position";
 
-const titleFirstPosition = new CaptionStateStyle('30%', '50%', 'translateX(-50%)', '90px');
-const titleSecondPosition = new CaptionStateStyle('30%', '5%', 'translateX(0%)', '60px');
+const titleFirstPosition = new CaptionStateStyle('30%', '50%', 'translateX(-50%)', '90px',600);
+const titleSecondPosition = new CaptionStateStyle('30%', '5%', 'translateX(0%)', '60px',600);
 
-const subTitleFirstPosition = new CaptionStateStyle('45%', '50%', 'translateX(-50%)', '60px');
-const subTitleSecondPosition = new CaptionStateStyle('42%', '5%', 'translateX(0%)', '40px');
+const subTitleFirstPosition = new CaptionStateStyle('45%', '50%', 'translateX(-50%)', '60px',400);
+const subTitleSecondPosition = new CaptionStateStyle('45%', '5%', 'translateX(0%)', '20px',500);
 
 
-const descriptionFirstPosition = new CaptionStateStyle('60%', '50%', 'translateX(-50%)', '25px');
-const descriptionSecondPosition = new CaptionStateStyle('50%', '5%', 'translateX(0%)', '25px');
+const descriptionFirstPosition = new CaptionStateStyle('55%', '50%', 'translateX(-50%)', '60px',400);
+const descriptionSecondPosition = new CaptionStateStyle('50%', '5%', 'translateX(0%)', '20px');
 
 const name:string='Carlos Jorge';
 const about:string="About";
@@ -42,7 +42,7 @@ export const description = new Caption([
     descriptionSecondPosition),
     new CaptionState('A .netcore middleware that use indentityserver4',
     descriptionSecondPosition),
-    new CaptionState('Twitter Linkedin Mail',
+    new CaptionState('',
     descriptionSecondPosition),
 
 ],1.5,0.6);

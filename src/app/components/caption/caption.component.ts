@@ -20,6 +20,7 @@ import { Caption, CaptionState, CaptionStateStyle } from '../../utils/caption-po
 export class CaptionComponent implements OnInit {
   @Input() displayClass:String="";
   @Input() captionStates:Caption=new Caption([],0,0);
+  @Input() isDescription:boolean=false;
   public get firsPosition():CaptionState|undefined{
     var value=(this.page-1)<0?0:this.page-1;
     return this.GetPosition(value);
@@ -30,7 +31,7 @@ export class CaptionComponent implements OnInit {
     
   }
   
-  text:String | undefined=""; 
+  text:String=""; 
   page:number=0;
   GetTextDictionary=new Map<number,CaptionState|undefined>([]);  
 
@@ -45,16 +46,19 @@ export class CaptionComponent implements OnInit {
         (caption:CaptionState,i:number)=>
           [i,caption])
     );
-    this.text=this.GetTextDictionary.get(this.page)?.text;
+    this.text=this.GetTextDictionary.get(this.page)?.text??"";
     this.serviceScrollService.keepTrackScroll().subscribe(
       async value=>{
         var old=this.page;
-        this.page=value;
+        if(value<=1){
+          this.page=value;
+        }
+        console.log(this.page)
         if(old!=value){
           await this.delay(this.captionStates.delay*1000).then(
             ()=>{
-              
-              this.text=this.GetTextDictionary.get(this.page)?.text;
+              this.page=value;
+              this.text=this.GetTextDictionary.get(this.page)?.text??"";
             });
           
           this.ref.detectChanges();

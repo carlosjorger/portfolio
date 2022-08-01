@@ -5,5 +5,5 @@ export class CaptionState{
     constructor(public text:string,public captionStyle:CaptionStateStyle){}
 }
 export class CaptionStateStyle {
-    constructor(public top:string,public left:string,public transform:string,public fontSize:string){}
+    constructor(public top:string,public left:string,public transform:string,public fontSize:string, public fontweight:number=400){}
 }

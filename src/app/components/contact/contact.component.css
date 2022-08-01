@@ -1,0 +1,12 @@
+.contact-underline{
+    /* color:black;
+    background-image: linear-gradient(120deg, #000000 0%, #000000 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0%;
+    background-position: 100% 0%;
+    padding-bottom: 10px;
+    font-family: Montserrat;
+    display: inline-block; */
+    position: fixed;
+    /* white-space: pre-line;  */
+  }

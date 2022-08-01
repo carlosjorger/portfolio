@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CaptionComponent } from './components/caption/caption.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CaptionComponent
+    CaptionComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
