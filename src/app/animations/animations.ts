@@ -47,7 +47,7 @@ export let showIntro = trigger('showIntro', [
     }
   ),
   transition('*=>*', [
-    animate('{{Seconds}}s cubic-bezier(0.3,0.8,0.8,0.3)', keyframes([
+    animate('{{Seconds}}s {{Delay}}s cubic-bezier(0.3,0.8,0.8,0.3)', keyframes([
       style({
         color: 'transparent',
         backgroundPosition: '0% 0%',
@@ -70,7 +70,8 @@ export let showIntro = trigger('showIntro', [
     ]))
   ], {
     params: {
-      Seconds: '1.5'
+      Seconds: '1.5',
+      Delay:'0',
     }
   }),
 ]);
@@ -114,10 +115,11 @@ export let changeIntroPosition = trigger('changeIntroPosition', [
   }
   ),
   transition('false<=>true', [
-    animate('{{Seconds}}s')
+    animate('{{Seconds}}s {{Delay}}s ease-out')
   ], {
     params: {
-      Seconds: '1.5'
+      Seconds: '1.5',
+      Delay:'0',
     }
   }),
 

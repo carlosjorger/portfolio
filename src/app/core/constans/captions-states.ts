@@ -16,33 +16,43 @@ const profetion:string='FullStack Engineer';
 const profetionPlus:string='FullStack Engineer - Computer Scientific'
 export const title =new Caption([
     new CaptionState(name,
-        titleFirstPosition),
+        titleFirstPosition,
+        1.2,0),
     new CaptionState(name,
-        titleSecondPosition),
+        titleSecondPosition,
+        1.2,0),
     new CaptionState('Projects',
-            titleSecondPosition),
+            titleSecondPosition,1.5,0),
     new CaptionState(about,
-        titleSecondPosition),
-],1.5,0);
+        titleSecondPosition,1.5,0),
+]);
 export const subtitle = new Caption([
     new CaptionState(profetion,
-        subTitleFirstPosition),
+        subTitleFirstPosition,
+        1.2,0),
     new CaptionState(profetion,
-        subTitleSecondPosition),
+        subTitleSecondPosition,
+        1.2,0),
     new CaptionState('Identity Server',
-            subTitleSecondPosition),
+            subTitleSecondPosition,
+            1.5,0.3),
     new CaptionState('My contacs',
-        subTitleSecondPosition),
+        subTitleSecondPosition,
+        1.5,0.3),
 
-],1.5,0.3);
+]);
 export const description = new Caption([
     new CaptionState("I'm a software engineer and bachelor \n of Computer Science \n  of the University of Havana.",
-    descriptionFirstPosition),
+    descriptionFirstPosition,
+    1.2,0),
     new CaptionState("I'm a software engineer and bachelor \n of Computer Science \n  of the University of Havana.",
-    descriptionSecondPosition),
+    descriptionSecondPosition,
+    1.2,0),
     new CaptionState('A .netcore middleware that use indentityserver4',
-    descriptionSecondPosition),
+    descriptionSecondPosition,
+    1.5,0.6),
     new CaptionState('',
-    descriptionSecondPosition),
+    descriptionSecondPosition,
+    1.5,0.6),
 
-],1.5,0.6);
+]);
