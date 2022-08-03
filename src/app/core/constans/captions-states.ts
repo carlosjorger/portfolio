@@ -1,14 +1,14 @@
 import { Caption, CaptionState, CaptionStateStyle, Transition } from "src/app/utils/caption-position/caption-model";
 
-const titleFirstPosition = new CaptionStateStyle('30%', '50%', 'translateX(-50%)', '90px', 600);
-const titleSecondPosition = new CaptionStateStyle('30%', '5%', 'translateX(0%)', '60px', 600);
+const titleFirstPosition = new CaptionStateStyle('30%', '50%', 'translateX(-50%)', '6', 600);
+const titleSecondPosition = new CaptionStateStyle('30%', '5%', 'translateX(0%)', '3', 600);
 
-const subTitleFirstPosition = new CaptionStateStyle('45%', '50%', 'translateX(-50%)', '60px', 400);
-const subTitleSecondPosition = new CaptionStateStyle('45%', '5%', 'translateX(0%)', '20px', 500);
+const subTitleFirstPosition = new CaptionStateStyle('44%', '50%', 'translateX(-50%)', '5', 400);
+const subTitleSecondPosition = new CaptionStateStyle('45%', '5%', 'translateX(0%)', '1.5', 500);
 
 
-const descriptionFirstPosition = new CaptionStateStyle('55%', '50%', 'translateX(-50%)', '40px', 400);
-const descriptionSecondPosition = new CaptionStateStyle('50%', '5%', 'translateX(0%)', '20px');
+const descriptionFirstPosition = new CaptionStateStyle('50%', '50%', 'translateX(-50%)', '4', 400);
+const descriptionSecondPosition = new CaptionStateStyle('50%', '5%', 'translateX(0%)', '1.5');
 
 const name: string = 'Carlos Jorge';
 const about: string = "About";

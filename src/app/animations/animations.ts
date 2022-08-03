@@ -83,14 +83,14 @@ export let changeIntroPosition = trigger('changeIntroPosition', [
       top: '{{FirstPositionTop}}',
       left: '{{FirstPositionLeft}}',
       transform: '{{FirstPositionTransform}}',
-      fontSize: '{{FirstPositionFontSize}}',
+      fontSize: '{{FirstPositionFontSize}}vw',
       fontWeight: '{{FirstPositionFontWeight}}'
     }), {
     params: {
       FirstPositionTop: '30%',
       FirstPositionLeft: '50%',
       FirstPositionTransform: 'translateX(-50%)',
-      FirstPositionFontSize: '60px',
+      FirstPositionFontSize: '10',
       FirstPositionFontWeight: 500
 
     }
@@ -101,7 +101,7 @@ export let changeIntroPosition = trigger('changeIntroPosition', [
       top: '{{SecondPositionTop}}',
       left: '{{SecondPositionLeft}}',
       transform: '{{SecondPositionTransform}}',
-      fontSize: '{{SecondPositionFontSize}}',
+      fontSize: '{{SecondPositionFontSize}}vw',
       fontWeight: '{{SecondPositionFontWeight}}'
 
     }), {
@@ -109,7 +109,7 @@ export let changeIntroPosition = trigger('changeIntroPosition', [
       SecondPositionTop: '30%',
       SecondPositionLeft: '50%',
       SecondPositionTransform: 'translateX(-50%)',
-      SecondPositionFontSize: '60px',
+      SecondPositionFontSize: '8',
       SecondPositionFontWeight: 500
     }
   }
