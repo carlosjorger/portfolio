@@ -3,7 +3,7 @@ import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import {BehaviorSubject, delay, interval, Observable, of, Subscription} from 'rxjs'
 import { changeIntroPosition } from './animations/animations';
-import { Caption, CaptionState,  CaptionStateStyle } from './utils/caption-position/caption-position';
+import { Caption, CaptionState,  CaptionStateStyle } from './utils/caption-position/caption-model';
 import { ServiceScrollService } from './services/service-scroll.service';
 import { description, subtitle, title } from './core/constans/captions-states';
 

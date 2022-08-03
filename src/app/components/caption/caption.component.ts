@@ -4,7 +4,7 @@ import { firstValueFrom } from 'rxjs';
 import { ServiceScrollService } from 'src/app/services/service-scroll.service';
 import { changeIntroPosition, showIntro, vanishText } from '../../animations/animations';
 import { AppComponent } from '../../app.component';
-import { Caption, CaptionState, CaptionStateStyle } from '../../utils/caption-position/caption-position';
+import { Caption, CaptionState, CaptionStateStyle, Transition } from '../../utils/caption-position/caption-model';
 
 @Component({
   selector: 'app-caption',
@@ -22,14 +22,18 @@ export class CaptionComponent implements OnInit {
   @Input() displayClass: String = "";
   @Input() captionStates: Caption = new Caption([]);
   @Input() isDescription: boolean = false;
+  private index:number=0;
+  public get transition():Transition{
+    return this.captionStates.transition[this.index];
+  }
   public get firsPosition(): CaptionState | undefined {
     return this.GetPosition(this.page);
 
   }
   public get secondPosition(): CaptionState | undefined {
-    return this.GetPosition((this.page >=this.captionStates.states.length-1)?
-                              this.page:
-                              this.page+1);
+    return this.GetPosition((this.page >= this.captionStates.states.length - 1) ?
+      this.page :
+      this.page + 1);
 
   }
 
@@ -51,14 +55,16 @@ export class CaptionComponent implements OnInit {
     this.text = this.GetTextDictionary.get(this.page)?.text ?? "";
     this.serviceScrollService.keepTrackScroll().subscribe(
       async value => {
-        var targetPosition = this.GetPosition(value);
-        await this.delay((targetPosition?.delay ?? 0) * 1000).then(
-          () => {
-            this.page = value;
-            this.text = this.GetTextDictionary.get(this.page)?.text ?? "";
-          });
-        this.ref.detectChanges();
+        if (value != this.page) {
+          this.index=Math.min(value,this.page);
+          await this.delay((this.transition?.delay ?? 0) * 1000).then(
+            () => {
+              this.page = value;
+              this.text = this.GetTextDictionary.get(this.page)?.text ?? "";
+            });
+          this.ref.detectChanges();
 
+        }
       }
     );
 
