@@ -86,3 +86,18 @@ export let showIntro = trigger('showIntro', [
   }),
 ]);
 
+export let showContacts=trigger('showContacts', [
+  state('void',
+  style({ opacity: 0, backgroundColor:'red' })),
+  transition(':enter', [
+    animate('2s',keyframes([
+      style({
+        opacity: 0, backgroundColor:'red',
+        offset: 0
+      }),
+      style({
+        opacity: 1, backgroundColor:'blue',
+        offset: 1
+      })])),
+  ])
+]);

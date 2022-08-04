@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, HostListener, Input, NgZone, OnInit, } fr
 
 import { firstValueFrom } from 'rxjs';
 import { ServiceScrollService } from 'src/app/services/service-scroll.service';
-import { getAnimationParameters, showIntro } from '../../animations/animations';
+import { getAnimationParameters, showContacts, showIntro } from '../../animations/animations';
 import { AppComponent } from '../../app.component';
 import { Caption, CaptionState, CaptionStateStyle, Transition } from '../../utils/caption-position/caption-model';
 import { AnimationEvent } from "@angular/animations";
@@ -13,7 +13,8 @@ import { AnimationEvent } from "@angular/animations";
   styleUrls: ['./caption.component.css'],
   animations: [
     // animation triggers go here
-    showIntro
+    showIntro,
+    showContacts
 
   ]
 })
