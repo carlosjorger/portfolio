@@ -5,7 +5,7 @@ import { CaptionComponent } from '../caption/caption.component';
 @Component({
   selector: 'app-caption-description',
   templateUrl: './caption-description.component.html',
-  styleUrls: ['./caption-description.component.css']
+  styleUrls: ['./caption-description.component.css'],
 })
 export class CaptionDescriptionComponent extends CaptionComponent {
 
