@@ -7,9 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CaptionComponent } from './components/caption/caption.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { CaptionDescriptionComponent } from './components/caption-description/caption-description.component';
-import { TwitterContactComponent } from './components/twitter-contact/twitter-contact.component';
 import { FaIconLibrary,FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faTwitter as farTwitter } from '@fortawesome/free-brands-svg-icons';
+import { ContactInfoComponent } from './components/contact-info/contact-info.component';
 
 
 @NgModule({
@@ -18,7 +18,7 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
     CaptionComponent,
     ContactComponent,
     CaptionDescriptionComponent,
-    TwitterContactComponent,
+    ContactInfoComponent
     
   ],
   imports: [
@@ -33,7 +33,7 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 })
 export class AppModule { 
   constructor(library: FaIconLibrary) { 
-    library.addIcons(faTwitter);
+    library.addIcons(farTwitter);
   }
   
 }
