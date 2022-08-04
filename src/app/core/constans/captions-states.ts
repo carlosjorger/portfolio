@@ -21,8 +21,8 @@ export const title = new Caption(
     ],
     [
 
-        new Transition(.8, 0),
-        new Transition(.8, 0),
+        new Transition(1.2, 0),
+        new Transition(1.2, 0),
     ]);
 
 
@@ -36,8 +36,8 @@ export const subtitle = new Caption([
 
 ],
 [
-    new Transition(.8, .2),
-    new Transition(.8, .2),
+    new Transition(1.2, .3),
+    new Transition(1.2, .3),
 ]);
 export const description = new Caption([
  
@@ -51,6 +51,6 @@ export const description = new Caption([
 ],
 [
 
-    new Transition(.8, .4),
-    new Transition(.8, .2),
+    new Transition(1.2, .6),
+    new Transition(1.2, .6),
 ]);

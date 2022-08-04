@@ -111,6 +111,37 @@
           "builder": "angular-cli-ghpages:deploy"
         }
       }
+    },
+    "@angular/platform-browser": {
+      "projectType": "library",
+      "root": "projects/angular/platform-browser",
+      "sourceRoot": "projects/angular/platform-browser/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/angular/platform-browser/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular/platform-browser/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/angular/platform-browser/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular/platform-browser/src/test.ts",
+            "tsConfig": "projects/angular/platform-browser/tsconfig.spec.json",
+            "karmaConfig": "projects/angular/platform-browser/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "portfolio"
