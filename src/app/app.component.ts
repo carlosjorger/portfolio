@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component,HostListener, NgZone, OnInit } from '@angular/core';
 import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import {BehaviorSubject, delay, interval, Observable, of, Subscription} from 'rxjs'
-import { changeIntroPosition } from './animations/animations';
+
 import { Caption, CaptionState,  CaptionStateStyle } from './utils/caption-position/caption-model';
 import { ServiceScrollService } from './services/service-scroll.service';
 import { description, subtitle, title } from './core/constans/captions-states';
@@ -16,7 +15,6 @@ import { description, subtitle, title } from './core/constans/captions-states';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     // animation triggers go here
-    changeIntroPosition
   ]
 })
 export class AppComponent implements OnInit {
@@ -28,7 +26,6 @@ export class AppComponent implements OnInit {
   appSubtitle:Caption=subtitle;
   appDescription:Caption=description;
   
-  pageEmitter$ = new BehaviorSubject<number>(this.page);
   ngOnInit() {
     
     this.serviceScrollService.keepTrackScroll().subscribe(

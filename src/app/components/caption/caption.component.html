@@ -1,42 +1,13 @@
-<span class="magical-underline" 
-[class]="[displayClass]" 
-    [@showIntro]="{
+<div class="magical-underline" [ngStyle]="{fontSize:responsiveFontSize}" [@showIntro]="{
         value:text,
-        params:{
-            FirstPositionFontWeight: firsPosition?.captionStyle?.fontweight
-
-        }
-    }" 
-    [@changeIntroPosition]="{   value:page>0,
-                            params:{
-                                FirstPosition:firsPosition,
-                                FirstPositionTop:firsPosition?.captionStyle?.top, 
-                                FirstPositionLeft:firsPosition?.captionStyle?.left, 
-                                FirstPositionTransform: firsPosition?.captionStyle?.transform,
-                                FirstPositionFontSize: firsPosition?.captionStyle?.fontSize
-                                ,FirstPositionFontWeight: firsPosition?.captionStyle?.fontweight
-                                ,SecondPositionTop: secondPosition?.captionStyle?.top
-                                ,SecondPositionLeft: secondPosition?.captionStyle?.left
-                                ,SecondPositionTransform: secondPosition?.captionStyle?.transform
-                                ,SecondPositionFontSize: secondPosition?.captionStyle?.fontSize
-                                ,SecondPositionFontWeight: secondPosition?.captionStyle?.fontweight
-                                ,Seconds: transition.second
-
-                                
-                                
-                                
-                            }
-                        }"
-    [@vanishText]="{
-        value:page<=0&&isDescription
-    }"
-><div *ngIf="(page>captionStates.states.length-2&&isDescription); else other_content">
-    <app-contact >
-    </app-contact>
-</div>
-<ng-template #other_content>
+        params:getAnimationParamter()
+    }">
     {{text}}
-</ng-template>
+</div>
 
-</span>
-       
+<!-- [@changeIntroPosition]="{   
+    value:page>0,
+    params:getAnimationParamter()
+}" 
+(@changeIntroPosition.start)="captureStartEvent($event)"
+(@changeIntroPosition.done)="captureDoneEvent($event)" -->

@@ -6,10 +6,10 @@ import { Observable, Subject } from 'rxjs';
 })
 export class ServiceScrollService {
 
-  pageNumber: number = 4;
+  pageNumber: number = 3;
   realPage: number = 0;
   page: number = 0;
-  scrollBufferWindow: number = 500;
+  scrollBufferWindow: number = 100;
   lastNavigationStartAt: number = 0;
   // current
   private subject = new Subject<number>();

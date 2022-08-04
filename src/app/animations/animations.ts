@@ -1,48 +1,42 @@
-import { animate, keyframes, state, style, transition, trigger } from "@angular/animations";
+import { animate, keyframes, state, style, transition, trigger, AnimationEvent } from "@angular/animations";
+import { CaptionState, Transition } from "../utils/caption-position/caption-model";
 
+export let getAnimationParameters =
+  function (firstState: CaptionState,FirstPositionFontSize:number,
+    secondState: CaptionState,SecondPositionFontSize:number, 
+    transition: Transition) {
+    return {
+      FirstPosition: firstState,
+      FirstPositionTop: firstState?.captionStyle?.top,
+      FirstPositionLeft: firstState?.captionStyle?.left,
+      FirstPositionTransform: firstState?.captionStyle?.transform,
+      FirstPositionFontSize: FirstPositionFontSize
+      , FirstPositionFontWeight: firstState?.captionStyle?.fontweight
+      , SecondPositionTop: secondState?.captionStyle?.top
+      , SecondPositionLeft: secondState?.captionStyle?.left
+      , SecondPositionTransform: secondState?.captionStyle?.transform
+      , SecondPositionFontSize: SecondPositionFontSize
+      , SecondPositionFontWeight: secondState?.captionStyle?.fontweight
+      , Seconds: transition.second
+    };
+  };
 export let showIntro = trigger('showIntro', [
   // ...
-  state('void',
+
+  state('*',
     style({
-      backgroundSize: '100% 0%',
-      color: 'transparent',
-      fontWeight: '{{FirstPositionFontWeight}}'
+      backgroundSize: '0% 100%',
+      fontWeight: '{{FirstPositionFontWeight}}',
+      top: '{{FirstPositionTop}}',
+      left: '{{FirstPositionLeft}}',
+      fontSize: '{{FirstPositionFontSize}}vw',
     }),
     {
       params: {
-        FirstPositionFontWeight: 500
-      }
-    }
-  ),
-  transition(':enter', [
-    animate('1s cubic-bezier(0.3,0.8,0.8,0.3)', keyframes([
-      style({
-        color: 'transparent',
-        backgroundSize: '100% 0%',
-        fontWeight: '{{FirstPositionFontWeight}}',
-        offset: 0
-      }),
-      style({
-        backgroundSize: '100% 100%',
-        fontWeight: '{{FirstPositionFontWeight}}',
-        offset: 0.5
-      }),
-      style({
-        backgroundPosition: '100% 100%',
-        fontWeight: '{{FirstPositionFontWeight}}',
-        color: 'black',
-        offset: 0.6
-      }),
-      style({
-        backgroundSize: '100% 0%',
-        fontWeight: '{{FirstPositionFontWeight}}',
-        offset: 1
-      })
-    ]))
-  ],
-    {
-      params: {
-        FirstPositionFontWeight: 500
+        FirstPositionFontWeight: 500,
+        FirstPositionTop: '30%',
+        FirstPositionLeft: '5%',
+        FirstPositionFontSize: '3',
       }
     }
   ),
@@ -52,7 +46,11 @@ export let showIntro = trigger('showIntro', [
         color: 'transparent',
         backgroundPosition: '0% 0%',
         backgroundSize: '0% 100%',
-        offset: 0
+        offset: 0,
+        top: '{{FirstPositionTop}}',
+        left: '{{FirstPositionLeft}}',
+        fontSize: '{{FirstPositionFontSize}}vw',
+        fontWeight: '{{FirstPositionFontWeight}}'
       }),
       style({
         backgroundSize: '100% 100%',
@@ -65,80 +63,26 @@ export let showIntro = trigger('showIntro', [
       }),
       style({
         backgroundSize: '0% 100%',
-        offset: 1
+        offset: 1,
+        top: '{{SecondPositionTop}}',
+        left: '{{SecondPositionLeft}}',
+        fontSize: '{{SecondPositionFontSize}}vw',
+        fontWeight: '{{SecondPositionFontWeight}}'
       })
     ]))
   ], {
     params: {
-      Seconds: '1.5',
-      Delay:'0',
-    }
-  }),
-]);
-
-export let changeIntroPosition = trigger('changeIntroPosition', [
-  // ...
-  state('false',
-    style({
-      top: '{{FirstPositionTop}}',
-      left: '{{FirstPositionLeft}}',
-      transform: '{{FirstPositionTransform}}',
-      fontSize: '{{FirstPositionFontSize}}vw',
-      fontWeight: '{{FirstPositionFontWeight}}'
-    }), {
-    params: {
+      Seconds: '0.8',
+      Delay: '0',
       FirstPositionTop: '30%',
-      FirstPositionLeft: '50%',
-      FirstPositionTransform: 'translateX(-50%)',
-      FirstPositionFontSize: '10',
-      FirstPositionFontWeight: 500
-
-    }
-  }
-  ),
-  state('true',
-    style({
-      top: '{{SecondPositionTop}}',
-      left: '{{SecondPositionLeft}}',
-      transform: '{{SecondPositionTransform}}',
-      fontSize: '{{SecondPositionFontSize}}vw',
-      fontWeight: '{{SecondPositionFontWeight}}'
-
-    }), {
-    params: {
+      FirstPositionLeft: '5%',
+      FirstPositionFontSize: '3',
+      FirstPositionFontWeight: 500,
       SecondPositionTop: '30%',
-      SecondPositionLeft: '50%',
-      SecondPositionTransform: 'translateX(-50%)',
-      SecondPositionFontSize: '8',
+      SecondPositionLeft: '5%',
+      SecondPositionFontSize: '3',
       SecondPositionFontWeight: 500
     }
-  }
-  ),
-  transition('false<=>true', [
-    animate('{{Seconds}}s {{Delay}}s ease-out')
-  ], {
-    params: {
-      Seconds: '1.5',
-      Delay:'0',
-    }
   }),
-
 ]);
 
-export let vanishText = trigger('vanishText', [
-  // ...
-  state('false',
-    style({
-      opacity: 1,
-    })
-  ),
-  state('true',
-    style({
-      opacity: 0,
-    })
-  ),
-  transition('false<=>true', [
-    animate('0.8s ease')
-  ]),
-
-]);
