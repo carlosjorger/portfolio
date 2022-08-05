@@ -9,13 +9,13 @@ import { showContacts } from 'src/app/animations/animations';
   styleUrls: ['./contact-info.component.css'],
   animations: [
     // animation triggers go here
-    
+    showContacts
 
   ]
 })
 export class ContactInfoComponent implements OnInit {
   @Input() icon:IconDefinition=faGithub;
-  @Input() url:string="";
+  @Input() url:string="url";
   constructor() { 
     
   }

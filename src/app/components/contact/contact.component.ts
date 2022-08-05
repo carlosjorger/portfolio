@@ -28,7 +28,6 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
     this.serviceScrollService.keepTrackScroll().subscribe(
       async value=>{
-        console.log(this.page)
         this.page=value;
       }
     );

@@ -1,9 +1,10 @@
-import { animate, keyframes, state, style, transition, trigger, AnimationEvent } from "@angular/animations";
+import { animate, keyframes, state, style, transition, trigger, AnimationEvent, query, animateChild,group } from "@angular/animations";
+
 import { CaptionState, Transition } from "../utils/caption-position/caption-model";
 
 export let getAnimationParameters =
-  function (firstState: CaptionState,FirstPositionFontSize:number,
-    secondState: CaptionState,SecondPositionFontSize:number, 
+  function (firstState: CaptionState, FirstPositionFontSize: number,
+    secondState: CaptionState, SecondPositionFontSize: number,
     transition: Transition) {
     return {
       FirstPosition: firstState,
@@ -41,6 +42,7 @@ export let showIntro = trigger('showIntro', [
     }
   ),
   transition('*=>*', [
+    group([query("@*", [animateChild()], { optional: true }),
     animate('{{Seconds}}s {{Delay}}s cubic-bezier(0.3,0.8,0.8,0.3)', keyframes([
       style({
         color: 'transparent',
@@ -69,7 +71,7 @@ export let showIntro = trigger('showIntro', [
         fontSize: '{{SecondPositionFontSize}}vw',
         fontWeight: '{{SecondPositionFontWeight}}'
       })
-    ]))
+    ]))])
   ], {
     params: {
       Seconds: '0.8',
@@ -86,18 +88,12 @@ export let showIntro = trigger('showIntro', [
   }),
 ]);
 
-export let showContacts=trigger('showContacts', [
+export let showContacts = trigger('showContacts', [
   state('void',
-  style({ opacity: 0, backgroundColor:'red' })),
+    style({ opacity: 0 })),
   transition(':enter', [
-    animate('2s',keyframes([
-      style({
-        opacity: 0, backgroundColor:'red',
-        offset: 0
-      }),
-      style({
-        opacity: 1, backgroundColor:'blue',
-        offset: 1
-      })])),
+    animate('2s ease-in', style({
+      opacity: 1,
+    })),
   ])
 ]);
