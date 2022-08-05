@@ -1,11 +1,11 @@
-<div class="magical-underline" 
+<div class="magical-underline"  *ngIf="page>0"
     [@showIntro]="{
         value:text,
         params:getAnimationParamter()
     }" 
    
 >
-    <div  *ngIf="(page>captionStates.states.length-2); else other_content" [@showContacts]>
+    <div  *ngIf="(page>captionStates.states.length-1); else other_content" [@showContacts]>
         <app-contact>
 
         </app-contact>

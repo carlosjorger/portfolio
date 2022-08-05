@@ -10,6 +10,7 @@ import { CaptionDescriptionComponent } from './components/caption-description/ca
 import { FaIconLibrary,FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTwitter as farTwitter } from '@fortawesome/free-brands-svg-icons';
 import { ContactInfoComponent } from './components/contact-info/contact-info.component';
+import { CaptionSectionComponent } from './components/caption-section/caption-section.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ContactInfoComponent } from './components/contact-info/contact-info.com
     CaptionComponent,
     ContactComponent,
     CaptionDescriptionComponent,
-    ContactInfoComponent
+    ContactInfoComponent,
+    CaptionSectionComponent
     
   ],
   imports: [

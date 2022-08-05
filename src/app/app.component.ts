@@ -22,10 +22,7 @@ export class AppComponent implements OnInit {
   pageNumber: number=3;
   realPage:number=0;
   page:number=0;
-  appTitle:Caption=title;
-  appSubtitle:Caption=subtitle;
-  appDescription:Caption=description;
-  
+
   ngOnInit() {
     
     this.serviceScrollService.keepTrackScroll().subscribe(

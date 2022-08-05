@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { title } from '../core/constans/captions-states';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceScrollService {
 
-  pageNumber: number = 3;
+  pageNumber: number = title.states.length+1;
   realPage: number = 0;
   page: number = 0;
   scrollBufferWindow: number = 100;

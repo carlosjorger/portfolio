@@ -73,7 +73,7 @@ export class CaptionComponent implements OnInit {
     this.GetTextDictionary = new Map<number, CaptionState | undefined>(
       this.captionStates.states.map(
         (caption: CaptionState, i: number) =>
-          [i, caption])
+          [i+1, caption])
     );
     this.text = this.GetTextDictionary.get(this.page)?.text ?? "";
     this.serviceScrollService.keepTrackScroll().subscribe(
