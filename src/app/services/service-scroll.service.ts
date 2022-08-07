@@ -33,6 +33,7 @@ export class ServiceScrollService {
       this.page = this.page >= this.pageNumber ? this.pageNumber - 1 : this.page;
       this.subject.next(this.page);
       this.lastNavigationStartAt = Date.now();
+      
     }
 
   }

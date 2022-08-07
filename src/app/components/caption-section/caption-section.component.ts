@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { showCaptions } from 'src/app/animations/animations';
 import { description, subtitle, title } from 'src/app/core/constans/captions-states';
 import { ServiceScrollService } from 'src/app/services/service-scroll.service';
 import { Caption } from 'src/app/utils/caption-position/caption-model';
@@ -9,7 +8,6 @@ import { Caption } from 'src/app/utils/caption-position/caption-model';
   templateUrl: './caption-section.component.html',
   styleUrls: ['./caption-section.component.css'],
   animations:[
-    showCaptions
   ]
 })
 export class CaptionSectionComponent implements OnInit {
