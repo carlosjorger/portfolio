@@ -3,8 +3,8 @@ import { animate, keyframes, state, style, transition, trigger, AnimationEvent, 
 import { CaptionState, Transition } from "../utils/caption-position/caption-model";
 
 export let getAnimationParameters =
-  function (firstState: CaptionState, FirstPositionFontSize: number,FirstPositionTop:Number,
-    secondState: CaptionState, SecondPositionFontSize: number,SecondPositionTop:Number,
+  function (firstState: CaptionState, FirstPositionFontSize: number, FirstPositionTop: Number,
+    secondState: CaptionState, SecondPositionFontSize: number, SecondPositionTop: Number,
     transition: Transition) {
     return {
       FirstPosition: firstState,
@@ -120,7 +120,7 @@ export let showIntro = trigger('showIntro', [
                 style({
                   backgroundPosition: '100% 100%',
                   color: '#ac4bf6',
-                  
+
                   offset: 0.6
                 }),
                 style({
@@ -159,23 +159,34 @@ export let showContacts = trigger('showContacts',
       })),
     ])
   ]);
-  export let showTittle = trigger('showTittle',
+export let showTittle = trigger('showTittle',
   [
     state('void',
-      style({ opacity: 0,transform: 'skew(0deg) translateX(-100%)'})),
-    transition(':enter', [
-      animate('1.2s ease-out', style({
-        opacity: 1,transform: 'skew(-10deg) translateX(0%)'
-      })),
-    ])
+      style({ opacity: 0, transform: 'translateY(50%)' })),
+    transition(':enter',
+      [
+        animate('2s {{delay}}s ease-out',
+          style(
+            {
+              opacity: 1, transform: 'translateY(0%)'
+            }
+          )
+        ),
+      ],
+      {
+        params: {
+          delay:'0'
+        }
+      }
+    )
   ]);
-  export let showSubTittle = trigger('showSubTittle',
+export let showSubTittle = trigger('showSubTittle',
   [
     state('void',
-      style({ opacity: 0,transform: 'skew(0deg) translateY(50%) translateX(-100%)'})),
+      style({ opacity: 0, transform: 'skew(0deg) translateY(50%) translateX(-100%)' })),
     transition(':enter', [
       animate('1.2s 0.6s ease-out', style({
-        opacity: 1,transform: 'skew(-10deg) translateY(50%) translateX(0%)'
+        opacity: 1, transform: 'skew(-10deg) translateY(50%) translateX(0%)'
       })),
     ])
   ]);

@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { faFacebook, faGithub, faLinkedin, faMeta, faTwitter,IconDefinition } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faGithub, faGoogle, faLinkedin, faMeta, faTwitter,IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import { showContacts } from 'src/app/animations/animations';
 import { ServiceScrollService } from 'src/app/services/service-scroll.service';
 
@@ -18,7 +18,7 @@ export class ContactComponent implements OnInit {
   faLinkedin:IconDefinition=faLinkedin
   faFacebook:IconDefinition=faFacebook
   faGithub:IconDefinition=faGithub      
-
+  faGmail:IconDefinition=faGoogle
   constructor (private serviceScrollService: ServiceScrollService,
     private ref: ChangeDetectorRef) {
       

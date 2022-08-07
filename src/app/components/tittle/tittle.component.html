@@ -1,8 +1,29 @@
 <section>
-    <div>
-        <h1 >
-            <span [@showTittle] class="title" >Carlos Jorge <br> Rodriguez Cuello</span>
-            <span [@showSubTittle] class="title"><br>Full Stack Engineer</span>
+    <div class="titleBody">
+
+        <h1 class="title">
+            <h3>Hello, I'm</h3>
+            <div class="word">
+                <span *ngFor="let item of splitDescription(name)" [ngStyle]="
+                {
+                    animationDelay: item.fract+'s'
+                }">{{item.letter==" "?"&nbsp;":item.letter}}</span>
+            </div>
+            <div class="word">
+                <span *ngFor="let item of splitDescription(lastName)" [ngStyle]="
+                    {
+                        animationDelay: (item.fract+1)+'s'
+                    }">{{item.letter==" "?"&nbsp;":item.letter}}
+                </span>
+            </div>
+            <div class="word">
+                <span *ngFor="let item of splitDescription(profesion)" [ngStyle]="
+                    {
+                        animationDelay: (item.fract+2)+'s',
+                        fontSize: '6vw'
+                    }">{{item.letter==" "?"&nbsp;":item.letter}}
+                </span>
+            </div>
         </h1>
     </div>
-</section>  
+</section>
