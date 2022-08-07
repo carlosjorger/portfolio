@@ -1,10 +1,10 @@
 import { Caption, CaptionState, CaptionStateStyle, Transition } from "src/app/utils/caption-position/caption-model";
 
-const titlePosition = new CaptionStateStyle('30%', 4, 600);
+const titlePosition = new CaptionStateStyle(30, 4, 600);
 
-const subTitlePosition = new CaptionStateStyle('45%', 1.5, 500);
+const subTitlePosition = new CaptionStateStyle(45, 1.5, 500);
 
-const descriptionPosition = new CaptionStateStyle('52%', 1.5);
+const descriptionPosition = new CaptionStateStyle(52, 1.5);
 
 const name: string = 'About me';
 const contact: string = "Contact";

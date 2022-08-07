@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, HostListener, Input, NgZone, OnInit, } fr
 
 import { firstValueFrom } from 'rxjs';
 import { ServiceScrollService } from 'src/app/services/service-scroll.service';
-import {  getAnimationParameters, showContacts, showIntro } from '../../animations/animations';
+import { getAnimationParameters, showContacts, showIntro } from '../../animations/animations';
 import { AppComponent } from '../../app.component';
 import { Caption, CaptionState, CaptionStateStyle, Transition } from '../../utils/caption-position/caption-model';
 import { AnimationEvent } from "@angular/animations";
@@ -18,7 +18,6 @@ import { AnimationEvent } from "@angular/animations";
 
   ]
 })
-
 export class CaptionComponent implements OnInit {
   @Input() displayClass: String = "";
   @Input() captionStates: Caption = new Caption([]);
@@ -44,23 +43,38 @@ export class CaptionComponent implements OnInit {
   public getAnimationParamter() {
     return getAnimationParameters(this.firsPosition,
       this.responsiveFontSize,
+      this.responsiveTop,
       this.secondPosition,
       this.responsiveFontSize,
+      this.responsiveTop,
       this.transition);
   }
-  
+
   public responsiveFontSize: number = 0;
+  public responsiveTop: number = 0;
+
+  protected FontSizescale: number = 2;
   @HostListener('window:resize', ['$event'])
   public getResponsiveFontSize(): number {
-    var captionStateStyle=this.firsPosition.captionStyle;
-    var transformFontSize = this.firsPosition.captionStyle.fontSize * 2;
+    var captionStateStyle = this.firsPosition.captionStyle;
+    var transformFontSize = this.firsPosition.captionStyle.fontSize * this.FontSizescale;
     var a = ((captionStateStyle.fontSize - transformFontSize) / (this.maxWidth - this.minWidth))
-    this.responsiveFontSize= a * window.innerWidth +
+    this.responsiveFontSize = a * window.innerWidth +
       transformFontSize - this.minWidth * a;
-      return this.responsiveFontSize;
+    return this.responsiveFontSize;
 
   }
+  protected TopScale: number = 0.5;
+  @HostListener('window:resize', ['$event'])
+  public getResponsiveTop(): number {
+    var captionStateStyle = this.firsPosition.captionStyle;
+    var transformTop = 30+(this.firsPosition.captionStyle.top-30) * this.TopScale;
+    var a = ((captionStateStyle.top - transformTop) / (this.maxWidth - this.minWidth))
+    this.responsiveTop = a * window.innerWidth +
+      transformTop - this.minWidth * a;
+    return this.responsiveTop;
 
+  }
   text: String = "";
   page: number = 0;
   GetTextDictionary = new Map<number, CaptionState | undefined>([]);
@@ -73,7 +87,7 @@ export class CaptionComponent implements OnInit {
     this.GetTextDictionary = new Map<number, CaptionState | undefined>(
       this.captionStates.states.map(
         (caption: CaptionState, i: number) =>
-          [i+1, caption])
+          [i + 1, caption])
     );
     this.text = this.GetTextDictionary.get(this.page)?.text ?? "";
     this.serviceScrollService.keepTrackScroll().subscribe(
@@ -90,6 +104,7 @@ export class CaptionComponent implements OnInit {
       }
     );
     this.getResponsiveFontSize();
+    this.getResponsiveTop();
   }
   private delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));

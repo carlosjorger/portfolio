@@ -3,15 +3,15 @@ import { animate, keyframes, state, style, transition, trigger, AnimationEvent, 
 import { CaptionState, Transition } from "../utils/caption-position/caption-model";
 
 export let getAnimationParameters =
-  function (firstState: CaptionState, FirstPositionFontSize: number,
-    secondState: CaptionState, SecondPositionFontSize: number,
+  function (firstState: CaptionState, FirstPositionFontSize: number,FirstPositionTop:Number,
+    secondState: CaptionState, SecondPositionFontSize: number,SecondPositionTop:Number,
     transition: Transition) {
     return {
       FirstPosition: firstState,
-      FirstPositionTop: firstState?.captionStyle?.top,
+      FirstPositionTop: FirstPositionTop,
       FirstPositionFontSize: FirstPositionFontSize
       , FirstPositionFontWeight: firstState?.captionStyle?.fontweight
-      , SecondPositionTop: secondState?.captionStyle?.top
+      , SecondPositionTop: SecondPositionTop
       , SecondPositionFontSize: SecondPositionFontSize
       , SecondPositionFontWeight: secondState?.captionStyle?.fontweight
       , Seconds: transition.second
@@ -25,14 +25,14 @@ export let showIntro = trigger('showIntro', [
       backgroundPosition: '0% 0%',
       backgroundSize: '0% 100%',
       offset: 0,
-      top: '{{FirstPositionTop}}',
+      top: '{{FirstPositionTop}}%',
       fontSize: '{{FirstPositionFontSize}}vw',
       fontWeight: '{{FirstPositionFontWeight}}'
     }),
     {
       params: {
         FirstPositionFontWeight: 500,
-        FirstPositionTop: '30%',
+        FirstPositionTop: 30,
         FirstPositionFontSize: '3',
       }
     }
@@ -41,13 +41,13 @@ export let showIntro = trigger('showIntro', [
     style({
       backgroundSize: '0% 100%',
       fontWeight: '{{FirstPositionFontWeight}}',
-      top: '{{FirstPositionTop}}',
+      top: '{{FirstPositionTop}}%',
       fontSize: '{{FirstPositionFontSize}}vw',
     }),
     {
       params: {
         FirstPositionFontWeight: 500,
-        FirstPositionTop: '30%',
+        FirstPositionTop: 30,
         FirstPositionFontSize: '3',
       }
     }
@@ -61,7 +61,7 @@ export let showIntro = trigger('showIntro', [
             backgroundPosition: '0% 0%',
             backgroundSize: '0% 100%',
             offset: 0,
-            top: '{{FirstPositionTop}}',
+            top: '{{FirstPositionTop}}%',
             fontSize: '{{FirstPositionFontSize}}vw',
             fontWeight: '{{FirstPositionFontWeight}}'
           }),
@@ -77,7 +77,7 @@ export let showIntro = trigger('showIntro', [
           style({
             backgroundSize: '0% 100%',
             offset: 1,
-            top: '{{SecondPositionTop}}',
+            top: '{{SecondPositionTop}}%',
             fontSize: '{{SecondPositionFontSize}}vw',
             fontWeight: '{{SecondPositionFontWeight}}'
           })
@@ -88,10 +88,10 @@ export let showIntro = trigger('showIntro', [
     params: {
       Seconds: '0.8',
       Delay: '0',
-      FirstPositionTop: '30%',
+      FirstPositionTop: 30,
       FirstPositionFontSize: '3',
       FirstPositionFontWeight: 500,
-      SecondPositionTop: '30%',
+      SecondPositionTop: 30,
       SecondPositionFontSize: '3',
       SecondPositionFontWeight: 500
     }
@@ -109,7 +109,7 @@ export let showIntro = trigger('showIntro', [
                   backgroundPosition: '0% 0%',
                   backgroundSize: '0% 100%',
                   offset: 0,
-                  top: '{{FirstPositionTop}}',
+                  top: '{{FirstPositionTop}}%',
                   fontSize: '{{FirstPositionFontSize}}vw',
                   fontWeight: '{{FirstPositionFontWeight}}'
                 }),
@@ -126,7 +126,7 @@ export let showIntro = trigger('showIntro', [
                 style({
                   backgroundSize: '0% 100%',
                   offset: 1,
-                  top: '{{SecondPositionTop}}',
+                  top: '{{SecondPositionTop}}%',
                   fontSize: '{{SecondPositionFontSize}}vw',
                   fontWeight: '{{SecondPositionFontWeight}}'
                 })
@@ -139,10 +139,10 @@ export let showIntro = trigger('showIntro', [
       params: {
         Seconds: '0.8',
         Delay: '0',
-        FirstPositionTop: '30%',
+        FirstPositionTop: 30,
         FirstPositionFontSize: '3',
         FirstPositionFontWeight: 500,
-        SecondPositionTop: '30%',
+        SecondPositionTop: 30,
         SecondPositionFontSize: '3',
         SecondPositionFontWeight: 500
       }

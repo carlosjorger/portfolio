@@ -17,4 +17,6 @@ export class CaptionSubtittleComponent extends CaptionComponent {
     _ref: ChangeDetectorRef) { 
       super(_serviceScrollService,_ref);
     }
+    protected override FontSizescale: number=2.5;
   }
+  
