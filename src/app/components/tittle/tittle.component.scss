@@ -1,0 +1,39 @@
+$purple: #ac4bf6;
+$aqua: #4b9bf6;
+
+.presentation {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.title {
+    float: left;
+    left: 15%;
+    top: 20%;
+    position: absolute;
+    text-align: center;
+
+
+}
+
+.title {
+    &:nth-child(1) {
+        transform:skew(-10deg) translateX(0%);
+        font-family: Montserrat;
+        font-size: 7vw;
+        text-align: center;
+        position: absolute;
+        color: $purple;
+    }
+
+    &:nth-child(2) {
+        transform: skew(-10deg) translateY(50%);
+        font-family: Montserrat;
+        font-size: 7vw;
+        text-align: center;
+        position: absolute;
+        color: $purple;
+    }
+
+}

@@ -11,7 +11,7 @@ import { description, subtitle, title } from './core/constans/captions-states';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     // animation triggers go here

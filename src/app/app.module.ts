@@ -12,6 +12,7 @@ import { faTwitter as farTwitter } from '@fortawesome/free-brands-svg-icons';
 import { ContactInfoComponent } from './components/contact-info/contact-info.component';
 import { CaptionSectionComponent } from './components/caption-section/caption-section.component';
 import { TittleComponent } from './components/tittle/tittle.component';
+import { CaptionSubtittleComponent } from './components/caption-subtittle/caption-subtittle.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { TittleComponent } from './components/tittle/tittle.component';
     CaptionDescriptionComponent,
     ContactInfoComponent,
     CaptionSectionComponent,
-    TittleComponent
+    TittleComponent,
+    CaptionSubtittleComponent
     
   ],
   imports: [

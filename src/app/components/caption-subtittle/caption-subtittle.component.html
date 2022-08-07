@@ -1,0 +1,9 @@
+<div class="magical-underline" *ngIf="page>0" [@showIntro]="{
+        value:text,
+        params:getAnimationParamter()
+    }">
+    {{text}}
+    <span *ngIf="(page>captionStates.states.length-1)" [@showContacts]>
+        <a href="https://github.com/CarlosJorgeR/Portafolio"> Portafolio</a>
+    </span>
+</div>
