@@ -164,7 +164,7 @@ export let showContacts = trigger('showContacts',
     state('void',
       style({ opacity: 0,transform: 'skew(0deg) translateX(-100%)'})),
     transition(':enter', [
-      animate('1.5s ease-out', style({
+      animate('1.2s ease-out', style({
         opacity: 1,transform: 'skew(-10deg) translateX(0%)'
       })),
     ])
@@ -174,7 +174,7 @@ export let showContacts = trigger('showContacts',
     state('void',
       style({ opacity: 0,transform: 'skew(0deg) translateY(50%) translateX(-100%)'})),
     transition(':enter', [
-      animate('1.5s 0.7s ease-out', style({
+      animate('1.2s 0.6s ease-out', style({
         opacity: 1,transform: 'skew(-10deg) translateY(50%) translateX(0%)'
       })),
     ])

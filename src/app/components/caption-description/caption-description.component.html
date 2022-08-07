@@ -5,7 +5,7 @@
     }" 
    
 >
-    <div  *ngIf="(page>captionStates.states.length-1); else other_content" [@showContacts]>
+    <div  *ngIf="(page==contactPosition); else other_content" [@showContacts]>
         <app-contact>
 
         </app-contact>

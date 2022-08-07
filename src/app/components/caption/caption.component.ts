@@ -6,6 +6,7 @@ import { getAnimationParameters, showContacts, showIntro } from '../../animation
 import { AppComponent } from '../../app.component';
 import { Caption, CaptionState, CaptionStateStyle, Transition } from '../../utils/caption-position/caption-model';
 import { AnimationEvent } from "@angular/animations";
+import { CaptionStates } from 'src/app/core/constans/captions-states';
 @Component({
 
   selector: 'app-caption',
@@ -24,6 +25,17 @@ export class CaptionComponent implements OnInit {
   private currentTransation: number = 0;
   protected maxWidth: number = 1450;
   protected minWidth: number = 400;
+  public responsiveFontSize: number = 0;
+  public responsiveTop: number = 0;
+
+  protected FontSizescale: number = 2;
+  protected TopScale: number = 0.5;
+  text: String = "";
+  page: number = 0;
+  GetTextDictionary = new Map<number, CaptionState | undefined>([]);
+  protected firstPages:number=1;
+  public contactPosition:number;
+
   public get transition(): Transition {
     return this.captionStates.transition[this.currentTransation];
   }
@@ -50,10 +62,7 @@ export class CaptionComponent implements OnInit {
       this.transition);
   }
 
-  public responsiveFontSize: number = 0;
-  public responsiveTop: number = 0;
 
-  protected FontSizescale: number = 2;
   @HostListener('window:resize', ['$event'])
   public getResponsiveFontSize(): number {
     var captionStateStyle = this.firsPosition.captionStyle;
@@ -64,7 +73,6 @@ export class CaptionComponent implements OnInit {
     return this.responsiveFontSize;
 
   }
-  protected TopScale: number = 0.5;
   @HostListener('window:resize', ['$event'])
   public getResponsiveTop(): number {
     var captionStateStyle = this.firsPosition.captionStyle;
@@ -75,19 +83,16 @@ export class CaptionComponent implements OnInit {
     return this.responsiveTop;
 
   }
-  text: String = "";
-  page: number = 0;
-  GetTextDictionary = new Map<number, CaptionState | undefined>([]);
 
   constructor(private serviceScrollService: ServiceScrollService,
-    private ref: ChangeDetectorRef) {
-
+    private ref: ChangeDetectorRef,private captionState:CaptionStates) {
+      this.contactPosition=captionState.ContactPos+this.firstPages;
   }
   ngOnInit(): void {
     this.GetTextDictionary = new Map<number, CaptionState | undefined>(
       this.captionStates.states.map(
         (caption: CaptionState, i: number) =>
-          [i + 1, caption])
+          [i + this.firstPages, caption])
     );
     this.text = this.GetTextDictionary.get(this.page)?.text ?? "";
     this.serviceScrollService.keepTrackScroll().subscribe(

@@ -4,7 +4,6 @@ import { DOCUMENT } from '@angular/common';
 
 import { Caption, CaptionState,  CaptionStateStyle } from './utils/caption-position/caption-model';
 import { ServiceScrollService } from './services/service-scroll.service';
-import { description, subtitle, title } from './core/constans/captions-states';
 
 
 // import { showIntro } from './animations/animations';

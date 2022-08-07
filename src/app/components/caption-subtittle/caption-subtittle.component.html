@@ -3,7 +3,7 @@
         params:getAnimationParamter()
     }">
     {{text}}
-    <span *ngIf="(page>captionStates.states.length-1)" [@showContacts]>
+    <span *ngIf="(page==contactPosition)" [@showContacts]>
         <a href="https://github.com/CarlosJorgeR/Portafolio"> Portafolio</a>
     </span>
 </div>

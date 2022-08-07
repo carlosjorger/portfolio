@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { title } from '../core/constans/captions-states';
+import { CaptionStates } from '../core/constans/captions-states';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceScrollService {
 
-  pageNumber: number = title.states.length+1;
+  pageNumber: number;
   realPage: number = 0;
   page: number = 0;
   scrollBufferWindow: number = 100;
@@ -15,7 +15,8 @@ export class ServiceScrollService {
   // current
   private subject = new Subject<number>();
   currentPage = this.subject.asObservable();
-  constructor() {
+  constructor(private captionStates: CaptionStates) {
+    this.pageNumber = captionStates.title.states.length + 1;
     document.addEventListener('scroll', ($event: Event) => {
       this.keepTrackScrollTask($event);
     });
@@ -33,7 +34,7 @@ export class ServiceScrollService {
       this.page = this.page >= this.pageNumber ? this.pageNumber - 1 : this.page;
       this.subject.next(this.page);
       this.lastNavigationStartAt = Date.now();
-      
+
     }
 
   }
