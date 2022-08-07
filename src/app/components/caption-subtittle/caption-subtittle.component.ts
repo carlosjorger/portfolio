@@ -7,7 +7,7 @@ import { CaptionComponent } from '../caption/caption.component';
 @Component({
   selector: 'app-caption-subtittle',
   templateUrl: './caption-subtittle.component.html',
-  styleUrls: ['./caption-subtittle.component.css'],
+  styleUrls: ['./caption-subtittle.component.scss'],
   animations:[
     showContacts
   ]

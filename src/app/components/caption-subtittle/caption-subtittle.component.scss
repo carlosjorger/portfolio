@@ -1,0 +1,32 @@
+$purple: #ac4bf6;
+$dark-purple: #751fb7;
+$aqua: #71adf3;
+
+a {
+    text-decoration: none;
+    position: relative;
+    color: $purple;
+    border-color: $purple ;
+    font-family: Montserrat;
+}
+
+a::before {
+    content: '';
+    background-color: $aqua;
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    width: 100%;
+    height: 4px;
+    z-index: -1;
+    transition: all .3s ease-in-out;
+}
+
+a:hover::before {
+    bottom: 0;
+    height: 100%;
+    
+}
+a:hover{
+    color: $dark-purple;
+}
