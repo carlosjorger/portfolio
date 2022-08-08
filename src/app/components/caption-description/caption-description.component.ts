@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { CaptionStates } from 'src/app/core/constans/captions-states';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { CaptionStates } from 'src/app/core/constans/models/captions-states';
+import { DelayTimeServiceService } from 'src/app/services/delay-time-service.service';
 import { ResponsiveValueService } from 'src/app/services/responsive-value.service';
 import { ServiceScrollService } from 'src/app/services/service-scroll.service';
 import { CaptionComponent } from '../caption/caption.component';
@@ -14,9 +15,10 @@ export class CaptionDescriptionComponent extends CaptionComponent {
 
   constructor( _serviceScrollService: ServiceScrollService,
     _ref: ChangeDetectorRef,_captionStates:CaptionStates,
-    _responsiveService: ResponsiveValueService) { 
+    _responsiveService: ResponsiveValueService,
+    _delayTimeServiceService:DelayTimeServiceService) { 
       super(_serviceScrollService,_ref,_captionStates,
-        _responsiveService);
+        _responsiveService,_delayTimeServiceService);
     }
 protected override FontSizeScale: number=2.5;
   

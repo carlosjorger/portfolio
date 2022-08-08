@@ -1,8 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component,HostListener, NgZone, OnInit } from '@angular/core';
-import { Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-
-import { Caption, CaptionState,  CaptionStateStyle } from './utils/caption-position/caption-model';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ServiceScrollService } from './services/service-scroll.service';
 
 

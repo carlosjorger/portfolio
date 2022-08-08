@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { CaptionStates } from '../core/constans/captions-states';
+import { CaptionStates } from '../core/constans/models/captions-states';
 
 @Injectable({
   providedIn: 'root'

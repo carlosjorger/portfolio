@@ -35,7 +35,7 @@ export class TittleComponent implements OnInit {
     let scala: number = 1.2;
     return [...theString].map((v, i) => (
       {
-        letter: v,
+        letter: v==" "?"&nbsp;":v,
         fract: Math.round(((i + 1) / theString.length) * 10 * scala) / 10
       }
     ));

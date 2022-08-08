@@ -1,6 +1,6 @@
 import { animate, keyframes, state, style, transition, trigger, AnimationEvent, query, animateChild, group } from "@angular/animations";
 
-import { CaptionState, Transition } from "../utils/caption-position/caption-model";
+import { CaptionState, Transition } from "../core/caption-position/caption-model";
 
 export let getAnimationParameters =
   function (firstState: CaptionState, FirstPositionFontSize: number, FirstPositionTop: Number,
@@ -86,7 +86,7 @@ export let showIntro = trigger('showIntro', [
     )
   ], {
     params: {
-      Seconds: '0.8',
+      Seconds: '0.3',
       Delay: '0',
       FirstPositionTop: 30,
       FirstPositionFontSize: '3',
