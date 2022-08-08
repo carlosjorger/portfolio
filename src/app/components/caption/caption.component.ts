@@ -7,6 +7,7 @@ import { AppComponent } from '../../app.component';
 import { Caption, CaptionState, CaptionStateStyle, Transition } from '../../utils/caption-position/caption-model';
 import { AnimationEvent } from "@angular/animations";
 import { CaptionStates } from 'src/app/core/constans/captions-states';
+import { ResponsiveValueService } from 'src/app/services/responsive-value.service';
 @Component({
 
   selector: 'app-caption',
@@ -20,36 +21,31 @@ import { CaptionStates } from 'src/app/core/constans/captions-states';
   ]
 })
 export class CaptionComponent implements OnInit {
-  @Input() displayClass: String = "";
   @Input() captionStates: Caption = new Caption([]);
   private currentTransation: number = 0;
-  protected maxWidth: number = 1450;
-  protected minWidth: number = 400;
   public responsiveFontSize: number = 0;
   public responsiveTop: number = 0;
 
-  protected FontSizescale: number = 2;
+  protected FontSizeScale: number = 2;
   protected TopScale: number = 0.5;
   text: String = "";
   page: number = 0;
   GetTextDictionary = new Map<number, CaptionState | undefined>([]);
-  protected firstPages:number=1;
-  public contactPosition:number;
+  protected firstPages: number = 1;
+  public contactPosition: number;
 
   public get transition(): Transition {
     return this.captionStates.transition[this.currentTransation];
   }
   public get firsPosition(): CaptionState {
-    return this.GetPosition((this.page >= this.captionStates.transition.length - 1) ?
-      this.captionStates.transition.length - 1 :
-      this.page);
+      return this.captionStates.states[Math.min(this.page,
+        this.captionStates.transition.length - 1)];
 
   }
 
   public get secondPosition(): CaptionState {
-    return this.GetPosition((this.page >= this.captionStates.transition.length - 1) ?
-      this.captionStates.transition.length - 1 :
-      this.page + 1);
+    return this.captionStates.states[Math.min(this.page+1,
+      this.captionStates.transition.length - 1)];
 
   }
   public getAnimationParamter() {
@@ -62,32 +58,13 @@ export class CaptionComponent implements OnInit {
       this.transition);
   }
 
-
-  @HostListener('window:resize', ['$event'])
-  public getResponsiveFontSize(): number {
-    var captionStateStyle = this.firsPosition.captionStyle;
-    var transformFontSize = this.firsPosition.captionStyle.fontSize * this.FontSizescale;
-    var a = ((captionStateStyle.fontSize - transformFontSize) / (this.maxWidth - this.minWidth))
-    this.responsiveFontSize = a * window.innerWidth +
-      transformFontSize - this.minWidth * a;
-    return this.responsiveFontSize;
-
-  }
-  @HostListener('window:resize', ['$event'])
-  public getResponsiveTop(): number {
-    var captionStateStyle = this.firsPosition.captionStyle;
-    var transformTop = 30+(this.firsPosition.captionStyle.top-30) * this.TopScale;
-    var a = ((captionStateStyle.top - transformTop) / (this.maxWidth - this.minWidth))
-    this.responsiveTop = a * window.innerWidth +
-      transformTop - this.minWidth * a;
-    return this.responsiveTop;
-
-  }
-
   constructor(private serviceScrollService: ServiceScrollService,
-    private ref: ChangeDetectorRef,private captionState:CaptionStates) {
-      this.contactPosition=captionState.ContactPos+this.firstPages;
+    private ref: ChangeDetectorRef, private captionState: CaptionStates,
+    private responsiveService: ResponsiveValueService) {
+    this.contactPosition = captionState.ContactPos + this.firstPages;
+
   }
+  @HostListener('window:resize', ['$event'])
   ngOnInit(): void {
     this.GetTextDictionary = new Map<number, CaptionState | undefined>(
       this.captionStates.states.map(
@@ -108,13 +85,13 @@ export class CaptionComponent implements OnInit {
         }
       }
     );
-    this.getResponsiveFontSize();
-    this.getResponsiveTop();
+    this.responsiveTop = this.responsiveService
+      .getResponsiveFontSize(this.firsPosition.captionStyle.top, this.TopScale, 30);
+    this.responsiveFontSize = this.responsiveService
+      .getResponsiveFontSize(this.firsPosition.captionStyle.fontSize, this.FontSizeScale);
   }
   private delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-  protected GetPosition(pos: number): CaptionState {
-    return this.captionStates.states[pos]
-  }
+
 }

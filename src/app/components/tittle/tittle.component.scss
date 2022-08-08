@@ -31,14 +31,12 @@ h3{
     color: $purple;
     position: relative;
     display: inline-block;
-    animation: title 1s;
-    animation-iteration-count: 1;
-    animation-fill-mode:forwards;
-
+    animation: title 1s none;
+    transition: all .2s ease;
 }
 
 @keyframes title {
-
+    
     0% {
         transform: translateY(20%)translateX(-20%);
         // opacity: 0;
@@ -48,7 +46,6 @@ h3{
     100% {
         color: $purple;
         transform: translateY(0);
-        position: relative;
         opacity: 1;
 
     }
@@ -56,6 +53,11 @@ h3{
 
 }
 
+.title span:hover{
+    transform: translateY(20%)translateX(-20%);
+    // opacity: 0;
+    color: $aqua;
+}
 // .word {
 
 //     // left: 17%;

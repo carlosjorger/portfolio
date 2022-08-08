@@ -6,13 +6,16 @@
             <div class="word">
                 <span *ngFor="let item of splitDescription(name)" [ngStyle]="
                 {
-                    animationDelay: item.fract+'s'
+                    animationDelay: item.fract+'s',
+                    fontSize: transformFontSize+'vw'
+
                 }">{{item.letter==" "?"&nbsp;":item.letter}}</span>
             </div>
             <div class="word">
                 <span *ngFor="let item of splitDescription(lastName)" [ngStyle]="
                     {
-                        animationDelay: (item.fract+1)+'s'
+                        animationDelay: (item.fract+1)+'s',
+                        fontSize: transformFontSize+'vw'
                     }">{{item.letter==" "?"&nbsp;":item.letter}}
                 </span>
             </div>
@@ -20,7 +23,7 @@
                 <span *ngFor="let item of splitDescription(profesion)" [ngStyle]="
                     {
                         animationDelay: (item.fract+2)+'s',
-                        fontSize: '6vw'
+                        fontSize: subtitleTransformFontSize+'vw'
                     }">{{item.letter==" "?"&nbsp;":item.letter}}
                 </span>
             </div>
