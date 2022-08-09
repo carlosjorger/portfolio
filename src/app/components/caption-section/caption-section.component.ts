@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CaptionStates } from 'src/app/core/constans/models/captions-states';
 import { ServiceScrollService } from 'src/app/services/service-scroll.service';
-import { Caption } from 'src/app/core/caption-position/caption-model';
+import { Caption } from 'src/app/core/caption/caption-model';
 
 @Component({
   selector: 'app-caption-section',

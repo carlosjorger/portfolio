@@ -22,7 +22,7 @@ export class CaptionSubtittleComponent extends CaptionComponent {
      _delayTimeServiceService:DelayTimeServiceService) { 
       super(_serviceScrollService,_ref,_captionStates,
         _responsiveService,_delayTimeServiceService);
+        this.responsiveState.FontSizeScale=2.8;
     }
-    protected override FontSizeScale: number=2.8;
   }
    

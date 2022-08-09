@@ -1,6 +1,6 @@
 import { animate, keyframes, state, style, transition, trigger, AnimationEvent, query, animateChild, group } from "@angular/animations";
 
-import { CaptionState, Transition } from "../core/caption-position/caption-model";
+import { CaptionState, Transition } from "../core/caption/caption-model";
 
 export let getAnimationParameters =
   function (firstState: CaptionState, FirstPositionFontSize: number, FirstPositionTop: Number,

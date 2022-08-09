@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Caption, CaptionState, CaptionStateStyle, Transition } from "src/app/core/caption-position/caption-model";
-import { PageState, PageStates, PageTransition } from "src/app/core/caption-position/page-state"
+import { Caption, CaptionState, CaptionStateStyle, Transition } from "src/app/core/caption/caption-model";
+import { PageState, PageStates, PageTransition } from "src/app/core/caption/page-state"
 @Injectable({
     providedIn: 'root'
 })
@@ -35,10 +35,10 @@ export class CaptionStates {
                         this.titleStyle),
                     new CaptionState(this.profetion,
                         this.subTitleStyle),
-                    new CaptionState("I'm a software engineer and bachelor of Computer Science \n\
+                    new CaptionState("I'm a software engineer and bachelor of Computer Science\
                         of the University of Havana.\n\
-                        My main focus is grown as a profesional in challenging projects,\n\
-                        I don't like to stay in the comfort zone.\n\
+                        My main focus is grown as a profesional in challenging projects,\
+                        I don't like to stay in the comfort zone.\
                         I support good practices and healthy work enviroment",
                         this.descriptionStyle)
                 ),
