@@ -20,7 +20,7 @@ import { DelayTimeServiceService } from 'src/app/services/delay-time-service.ser
 })
 export class CaptionComponent implements OnInit {
   @Input() captionStates: Caption = new Caption([]);
-  
+
   public responsiveFontSize: number = 0;
   public responsiveTop: number = 0;
 
@@ -29,17 +29,15 @@ export class CaptionComponent implements OnInit {
 
   text: String = "";
   page: number = 0;
-  
-  GetTextDictionary = new Map<number, CaptionState | undefined>([]);
-  
+
+  GetTextDictionary = new Map<number, CaptionState>([]);
+
   protected firstPages: number = 1;
-  
+
   public contactPosition: number;
-  
-  private currentTransation: number = 0;
-  public get transition(): Transition {
-    return this.captionStates.transition[this.currentTransation];
-  }
+
+  public transition: Transition=this.updateTransitionPage(this.page);
+
   public get firsPosition(): CaptionState {
     return this.captionStates.states[Math.min(this.page,
       this.captionStates.transition.length - 1)];
@@ -51,7 +49,7 @@ export class CaptionComponent implements OnInit {
       this.captionStates.transition.length - 1)];
 
   }
-  
+
   constructor(private serviceScrollService: ServiceScrollService,
     private ref: ChangeDetectorRef, private captionState: CaptionStates,
     private responsiveService: ResponsiveValueService,
@@ -61,31 +59,38 @@ export class CaptionComponent implements OnInit {
   }
   @HostListener('window:resize', ['$event'])
   ngOnInit(): void {
-    this.GetTextDictionary = new Map<number, CaptionState | undefined>(
+    this.GetTextDictionary = new Map<number, CaptionState>(
       this.captionStates.states.map(
         (caption: CaptionState, i: number) =>
-        [i + this.firstPages, caption])
-        );
-    this.text = this.GetTextDictionary.get(this.page)?.text ?? "";
+          [i + this.firstPages, caption])
+    );
+    this.updateTextByPage();
     this.serviceScrollService.keepTrackScroll().subscribe(
-      async value => {
-        if (value != this.page) {
-          this.currentTransation = Math.min(value, this.page, this.captionStates.transition.length - 1);
-          await this.delayTimeServiceService.delayTime(
-            this.transition?.delay ?? 0,
+      async targetPage => {
+        if (targetPage != this.page) {
+          this.transition = this.updateTransitionPage(targetPage);
+          await this.delayTimeServiceService.delayTimeAndDo(
+            this.transition.delay,
             () => {
-              this.page = value;
-              this.text = this.GetTextDictionary.get(this.page)?.text ?? "";
+              this.page = targetPage;
+              this.updateTextByPage();
             }
           );
           this.ref.detectChanges();
         }
       }
-      );
-      this.responsiveTop = this.responsiveService
+    );
+    this.responsiveTop = this.responsiveService
       .getResponsiveFontSize(this.firsPosition.captionStyle.top, this.TopScale, 30);
-      this.responsiveFontSize = this.responsiveService
+    this.responsiveFontSize = this.responsiveService
       .getResponsiveFontSize(this.firsPosition.captionStyle.fontSize, this.FontSizeScale);
+  }
+  public updateTextByPage(): void {
+    this.text = this.GetTextDictionary.get(this.page)?.text ?? "";
+  }
+  public updateTransitionPage(targetPage:number){
+    let index=Math.min(targetPage, this.page, this.captionStates.transition.length - 1);
+    return this.captionStates.transition[index];
   }
   public getAnimationParamter() {
     return getAnimationParameters(this.firsPosition,

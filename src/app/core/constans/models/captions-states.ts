@@ -13,9 +13,9 @@ export class CaptionStates {
     subTitleStyle = new CaptionStateStyle(45, 1.5, 500);
     descriptionStyle = new CaptionStateStyle(52, 1.5);
 
-    title: Caption;
-    subtitle: Caption;
-    description: Caption;
+    title: Caption=new Caption([],[]);
+    subtitle: Caption=new Caption([],[]);;
+    description: Caption=new Caption([],[]);;
 
     get ContactPos(): number {
         for (let index = 0; index < this.title.states.length; index++) {
@@ -86,6 +86,10 @@ export class CaptionStates {
                 )
 
             ])
+            this.MappingToCaptions(pageStates);
+        
+    }
+    private MappingToCaptions(pageStates: PageStates){
         this.title = new Caption(
             [
                 ...pageStates.pageStates.flatMap(v=>v.title)
