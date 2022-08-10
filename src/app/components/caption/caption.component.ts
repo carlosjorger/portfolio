@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, HostListener, Input, NgZone, OnInit, } from '@angular/core';
 
 import { ServiceScrollService } from 'src/app/services/service-scroll.service';
-import { getAnimationParameters, showContacts, showIntro } from '../../animations/animations';
+import { AnimationPatameter, showContacts, showIntro } from '../../animations/animations';
 import { Caption, CaptionState, CaptionStateStyle, Transition } from '../../core/caption/caption-model';
 import { CaptionStates } from 'src/app/core/constans/models/captions-states';
 import { ResponsiveValueService } from 'src/app/services/responsive-value.service';
@@ -97,16 +97,11 @@ export class CaptionComponent implements OnInit {
     return this.captionStates.transition[index];
   }
   public getAnimationParamter() {
-    return getAnimationParameters(
+    return new AnimationPatameter(
       this.firsPosition,
-      this.responsiveState.fontSize,
-      this.responsiveState.top,
-      this.responsiveState.maxWidth,
       this.secondPosition,
-      this.responsiveState.fontSize,
-      this.responsiveState.top,
-      this.responsiveState.maxWidth,
-      this.transition);
+      this.responsiveState,
+      this.transition).toPlainObj();
   }
 
 }

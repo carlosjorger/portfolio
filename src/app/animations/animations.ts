@@ -1,25 +1,44 @@
 import { animate, keyframes, state, style, transition, trigger, AnimationEvent, query, animateChild, group } from "@angular/animations";
 
 import { CaptionState, Transition } from "../core/caption/caption-model";
-
-export let getAnimationParameters =
-  function (firstState: CaptionState, FirstPositionFontSize: number, FirstPositionTop: Number, FirstMaxWidth: number
-    , secondState: CaptionState, SecondPositionFontSize: number, SecondPositionTop: Number, SecondMaxWidth: number,
+import { ResponsiveState } from "../core/caption/responsive-state";
+export class AnimationPatameter {
+  public FirstPositionTop: number;
+  public FirstPositionFontSize: number;
+  public FirstPositionFontWeight: number;
+  public FirstMaxWidth: number;
+  public SecondPositionTop: number;
+  public SecondPositionFontSize: number;
+  public SecondPositionFontWeight: number;
+  public SecondMaxWidth: number;
+  public Seconds: number;
+  constructor(firstState: CaptionState, secondState: CaptionState,
+    responsiveState: ResponsiveState,
     transition: Transition) {
-    return {
-      FirstPosition: firstState
-      , FirstPositionTop: FirstPositionTop
-      , FirstPositionFontSize: FirstPositionFontSize
-      , FirstPositionFontWeight: firstState?.captionStyle?.fontweight
-      , FirstMaxWidth: FirstMaxWidth
-      , SecondPositionTop: SecondPositionTop
-      , SecondPositionFontSize: SecondPositionFontSize
-      , SecondPositionFontWeight: secondState?.captionStyle?.fontweight
-      , SecondMaxWidth: SecondMaxWidth
-      , Seconds: transition.second
-
-    };
-  };
+    this.FirstPositionTop = responsiveState.top;
+    this.FirstPositionFontSize = responsiveState.fontSize;
+    this.FirstPositionFontWeight = firstState?.captionStyle?.fontweight;
+    this.FirstMaxWidth = responsiveState.maxWidth;
+    this.SecondPositionTop = responsiveState.top;
+    this.SecondPositionFontSize = responsiveState.fontSize;
+    this.SecondPositionFontWeight = secondState?.captionStyle?.fontweight
+    this.SecondMaxWidth = responsiveState.maxWidth;
+    this.Seconds = transition.second
+  }
+  toPlainObj(): {
+      FirstPositionTop: number
+    , FirstPositionFontSize: number
+    , FirstPositionFontWeight: number
+    , FirstMaxWidth: number
+    , SecondPositionTop: number
+    , SecondPositionFontSize: number
+    , SecondPositionFontWeight: number
+    , SecondMaxWidth: number
+    , Seconds: number
+  } {
+    return Object.assign({}, this);
+  }
+}
 export let showIntro = trigger('showIntro', [
   // ...
   state('void',
