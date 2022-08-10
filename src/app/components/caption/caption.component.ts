@@ -22,7 +22,7 @@ import { ResponsiveState } from 'src/app/core/caption/responsive-state';
 export class CaptionComponent implements OnInit {
   @Input() captionStates: Caption = new Caption([]);
 
-  public responsiveState:ResponsiveState=new ResponsiveState(2,0.5,1.5);
+  public responsiveState:ResponsiveState=new ResponsiveState(2,1.1,2);
 
 
 
@@ -80,9 +80,12 @@ export class CaptionComponent implements OnInit {
       }
     );
     this.responsiveState.top = this.responsiveService
-      .getResponsiveFontSize(this.firsPosition.captionStyle.top, this.responsiveState.TopScale, 30);
+      .getResponsiveFontSize(this.firsPosition.captionStyle.top, this.responsiveState.TopScale,60);
     this.responsiveState.fontSize = this.responsiveService
       .getResponsiveFontSize(this.firsPosition.captionStyle.fontSize, this.responsiveState.FontSizeScale);
+    this.responsiveState.maxWidth= this.responsiveService
+    .getResponsiveFontSize(this.firsPosition.captionStyle.maxWidth, this.responsiveState.maxWidthScale);
+    console.log(this.responsiveState.maxWidth)
     // this.responsiveState.maxWidthScale=this.responsiveService
     //   .getResponsiveFontSize(this.firsPosition.captionStyle.maxWidthScale, this.responsiveState.maxWidthScale)
   }
@@ -94,12 +97,15 @@ export class CaptionComponent implements OnInit {
     return this.captionStates.transition[index];
   }
   public getAnimationParamter() {
-    return getAnimationParameters(this.firsPosition,
+    return getAnimationParameters(
+      this.firsPosition,
       this.responsiveState.fontSize,
       this.responsiveState.top,
+      this.responsiveState.maxWidth,
       this.secondPosition,
       this.responsiveState.fontSize,
       this.responsiveState.top,
+      this.responsiveState.maxWidth,
       this.transition);
   }
 

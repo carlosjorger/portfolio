@@ -11,7 +11,7 @@ export class CaptionStates {
 
     titleStyle = new CaptionStateStyle(30, 4, 600);
     subTitleStyle = new CaptionStateStyle(45, 1.5, 500);
-    descriptionStyle = new CaptionStateStyle(52, 1.5);
+    descriptionStyle = new CaptionStateStyle(52, 1.5,400);
 
     title: Caption=new Caption([],[]);
     subtitle: Caption=new Caption([],[]);;

@@ -11,5 +11,5 @@ export class CaptionState{
     constructor(public text:string,public captionStyle:CaptionStateStyle){}
 }
 export class CaptionStateStyle {
-    constructor(public top:number,public fontSize:number, public fontweight:number=400){}
+    constructor(public top:number,public fontSize:number, public fontweight:number=400,public maxWidth:number=40){}
 }

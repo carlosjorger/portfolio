@@ -3,18 +3,21 @@ import { animate, keyframes, state, style, transition, trigger, AnimationEvent, 
 import { CaptionState, Transition } from "../core/caption/caption-model";
 
 export let getAnimationParameters =
-  function (firstState: CaptionState, FirstPositionFontSize: number, FirstPositionTop: Number,
-    secondState: CaptionState, SecondPositionFontSize: number, SecondPositionTop: Number,
+  function (firstState: CaptionState, FirstPositionFontSize: number, FirstPositionTop: Number, FirstMaxWidth: number
+    , secondState: CaptionState, SecondPositionFontSize: number, SecondPositionTop: Number, SecondMaxWidth: number,
     transition: Transition) {
     return {
-      FirstPosition: firstState,
-      FirstPositionTop: FirstPositionTop,
-      FirstPositionFontSize: FirstPositionFontSize
+      FirstPosition: firstState
+      , FirstPositionTop: FirstPositionTop
+      , FirstPositionFontSize: FirstPositionFontSize
       , FirstPositionFontWeight: firstState?.captionStyle?.fontweight
+      , FirstMaxWidth: FirstMaxWidth
       , SecondPositionTop: SecondPositionTop
       , SecondPositionFontSize: SecondPositionFontSize
       , SecondPositionFontWeight: secondState?.captionStyle?.fontweight
+      , SecondMaxWidth: SecondMaxWidth
       , Seconds: transition.second
+
     };
   };
 export let showIntro = trigger('showIntro', [
@@ -43,12 +46,15 @@ export let showIntro = trigger('showIntro', [
       fontWeight: '{{FirstPositionFontWeight}}',
       top: '{{FirstPositionTop}}%',
       fontSize: '{{FirstPositionFontSize}}vw',
+      maxWidth: '{{FirstMaxWidth}}%'
     }),
     {
       params: {
         FirstPositionFontWeight: 500,
         FirstPositionTop: 30,
         FirstPositionFontSize: '3',
+        FirstMaxWidth: 50,
+
       }
     }
   ),
@@ -63,7 +69,8 @@ export let showIntro = trigger('showIntro', [
             offset: 0,
             top: '{{FirstPositionTop}}%',
             fontSize: '{{FirstPositionFontSize}}vw',
-            fontWeight: '{{FirstPositionFontWeight}}'
+            fontWeight: '{{FirstPositionFontWeight}}',
+            maxWidth: '{{FirstMaxWidth}}%'
           }),
           style({
             backgroundSize: '100% 100%',
@@ -79,7 +86,9 @@ export let showIntro = trigger('showIntro', [
             offset: 1,
             top: '{{SecondPositionTop}}%',
             fontSize: '{{SecondPositionFontSize}}vw',
-            fontWeight: '{{SecondPositionFontWeight}}'
+            fontWeight: '{{SecondPositionFontWeight}}',
+            maxWidth: '{{SecondMaxWidth}}%'
+
           })
         ]
       )
@@ -91,9 +100,12 @@ export let showIntro = trigger('showIntro', [
       FirstPositionTop: 30,
       FirstPositionFontSize: '3',
       FirstPositionFontWeight: 500,
+      FirstMaxWidth: 50,
       SecondPositionTop: 30,
       SecondPositionFontSize: '3',
-      SecondPositionFontWeight: 500
+      SecondPositionFontWeight: 500,
+      SecondMaxWidth: 50,
+
     }
   }),
   transition('*=>*',
@@ -111,7 +123,8 @@ export let showIntro = trigger('showIntro', [
                   offset: 0,
                   top: '{{FirstPositionTop}}%',
                   fontSize: '{{FirstPositionFontSize}}vw',
-                  fontWeight: '{{FirstPositionFontWeight}}'
+                  fontWeight: '{{FirstPositionFontWeight}}',
+                  maxWidth: '{{FirstMaxWidth}}%'
                 }),
                 style({
                   backgroundSize: '100% 100%',
@@ -128,7 +141,8 @@ export let showIntro = trigger('showIntro', [
                   offset: 1,
                   top: '{{SecondPositionTop}}%',
                   fontSize: '{{SecondPositionFontSize}}vw',
-                  fontWeight: '{{SecondPositionFontWeight}}'
+                  fontWeight: '{{SecondPositionFontWeight}}',
+                  maxWidth: '{{SecondMaxWidth}}%'
                 })
               ]
             )
@@ -142,9 +156,11 @@ export let showIntro = trigger('showIntro', [
         FirstPositionTop: 30,
         FirstPositionFontSize: '3',
         FirstPositionFontWeight: 500,
+        FirstMaxWidth: 50,
         SecondPositionTop: 30,
         SecondPositionFontSize: '3',
-        SecondPositionFontWeight: 500
+        SecondPositionFontWeight: 500,
+        SecondMaxWidth: 50,
       }
     }),
 ]);
@@ -175,7 +191,7 @@ export let showTittle = trigger('showTittle',
       ],
       {
         params: {
-          delay:'0'
+          delay: '0'
         }
       }
     )
