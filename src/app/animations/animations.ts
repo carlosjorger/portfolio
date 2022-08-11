@@ -3,37 +3,18 @@ import { animate, keyframes, state, style, transition, trigger, AnimationEvent, 
 import { CaptionState, Transition } from "../core/caption/caption-model";
 import { ResponsiveState } from "../core/caption/responsive-state";
 export class AnimationPatameter {
-  public FirstPositionTop: number;
-  public FirstPositionFontSize: number;
   public FirstPositionFontWeight: number;
-  public FirstMaxWidth: number;
-  public SecondPositionTop: number;
-  public SecondPositionFontSize: number;
   public SecondPositionFontWeight: number;
-  public SecondMaxWidth: number;
   public Seconds: number;
   constructor(firstState: CaptionState, secondState: CaptionState,
-    responsiveState: ResponsiveState,
     transition: Transition) {
-    this.FirstPositionTop = responsiveState.top;
-    this.FirstPositionFontSize = responsiveState.fontSize;
     this.FirstPositionFontWeight = firstState?.captionStyle?.fontweight;
-    this.FirstMaxWidth = responsiveState.maxWidth;
-    this.SecondPositionTop = responsiveState.top;
-    this.SecondPositionFontSize = responsiveState.fontSize;
     this.SecondPositionFontWeight = secondState?.captionStyle?.fontweight
-    this.SecondMaxWidth = responsiveState.maxWidth;
     this.Seconds = transition.second
   }
   toPlainObj(): {
-      FirstPositionTop: number
-    , FirstPositionFontSize: number
-    , FirstPositionFontWeight: number
-    , FirstMaxWidth: number
-    , SecondPositionTop: number
-    , SecondPositionFontSize: number
+    FirstPositionFontWeight: number
     , SecondPositionFontWeight: number
-    , SecondMaxWidth: number
     , Seconds: number
   } {
     return Object.assign({}, this);
@@ -47,9 +28,9 @@ export let showIntro = trigger('showIntro', [
       backgroundPosition: '0% 0%',
       backgroundSize: '0% 100%',
       offset: 0,
-      top: '{{FirstPositionTop}}%',
-      fontSize: '{{FirstPositionFontSize}}vw',
-      fontWeight: '{{FirstPositionFontWeight}}'
+      // top: '{{FirstPositionTop}}%',
+      // fontSize: '{{FirstPositionFontSize}}vw',
+      // fontWeight: '{{FirstPositionFontWeight}}'
     }),
     {
       params: {
@@ -63,9 +44,9 @@ export let showIntro = trigger('showIntro', [
     style({
       backgroundSize: '0% 100%',
       fontWeight: '{{FirstPositionFontWeight}}',
-      top: '{{FirstPositionTop}}%',
-      fontSize: '{{FirstPositionFontSize}}vw',
-      maxWidth: '{{FirstMaxWidth}}%'
+      // top: '{{FirstPositionTop}}%',
+      // fontSize: '{{FirstPositionFontSize}}vw',
+      // maxWidth: '{{FirstMaxWidth}}%'
     }),
     {
       params: {
@@ -86,10 +67,7 @@ export let showIntro = trigger('showIntro', [
             backgroundPosition: '0% 0%',
             backgroundSize: '0% 100%',
             offset: 0,
-            top: '{{FirstPositionTop}}%',
-            fontSize: '{{FirstPositionFontSize}}vw',
             fontWeight: '{{FirstPositionFontWeight}}',
-            maxWidth: '{{FirstMaxWidth}}%'
           }),
           style({
             backgroundSize: '100% 100%',
@@ -103,10 +81,7 @@ export let showIntro = trigger('showIntro', [
           style({
             backgroundSize: '0% 100%',
             offset: 1,
-            top: '{{SecondPositionTop}}%',
-            fontSize: '{{SecondPositionFontSize}}vw',
             fontWeight: '{{SecondPositionFontWeight}}',
-            maxWidth: '{{SecondMaxWidth}}%'
 
           })
         ]
@@ -116,15 +91,8 @@ export let showIntro = trigger('showIntro', [
     params: {
       Seconds: '0.3',
       Delay: '0',
-      FirstPositionTop: 30,
-      FirstPositionFontSize: '3',
       FirstPositionFontWeight: 500,
-      FirstMaxWidth: 50,
-      SecondPositionTop: 30,
-      SecondPositionFontSize: '3',
       SecondPositionFontWeight: 500,
-      SecondMaxWidth: 50,
-
     }
   }),
   transition('*=>*',
@@ -140,10 +108,7 @@ export let showIntro = trigger('showIntro', [
                   backgroundPosition: '0% 0%',
                   backgroundSize: '0% 100%',
                   offset: 0,
-                  top: '{{FirstPositionTop}}%',
-                  fontSize: '{{FirstPositionFontSize}}vw',
                   fontWeight: '{{FirstPositionFontWeight}}',
-                  maxWidth: '{{FirstMaxWidth}}%'
                 }),
                 style({
                   backgroundSize: '100% 100%',
@@ -158,10 +123,7 @@ export let showIntro = trigger('showIntro', [
                 style({
                   backgroundSize: '0% 100%',
                   offset: 1,
-                  top: '{{SecondPositionTop}}%',
-                  fontSize: '{{SecondPositionFontSize}}vw',
                   fontWeight: '{{SecondPositionFontWeight}}',
-                  maxWidth: '{{SecondMaxWidth}}%'
                 })
               ]
             )
@@ -172,14 +134,8 @@ export let showIntro = trigger('showIntro', [
       params: {
         Seconds: '0.8',
         Delay: '0',
-        FirstPositionTop: 30,
-        FirstPositionFontSize: '3',
         FirstPositionFontWeight: 500,
-        FirstMaxWidth: 50,
-        SecondPositionTop: 30,
-        SecondPositionFontSize: '3',
         SecondPositionFontWeight: 500,
-        SecondMaxWidth: 50,
       }
     }),
 ]);

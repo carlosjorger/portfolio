@@ -1,4 +1,6 @@
-<div class="magical-underline" *ngIf="page>0" [@showIntro]="{
+<div class="magical-underline" *ngIf="page>0" 
+    [ngStyle]="style" 
+    [@showIntro]="{
         value:text,
         params:getAnimationParamter()
     }">

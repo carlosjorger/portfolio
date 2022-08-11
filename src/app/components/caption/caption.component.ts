@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, HostListener, Input, NgZone, OnInit, } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, NgZone, OnInit, Renderer2, } from '@angular/core';
 
 import { ServiceScrollService } from 'src/app/services/service-scroll.service';
 import { AnimationPatameter, showContacts, showIntro } from '../../animations/animations';
@@ -22,21 +22,24 @@ import { ResponsiveState } from 'src/app/core/caption/responsive-state';
 export class CaptionComponent implements OnInit {
   @Input() captionStates: Caption = new Caption([]);
 
-  public responsiveState:ResponsiveState=new ResponsiveState(2,1.1,2);
-
-
+  public responsiveState: ResponsiveState = new ResponsiveState(2, 1.1, 2);
 
   text: String = "";
   page: number = 0;
 
-  GetTextDictionary = new Map<number, CaptionState>([]);
+  GetCaptionStateByPage = new Map<number, CaptionState>([]);
 
   protected firstPages: number = 1;
 
   public contactPosition: number;
 
-  public transition: Transition=this.updateTransitionPage(this.page);
+  public transition: Transition = this.updateTransitionPage(this.page);
 
+  public style = {
+    fontSize: "",
+    top: "",
+    maxWidth: ""
+  }
   public get firsPosition(): CaptionState {
     return this.captionStates.states[Math.min(this.page,
       this.captionStates.transition.length - 1)];
@@ -52,18 +55,34 @@ export class CaptionComponent implements OnInit {
   constructor(private serviceScrollService: ServiceScrollService,
     private ref: ChangeDetectorRef, private captionState: CaptionStates,
     private responsiveService: ResponsiveValueService,
-    private delayTimeServiceService: DelayTimeServiceService) {
+    private delayTimeServiceService: DelayTimeServiceService,
+    private elRef: ElementRef,
+    private renderer: Renderer2) {
     this.contactPosition = captionState.ContactPos + this.firstPages;
 
   }
   @HostListener('window:resize', ['$event'])
   ngOnInit(): void {
-    this.GetTextDictionary = new Map<number, CaptionState>(
+    this.GetCaptionStateByPage = new Map<number, CaptionState>(
       this.captionStates.states.map(
         (caption: CaptionState, i: number) =>
           [i + this.firstPages, caption])
     );
     this.updateTextByPage();
+    this.keepTrackScroll();
+    this.responsiveState.top = this.responsiveService
+      .getResponsiveFontSize(this.firsPosition.captionStyle.top, this.responsiveState.TopScale, 60);
+    this.responsiveState.fontSize = this.responsiveService
+      .getResponsiveFontSize(this.firsPosition.captionStyle.fontSize, this.responsiveState.FontSizeScale);
+    this.responsiveState.maxWidth = this.responsiveService
+      .getResponsiveFontSize(this.firsPosition.captionStyle.maxWidth, this.responsiveState.maxWidthScale);
+    this.style = {
+      fontSize: `${this.responsiveState.fontSize}vw`,
+      top: `${this.responsiveState.top}%`,
+      maxWidth: `${this.responsiveState.maxWidth}%`
+    };
+  }
+  public keepTrackScroll():void{
     this.serviceScrollService.keepTrackScroll().subscribe(
       async targetPage => {
         if (targetPage != this.page) {
@@ -79,28 +98,18 @@ export class CaptionComponent implements OnInit {
         }
       }
     );
-    this.responsiveState.top = this.responsiveService
-      .getResponsiveFontSize(this.firsPosition.captionStyle.top, this.responsiveState.TopScale,60);
-    this.responsiveState.fontSize = this.responsiveService
-      .getResponsiveFontSize(this.firsPosition.captionStyle.fontSize, this.responsiveState.FontSizeScale);
-    this.responsiveState.maxWidth= this.responsiveService
-    .getResponsiveFontSize(this.firsPosition.captionStyle.maxWidth, this.responsiveState.maxWidthScale);
-    console.log(this.responsiveState.maxWidth)
-    // this.responsiveState.maxWidthScale=this.responsiveService
-    //   .getResponsiveFontSize(this.firsPosition.captionStyle.maxWidthScale, this.responsiveState.maxWidthScale)
   }
   public updateTextByPage(): void {
-    this.text = this.GetTextDictionary.get(this.page)?.text ?? "";
+    this.text = this.GetCaptionStateByPage.get(this.page)?.text ?? "";
   }
-  public updateTransitionPage(targetPage:number){
-    let index=Math.min(targetPage, this.page, this.captionStates.transition.length - 1);
+  public updateTransitionPage(targetPage: number) {
+    let index = Math.min(targetPage, this.page, this.captionStates.transition.length - 1);
     return this.captionStates.transition[index];
   }
   public getAnimationParamter() {
     return new AnimationPatameter(
       this.firsPosition,
       this.secondPosition,
-      this.responsiveState,
       this.transition).toPlainObj();
   }
 

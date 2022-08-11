@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Renderer2 } from '@angular/core';
 import { showContacts } from 'src/app/animations/animations';
 import { CaptionStates } from 'src/app/core/constans/models/captions-states';
 import { DelayTimeServiceService } from 'src/app/services/delay-time-service.service';
@@ -19,9 +19,11 @@ export class CaptionSubtittleComponent extends CaptionComponent {
   constructor( _serviceScrollService: ServiceScrollService,
     _ref: ChangeDetectorRef,_captionStates:CaptionStates,
      _responsiveService: ResponsiveValueService,
-     _delayTimeServiceService:DelayTimeServiceService) { 
+     _delayTimeServiceService:DelayTimeServiceService,
+     _elRef: ElementRef,
+    _renderer: Renderer2) { 
       super(_serviceScrollService,_ref,_captionStates,
-        _responsiveService,_delayTimeServiceService);
+        _responsiveService,_delayTimeServiceService,_elRef,_renderer);
         this.responsiveState.FontSizeScale=2.8;
     }
   }
