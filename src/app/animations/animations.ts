@@ -44,9 +44,6 @@ export let showIntro = trigger('showIntro', [
     style({
       backgroundSize: '0% 100%',
       fontWeight: '{{FirstPositionFontWeight}}',
-      // top: '{{FirstPositionTop}}%',
-      // fontSize: '{{FirstPositionFontSize}}vw',
-      // maxWidth: '{{FirstMaxWidth}}%'
     }),
     {
       params: {

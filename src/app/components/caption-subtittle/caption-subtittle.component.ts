@@ -24,7 +24,9 @@ export class CaptionSubtittleComponent extends CaptionComponent {
     _renderer: Renderer2) { 
       super(_serviceScrollService,_ref,_captionStates,
         _responsiveService,_delayTimeServiceService,_elRef,_renderer);
+
         this.responsiveState.FontSizeScale=2.8;
+        this.responsiveState.TopScale=1.7;
     }
   }
    

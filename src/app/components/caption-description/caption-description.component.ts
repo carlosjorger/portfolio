@@ -22,6 +22,7 @@ export class CaptionDescriptionComponent extends CaptionComponent {
       super(_serviceScrollService,_ref,_captionStates,
         _responsiveService,_delayTimeServiceService,_elRef,_renderer);
         this.responsiveState.fontSize=2.5;
+        this.responsiveState.TopScale=2.2;
     }
   
 
