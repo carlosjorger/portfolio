@@ -73,15 +73,21 @@ export class CaptionStates {
             ],
             [
                 new PageTransition(
-                    new Transition(1.3, 0),
-                    new Transition(1.3, .25),
-                    new Transition(1.3, .5),
+                    new Transition(1.4, 0),
+                    new Transition(1.4, .4),
+                    new Transition(1.4, .8),
 
                 ),
                 new PageTransition(
-                    new Transition(1.3, 0),
-                    new Transition(1.3, .25),
-                    new Transition(1.3, .5),
+                    new Transition(1.4, 0),
+                    new Transition(1.4, .4),
+                    new Transition(1.4, .8),
+
+                ),
+                new PageTransition(
+                    new Transition(1.4, 0),
+                    new Transition(1.4, .4),
+                    new Transition(1.4, .8),
 
                 )
 
