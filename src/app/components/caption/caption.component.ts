@@ -82,12 +82,18 @@ export class CaptionComponent implements OnInit {
       top: `${this.responsiveState.top}%`,
       maxWidth: `${this.responsiveState.maxWidth}%`
     };
+    this.firsPosition.captionStyle.styles.forEach((style) => {
+      let result = (style.isWidthScale) ? this.responsiveService.getResponsiveFontSizeWidth(style.value, style.scale) :
+      this.responsiveService.getResponsiveFontSizeHeigth(style.value, style.scale);
+      this.responsiveState.setValue(style.property,result,style.unit)
+    });
+    console.log(this.responsiveState)
   }
-  public keepTrackScroll():void{
+  public keepTrackScroll(): void {
     this.serviceScrollService.keepTrackScroll().subscribe(
       async targetPage => {
         if (targetPage != this.page) {
-          console.log(window.innerHeight,window.innerWidth)
+          console.log(window.innerHeight, window.innerWidth)
           this.transition = this.updateTransitionPage(targetPage);
           await this.delayTimeServiceService.delayTimeAndDo(
             this.transition.delay,

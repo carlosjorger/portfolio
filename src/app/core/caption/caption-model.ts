@@ -20,13 +20,18 @@ export class CaptionStateStyle {
     
 }
 export class StateStyle {
-    constructor(public property: string, public scale: number) {
+    constructor(public property: string, public scale: number,public isWidthScale:boolean) {
 
     }
     public get value():number{
         let startWithNumber:RegExp=/^\d+/;
         let strValue=this.property.match(startWithNumber)?.flat()[0]
         return parseInt(strValue??"0");
+    }
+    public get unit():string{
+        let startWithNumber:RegExp=/^\d+/;
+        let strValue=this.property.replace(startWithNumber,"");
+        return strValue??"";
     }
 }
 
