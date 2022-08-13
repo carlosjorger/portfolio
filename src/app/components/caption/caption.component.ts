@@ -22,7 +22,7 @@ import { ResponsiveState } from 'src/app/core/caption/responsive-state';
 export class CaptionComponent implements OnInit {
   @Input() captionStates: Caption = new Caption([]);
 
-  public responsiveState: ResponsiveState = new ResponsiveState(2, 1.1, 2);
+  public responsiveState: ResponsiveState = new ResponsiveState();
 
   text: String = "";
   page: number = 0;
@@ -35,11 +35,6 @@ export class CaptionComponent implements OnInit {
 
   public transition: Transition = this.updateTransitionPage(this.page);
 
-  public style = {
-    fontSize: "",
-    top: "",
-    maxWidth: ""
-  }
   public get firsPosition(): CaptionState {
     return this.captionStates.states[Math.min(this.page,
       this.captionStates.transition.length - 1)];
@@ -55,9 +50,7 @@ export class CaptionComponent implements OnInit {
   constructor(private serviceScrollService: ServiceScrollService,
     private ref: ChangeDetectorRef, private captionState: CaptionStates,
     private responsiveService: ResponsiveValueService,
-    private delayTimeServiceService: DelayTimeServiceService,
-    private elRef: ElementRef,
-    private renderer: Renderer2) {
+    private delayTimeServiceService: DelayTimeServiceService) {
     this.contactPosition = captionState.ContactPos + this.firstPages;
 
   }
@@ -71,23 +64,10 @@ export class CaptionComponent implements OnInit {
     );
     this.updateTextByPage();
     this.keepTrackScroll();
-    this.responsiveState.top = this.responsiveService
-      .getResponsiveFontSizeWidth(this.firsPosition.captionStyle.top, this.responsiveState.TopScale);
-    this.responsiveState.fontSize = this.responsiveService
-      .getResponsiveFontSizeWidth(this.firsPosition.captionStyle.fontSize, this.responsiveState.FontSizeScale);
-    this.responsiveState.maxWidth = this.responsiveService
-      .getResponsiveFontSizeWidth(this.firsPosition.captionStyle.maxWidth, this.responsiveState.maxWidthScale);
-    this.style = {
-      fontSize: `${this.responsiveState.fontSize}vw`,
-      top: `${this.responsiveState.top}%`,
-      maxWidth: `${this.responsiveState.maxWidth}%`
-    };
-    this.firsPosition.captionStyle.styles.forEach((style) => {
-      let result = (style.isWidthScale) ? this.responsiveService.getResponsiveFontSizeWidth(style.value, style.scale) :
-      this.responsiveService.getResponsiveFontSizeHeigth(style.value, style.scale);
-      this.responsiveState.setValue(style.property,result,style.unit)
+    this.firsPosition.captionStyle.styles.forEach((style, key) => {
+      let result = this.responsiveService.getResponsiveValue(style.value, style.scale, style.isWidthScale);
+      this.responsiveState.setValue(key, result, style.unit)
     });
-    console.log(this.responsiveState)
   }
   public keepTrackScroll(): void {
     this.serviceScrollService.keepTrackScroll().subscribe(

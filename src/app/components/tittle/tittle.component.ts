@@ -27,8 +27,8 @@ export class TittleComponent implements OnInit {
   ngOnInit(): void {
     document.addEventListener('scroll', ($event: Event) => {
     });
-    this.transformFontSize = this.responsiveService.getResponsiveFontSizeWidth(this.fontSize, this.scaleFontSize);
-    this.subtitleTransformFontSize = this.responsiveService.getResponsiveFontSizeWidth(this.subtitleFontSize, this.scaleFontSize);
+    this.transformFontSize = this.responsiveService.getResponsiveWidth(this.fontSize, this.scaleFontSize);
+    this.subtitleTransformFontSize = this.responsiveService.getResponsiveWidth(this.subtitleFontSize, this.scaleFontSize);
   }
   splitDescription(theString: string): { letter: string, fract: number }[] {
     let scala: number = 1.2;

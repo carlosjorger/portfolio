@@ -19,14 +19,10 @@ export class CaptionSubtittleComponent extends CaptionComponent {
   constructor( _serviceScrollService: ServiceScrollService,
     _ref: ChangeDetectorRef,_captionStates:CaptionStates,
      _responsiveService: ResponsiveValueService,
-     _delayTimeServiceService:DelayTimeServiceService,
-     _elRef: ElementRef,
-    _renderer: Renderer2) { 
+     _delayTimeServiceService:DelayTimeServiceService,) { 
       super(_serviceScrollService,_ref,_captionStates,
-        _responsiveService,_delayTimeServiceService,_elRef,_renderer);
+        _responsiveService,_delayTimeServiceService,);
 
-        this.responsiveState.FontSizeScale=2.8;
-        this.responsiveState.TopScale=1.7;
     }
   }
-   
+  

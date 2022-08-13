@@ -28,17 +28,7 @@ export let showIntro = trigger('showIntro', [
       backgroundPosition: '0% 0%',
       backgroundSize: '0% 100%',
       offset: 0,
-      // top: '{{FirstPositionTop}}%',
-      // fontSize: '{{FirstPositionFontSize}}vw',
-      // fontWeight: '{{FirstPositionFontWeight}}'
-    }),
-    {
-      params: {
-        FirstPositionFontWeight: 500,
-        FirstPositionTop: 30,
-        FirstPositionFontSize: '3',
-      }
-    }
+    })
   ),
   state('*',
     style({
@@ -48,10 +38,6 @@ export let showIntro = trigger('showIntro', [
     {
       params: {
         FirstPositionFontWeight: 500,
-        FirstPositionTop: 30,
-        FirstPositionFontSize: '3',
-        FirstMaxWidth: 50,
-
       }
     }
   ),

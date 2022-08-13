@@ -17,12 +17,10 @@ export class CaptionDescriptionComponent extends CaptionComponent {
     _ref: ChangeDetectorRef,_captionStates:CaptionStates,
     _responsiveService: ResponsiveValueService,
     _delayTimeServiceService:DelayTimeServiceService,
-    _elRef: ElementRef,
-    _renderer: Renderer2) { 
+    ) { 
       super(_serviceScrollService,_ref,_captionStates,
-        _responsiveService,_delayTimeServiceService,_elRef,_renderer);
-        this.responsiveState.fontSize=2.5;
-        this.responsiveState.TopScale=2.2;
+        _responsiveService,_delayTimeServiceService);
+      
     }
   
 

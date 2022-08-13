@@ -9,22 +9,22 @@ export class CaptionStates {
     contact: string = "Contact";
     profetion: string = 'FullStack Engineer - Computer Scientific';
 
-    titleStyle = new CaptionStateStyle(30, 4, 600, undefined,
+    titleStyle = new CaptionStateStyle(600,
         {
-            top: new StateStyle("30%", 2,false),
-            fontSize: new StateStyle("4vw", 1.1,true),
+            fontSize: new StateStyle("4vw", 2,true),
+            top: new StateStyle("30%", 1,false),
             maxWidth: new StateStyle("40%", 2,true),
         });
-    subTitleStyle = new CaptionStateStyle(45, 1.5, 500, undefined,
+    subTitleStyle = new CaptionStateStyle(500,
         {
-            top: new StateStyle("45%", 1.7,false),
             fontSize: new StateStyle("1.5vw", 2.8,true),
+            top: new StateStyle("42%", 1,false),
             maxWidth: new StateStyle("40%", 2,true),
         });
-    descriptionStyle = new CaptionStateStyle(52, 1.5, 400, undefined,
+    descriptionStyle = new CaptionStateStyle(400,
         {
-            top: new StateStyle("52%", 2.2,false),
             fontSize: new StateStyle("1.5vw", 2.5,true),
+            top: new StateStyle("45%", 1.15,false),
             maxWidth: new StateStyle("40%", 2,true),
         });
 

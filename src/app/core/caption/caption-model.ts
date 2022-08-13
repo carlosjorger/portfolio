@@ -12,7 +12,7 @@ export class CaptionState{
 }
 export class CaptionStateStyle {
     public styles:Map<string,StateStyle>;
-    constructor(public top:number,public fontSize:number, public fontweight:number=400,public maxWidth:number=40,obj:{}={ }){
+    constructor( public fontweight:number=400,obj:{}={ }){
         this.styles=new Map<string,StateStyle>(Object.keys(obj).map((v) => (
             [v,obj[v as keyof typeof obj]]
          )));
@@ -24,12 +24,12 @@ export class StateStyle {
 
     }
     public get value():number{
-        let startWithNumber:RegExp=/^\d+/;
+        let startWithNumber:RegExp=/^\d+(\.\d)?/;
         let strValue=this.property.match(startWithNumber)?.flat()[0]
-        return parseInt(strValue??"0");
+        return parseFloat(strValue??"0");
     }
     public get unit():string{
-        let startWithNumber:RegExp=/^\d+/;
+        let startWithNumber:RegExp=/^\d+(\.\d)?/;
         let strValue=this.property.replace(startWithNumber,"");
         return strValue??"";
     }

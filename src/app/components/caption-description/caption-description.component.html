@@ -1,5 +1,5 @@
 <div class="magical-underline"  *ngIf="page>0"
-    [ngStyle]="style" 
+    [ngStyle]="responsiveState.rawStyle" 
     [@showIntro]="{
         value:text,
         params:getAnimationParamter()
