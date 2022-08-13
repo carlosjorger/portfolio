@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Caption, CaptionState, CaptionStateStyle, Transition } from "src/app/core/caption/caption-model";
+import { Caption, CaptionState, CaptionStateStyle, StateStyle, Transition } from "src/app/core/caption/caption-model";
 import { PageState, PageStates, PageTransition } from "src/app/core/caption/page-state"
 @Injectable({
     providedIn: 'root'
@@ -9,13 +9,28 @@ export class CaptionStates {
     contact: string = "Contact";
     profetion: string = 'FullStack Engineer - Computer Scientific';
 
-    titleStyle = new CaptionStateStyle(30, 4, 600);
-    subTitleStyle = new CaptionStateStyle(45, 1.5, 500);
-    descriptionStyle = new CaptionStateStyle(52, 1.5,400);
+    titleStyle = new CaptionStateStyle(30, 4, 600, undefined,
+        {
+            top: new StateStyle("30%", 2),
+            fontSize: new StateStyle("4vw", 1.1),
+            maxWidth: new StateStyle("40%", 2),
+        });
+    subTitleStyle = new CaptionStateStyle(45, 1.5, 500, undefined,
+        {
+            top: new StateStyle("45%", 1.7),
+            fontSize: new StateStyle("1.5vw", 2.8),
+            maxWidth: new StateStyle("40%", 2),
+        });
+    descriptionStyle = new CaptionStateStyle(52, 1.5, 400, undefined,
+        {
+            top: new StateStyle("52%", 2.2),
+            fontSize: new StateStyle("1.5vw", 2.5),
+            maxWidth: new StateStyle("40%", 2),
+        });
 
-    title: Caption=new Caption([],[]);
-    subtitle: Caption=new Caption([],[]);;
-    description: Caption=new Caption([],[]);;
+    title: Caption = new Caption([], []);
+    subtitle: Caption = new Caption([], []);;
+    description: Caption = new Caption([], []);;
 
     get ContactPos(): number {
         for (let index = 0; index < this.title.states.length; index++) {
@@ -92,30 +107,30 @@ export class CaptionStates {
                 )
 
             ])
-            this.MappingToCaptions(pageStates);
-        
+        this.MappingToCaptions(pageStates);
+
     }
-    private MappingToCaptions(pageStates: PageStates){
+    private MappingToCaptions(pageStates: PageStates) {
         this.title = new Caption(
             [
-                ...pageStates.pageStates.flatMap(v=>v.title)
+                ...pageStates.pageStates.flatMap(v => v.title)
             ],
             [
-                ...pageStates.pageTransition.flatMap(t=>t.titleTransition)
+                ...pageStates.pageTransition.flatMap(t => t.titleTransition)
             ]);
         this.subtitle = new Caption(
             [
-                ...pageStates.pageStates.flatMap(v=>v.subTitle)
+                ...pageStates.pageStates.flatMap(v => v.subTitle)
             ],
             [
-                ...pageStates.pageTransition.flatMap(t=>t.subTitleTransition)
+                ...pageStates.pageTransition.flatMap(t => t.subTitleTransition)
             ]);
         this.description = new Caption(
             [
-                ...pageStates.pageStates.flatMap(v=>v.description)
+                ...pageStates.pageStates.flatMap(v => v.description)
             ],
             [
-                ...pageStates.pageTransition.flatMap(t=>t.descriptionTransition)
+                ...pageStates.pageTransition.flatMap(t => t.descriptionTransition)
             ]);
     }
 }

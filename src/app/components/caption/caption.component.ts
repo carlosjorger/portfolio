@@ -66,16 +66,17 @@ export class CaptionComponent implements OnInit {
     this.GetCaptionStateByPage = new Map<number, CaptionState>(
       this.captionStates.states.map(
         (caption: CaptionState, i: number) =>
-          [i + this.firstPages, caption])
+          [i + this.firstPages, caption]
+      )
     );
     this.updateTextByPage();
     this.keepTrackScroll();
     this.responsiveState.top = this.responsiveService
-      .getResponsiveFontSize(this.firsPosition.captionStyle.top, this.responsiveState.TopScale, 60);
+      .getResponsiveFontSizeWidth(this.firsPosition.captionStyle.top, this.responsiveState.TopScale);
     this.responsiveState.fontSize = this.responsiveService
-      .getResponsiveFontSize(this.firsPosition.captionStyle.fontSize, this.responsiveState.FontSizeScale);
+      .getResponsiveFontSizeWidth(this.firsPosition.captionStyle.fontSize, this.responsiveState.FontSizeScale);
     this.responsiveState.maxWidth = this.responsiveService
-      .getResponsiveFontSize(this.firsPosition.captionStyle.maxWidth, this.responsiveState.maxWidthScale);
+      .getResponsiveFontSizeWidth(this.firsPosition.captionStyle.maxWidth, this.responsiveState.maxWidthScale);
     this.style = {
       fontSize: `${this.responsiveState.fontSize}vw`,
       top: `${this.responsiveState.top}%`,
@@ -86,6 +87,7 @@ export class CaptionComponent implements OnInit {
     this.serviceScrollService.keepTrackScroll().subscribe(
       async targetPage => {
         if (targetPage != this.page) {
+          console.log(window.innerHeight,window.innerWidth)
           this.transition = this.updateTransitionPage(targetPage);
           await this.delayTimeServiceService.delayTimeAndDo(
             this.transition.delay,
