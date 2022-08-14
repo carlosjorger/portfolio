@@ -76,7 +76,6 @@ export class CaptionComponent implements OnInit {
     this.serviceScrollService.keepTrackScroll().subscribe(
       async targetPage => {
         if (targetPage != this.page) {
-          console.log(window.innerHeight, window.innerWidth)
           this.transition = this.updateTransitionPage(targetPage);
           await this.delayTimeServiceService.delayTimeAndDo(
             this.transition.delay,

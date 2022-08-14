@@ -10,7 +10,7 @@ export class ServiceScrollService {
   pageNumber: number;
   realPage: number = 0;
   page: number = 0;
-  scrollBufferWindow: number = 100;
+  scrollBufferWindow: number = 50;
   lastNavigationStartAt: number = 0;
   // current
   private subject = new Subject<number>();
