@@ -12,24 +12,21 @@ export class ResponsiveValueService {
   private computerHeigth:number=650;
   private phoneHeigth:number=812;
   constructor() { }
-  public getResponsiveWidth(value:number, scale:number,upScale:number=0): number {
-    return this.getResponsiveValueByAxis(this.computerWidth,this.phoneWidth,window.innerWidth
-      ,value, scale)
-  }
+  
  
   private getResponsiveValueByAxis(computer:number,phone:number,
     windowAxis:number,
-    value:number, scale:number): number {
-    var transformValue = value * scale;
-    var a = ((value - transformValue) / (computer - phone))
+    stateStyle:StateStyle): number {
+    var transformValue =stateStyle.value * stateStyle.scale;
+    var a = ((stateStyle.value - transformValue) / (computer - phone))
     var b=transformValue - phone * a;
     return Math.round((a * windowAxis +b)*100)/100;
   }
-  public getResponsiveValue(value:number, scale:number, isWidthScale:boolean): number {
-    if (isWidthScale) {
-      return this.getResponsiveValueByAxis(this.computerWidth,this.phoneWidth,window.innerWidth,value,scale) 
+  public getResponsiveValue(stateStyle:StateStyle): number {
+    if (stateStyle.isWidthScale) {
+      return this.getResponsiveValueByAxis(this.computerWidth,this.phoneWidth,window.innerWidth,stateStyle) 
     }
     console.log(window.innerHeight)
-    return this.getResponsiveValueByAxis(this.computerHeigth,this.phoneHeigth,window.innerHeight,value,scale) 
+    return this.getResponsiveValueByAxis(this.computerHeigth,this.phoneHeigth,window.innerHeight,stateStyle) 
   }
 }

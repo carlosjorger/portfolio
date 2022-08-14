@@ -83,7 +83,7 @@ export let showIntro = trigger('showIntro', [
       group(
         [
           query("@*", [animateChild()], { optional: true }),
-          animate('{{Seconds}}s {{Delay}}s cubic-bezier(0.3,0.8,0.8,0.3)',
+          animate('{{Seconds}}s {{Delay}}s cubic-bezier(0.4,0.7,0.7,0.4)',
             keyframes(
               [
                 style({

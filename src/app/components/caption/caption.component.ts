@@ -64,8 +64,11 @@ export class CaptionComponent implements OnInit {
     );
     this.updateTextByPage();
     this.keepTrackScroll();
+    this.updateresponsiveState();
+  }
+  public updateresponsiveState():void{
     this.firsPosition.captionStyle.styles.forEach((style, key) => {
-      let result = this.responsiveService.getResponsiveValue(style.value, style.scale, style.isWidthScale);
+      let result = this.responsiveService.getResponsiveValue(style);
       this.responsiveState.setValue(key, result, style.unit)
     });
   }

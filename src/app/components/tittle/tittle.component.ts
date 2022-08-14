@@ -2,6 +2,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { } from 'src/app/animations/animations';
 import * as AOS from 'aos';
 import { ResponsiveValueService } from 'src/app/services/responsive-value.service';
+import { ResponsiveState } from 'src/app/core/caption/responsive-state';
+import { StateStyle } from 'src/app/core/caption/caption-model';
 @Component({
   selector: 'app-tittle',
   templateUrl: './tittle.component.html',
@@ -13,12 +15,13 @@ export class TittleComponent implements OnInit {
   name: string = 'Carlos Jorge'
   lastName: string = 'Rodriguez Cuello'
   profesion: string = 'FullStack Engineer.'
-  fontSize: number = 7;
-  subtitleFontSize: number = 6;
+
+  public fontSizeSate=new StateStyle("7vw", 1.3,true);
+  public subtitleFontSizeSate=new StateStyle("6vw", 1.3,true);
+
   public transformFontSize: number = 7;
   public subtitleTransformFontSize: number = 6;
-
-  scaleFontSize: number = 1.3;
+  
   constructor(private responsiveService: ResponsiveValueService) {
 
   }
@@ -27,8 +30,8 @@ export class TittleComponent implements OnInit {
   ngOnInit(): void {
     document.addEventListener('scroll', ($event: Event) => {
     });
-    this.transformFontSize = this.responsiveService.getResponsiveWidth(this.fontSize, this.scaleFontSize);
-    this.subtitleTransformFontSize = this.responsiveService.getResponsiveWidth(this.subtitleFontSize, this.scaleFontSize);
+    this.transformFontSize = this.responsiveService.getResponsiveValue(this.fontSizeSate);
+    this.subtitleTransformFontSize = this.responsiveService.getResponsiveValue(this.subtitleFontSizeSate);
   }
   splitDescription(theString: string): { letter: string, fract: number }[] {
     let scala: number = 1.2;
