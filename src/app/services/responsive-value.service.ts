@@ -1,5 +1,5 @@
 import { HostListener, Injectable } from '@angular/core';
-import { StateStyle } from '../core/caption/caption-model';
+import { StateStyle } from '../core/models/caption-model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,6 @@ export class ResponsiveValueService {
     if (stateStyle.isWidthScale) {
       return this.getResponsiveValueByAxis(this.computerWidth,this.phoneWidth,window.innerWidth,stateStyle) 
     }
-    console.log(window.innerHeight)
     return this.getResponsiveValueByAxis(this.computerHeigth,this.phoneHeigth,window.innerHeight,stateStyle) 
   }
 }

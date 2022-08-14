@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Caption, CaptionState, CaptionStateStyle, StateStyle, Transition } from "src/app/core/caption/caption-model";
-import { PageState, PageStates, PageTransition } from "src/app/core/caption/page-state"
+import { Caption, CaptionState, CaptionStateStyle, StateStyle, Transition } from "src/app/core/models/caption-model";
+import { PageState, PageStates, PageTransition } from "src/app/core/models/page-state"
 @Injectable({
     providedIn: 'root'
 })

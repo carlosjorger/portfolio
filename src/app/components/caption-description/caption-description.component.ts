@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, ElementRef, Renderer2 } from '@angular/core';
-import { CaptionStates } from 'src/app/core/constans/models/captions-states';
+import { CaptionStates } from 'src/app/core/constans/captions-states';
 import { DelayTimeServiceService } from 'src/app/services/delay-time-service.service';
 import { ResponsiveValueService } from 'src/app/services/responsive-value.service';
 import { ServiceScrollService } from 'src/app/services/service-scroll.service';

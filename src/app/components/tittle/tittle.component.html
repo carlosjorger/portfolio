@@ -1,4 +1,8 @@
 <section>
+   <div [ngStyle]="{
+    position:'relative',
+    top:transformTop+'%'
+   }">
     <div class="titleBody">
 
         <h1 class="title">
@@ -8,7 +12,7 @@
                 {
                     animationDelay: item.fract+'s',
                     fontSize: transformFontSize+'vw'
-
+         
                 }" [innerHTML]="item.letter">
                 </span>
             </div>
@@ -36,4 +40,5 @@
     <div class="arrow">
 
     </div>
+   </div>
 </section>

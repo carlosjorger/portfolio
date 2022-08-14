@@ -2,8 +2,10 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { } from 'src/app/animations/animations';
 import * as AOS from 'aos';
 import { ResponsiveValueService } from 'src/app/services/responsive-value.service';
-import { ResponsiveState } from 'src/app/core/caption/responsive-state';
-import { StateStyle } from 'src/app/core/caption/caption-model';
+import { ResponsiveState } from 'src/app/core/models/responsive-state';
+import { StateStyle } from 'src/app/core/models/caption-model';
+import { Monad } from 'src/app/core/decorators/Monad';
+
 @Component({
   selector: 'app-tittle',
   templateUrl: './tittle.component.html',
@@ -16,23 +18,33 @@ export class TittleComponent implements OnInit {
   lastName: string = 'Rodriguez Cuello'
   profesion: string = 'FullStack Engineer.'
 
-  public fontSizeSate=new StateStyle("7vw", 1.3,true);
-  public subtitleFontSizeSate=new StateStyle("6vw", 1.3,true);
+  public fontSizeSate = new StateStyle("7vw", 1.3, true);
+  public subtitleFontSizeSate = new StateStyle("6vw", 1.3, true);
+  
+  public topSate = new StateStyle("10%", 2, true);
+
+
 
   public transformFontSize: number = 7;
   public subtitleTransformFontSize: number = 6;
-  
-  constructor(private responsiveService: ResponsiveValueService) {
 
+  public transformTop: number =10;
+
+  public splitDescriptionName:{letter: string, fract: number}[];
+  constructor(private responsiveService: ResponsiveValueService) {
+   this.splitDescriptionName=this.splitDescription(this.name);
   }
   scrollRef: number = 0;
   @HostListener('window:resize', ['$event'])
   ngOnInit(): void {
-    document.addEventListener('scroll', ($event: Event) => {
-    });
     this.transformFontSize = this.responsiveService.getResponsiveValue(this.fontSizeSate);
     this.subtitleTransformFontSize = this.responsiveService.getResponsiveValue(this.subtitleFontSizeSate);
+
+    this.transformTop=this.responsiveService.getResponsiveValue(this.topSate)
+    console.log(this.transformTop)
+
   }
+  @Monad<string>()
   splitDescription(theString: string): { letter: string, fract: number }[] {
     let scala: number = 1.2;
     return [...theString].map((v, i) => (

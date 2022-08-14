@@ -1,7 +1,7 @@
 import { animate, keyframes, state, style, transition, trigger, AnimationEvent, query, animateChild, group } from "@angular/animations";
 
-import { CaptionState, Transition } from "../core/caption/caption-model";
-import { ResponsiveState } from "../core/caption/responsive-state";
+import { CaptionState, Transition } from "../core/models/caption-model";
+import { ResponsiveState } from "../core/models/responsive-state";
 export class AnimationPatameter {
   public FirstPositionFontWeight: number;
   public SecondPositionFontWeight: number;

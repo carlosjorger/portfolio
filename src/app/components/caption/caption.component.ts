@@ -2,11 +2,11 @@ import { ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, In
 
 import { ServiceScrollService } from 'src/app/services/service-scroll.service';
 import { AnimationPatameter, showContacts, showIntro } from '../../animations/animations';
-import { Caption, CaptionState, CaptionStateStyle, Transition } from '../../core/caption/caption-model';
-import { CaptionStates } from 'src/app/core/constans/models/captions-states';
+import { Caption, CaptionState, CaptionStateStyle, Transition } from '../../core/models/caption-model';
+import { CaptionStates } from 'src/app/core/constans/captions-states';
 import { ResponsiveValueService } from 'src/app/services/responsive-value.service';
 import { DelayTimeServiceService } from 'src/app/services/delay-time-service.service';
-import { ResponsiveState } from 'src/app/core/caption/responsive-state';
+import { ResponsiveState } from 'src/app/core/models/responsive-state';
 @Component({
 
   selector: 'app-caption',
