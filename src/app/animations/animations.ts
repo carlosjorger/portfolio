@@ -42,7 +42,7 @@ export let showIntro = trigger('showIntro', [
     }
   ),
   transition('*=>void', [
-    animate('{{Seconds}}s {{Delay}}s cubic-bezier(0.3,0.8,0.8,0.3)',
+    animate('{{Seconds}}s {{Delay}}s cubic-bezier(0.2,0.9,0.9,0.2)',
       keyframes(
         [
           style({

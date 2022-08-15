@@ -5,7 +5,6 @@ import { AnimationPatameter, showContacts, showIntro } from '../../animations/an
 import { Caption, CaptionState, CaptionStateStyle, Transition } from '../../core/models/caption-model';
 import { CaptionStates } from 'src/app/core/constans/captions-states';
 import { ResponsiveValueService } from 'src/app/services/responsive-value.service';
-import { DelayTimeServiceService } from 'src/app/services/delay-time-service.service';
 import { ResponsiveState } from 'src/app/core/models/responsive-state';
 @Component({
 
@@ -49,8 +48,7 @@ export class CaptionComponent implements OnInit {
 
   constructor(private serviceScrollService: ServiceScrollService,
     private ref: ChangeDetectorRef, private captionState: CaptionStates,
-    private responsiveService: ResponsiveValueService,
-    private delayTimeServiceService: DelayTimeServiceService) {
+    private responsiveService: ResponsiveValueService) {
     this.contactPosition = captionState.ContactPos + this.firstPages;
 
   }
@@ -77,13 +75,6 @@ export class CaptionComponent implements OnInit {
       async targetPage => {
         if (targetPage != this.page) {
           this.transition = this.updateTransitionPage(targetPage);
-          // await this.delayTimeServiceService.delayTimeAndDo(
-          //   this.transition.delay,
-          //   () => {
-          //     this.page = targetPage;
-          //     this.updateTextByPage();
-          //   }
-          // );
           this.page = targetPage;
           this.updateTextByPage();
           this.ref.detectChanges();
