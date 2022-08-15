@@ -20,39 +20,39 @@ export class TittleComponent implements OnInit {
 
   public fontSizeSate = new StateStyle("7vw", 1.3, true);
   public subtitleFontSizeSate = new StateStyle("6vw", 1.3, true);
-  
+
   public topSate = new StateStyle("1%", 10, true);
+  public bodyTitleResponsiveState: ResponsiveState=new ResponsiveState({});
 
-
-
-  public transformFontSize: number = 7;
-  public subtitleTransformFontSize: number = 6;
-
-  public transformTop: number =10;
-
-  public splitDescriptionName:{letter: string, fract: number}[];
   constructor(private responsiveService: ResponsiveValueService) {
-   this.splitDescriptionName=this.splitDescription(this.name);
+    this.updateBodyTitleResponsiveState();
+    
   }
   scrollRef: number = 0;
-  @HostListener('window:resize', ['$event'])
+  
   ngOnInit(): void {
-    this.transformFontSize = this.responsiveService.getResponsiveValue(this.fontSizeSate);
-    this.subtitleTransformFontSize = this.responsiveService.getResponsiveValue(this.subtitleFontSizeSate);
-
-    this.transformTop=this.responsiveService.getResponsiveValue(this.topSate)
-    console.log(this.transformTop)
-
+  }
+  @HostListener('window:resize', ['$event'])
+  updateBodyTitleResponsiveState():void{
+    this.bodyTitleResponsiveState=new ResponsiveState({
+      position:'relative',
+      top:`${this.responsiveService.getResponsiveValue(this.topSate)}%`
+    })
   }
   @Monad<string>()
-  splitDescription(theString: string): { letter: string, fract: number }[] {
+  splitDescription(theString: string,stateStyle:StateStyle): { letter: string, responsiveState: ResponsiveState }[] {
     let scala: number = 1.2;
     return [...theString].map((v, i) => (
       {
         letter: v == " " ? "&nbsp;" : v,
-        fract: Math.round(((i + 1) / theString.length) * 10 * scala) / 10
+        responsiveState: new ResponsiveState({
+          animationDelay:`${this.animationDelay(theString,i,scala)}s`,
+          fontSize: `${this.responsiveService.getResponsiveValue(stateStyle)}vw`
+        })
       }
     ));
   }
-
+  animationDelay(string:string,position:number,scala: number):number{
+    return Math.round(((position + 1) / string.length) * 10 * scala) / 10
+  }
 }
