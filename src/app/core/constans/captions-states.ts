@@ -64,7 +64,7 @@ export class CaptionStates {
                         this.subTitleStyle),
                     new CaptionState("Here are a few technologies I've been working with recently:\n\
                     &nbsp; .<strong>net core</strong>\n\
-                    &nbsp; .<strong>angulat</strong>\n\
+                    &nbsp; .<strong>angular</strong>\n\
                     &nbsp; .<strong>html</strong>\n\
                     &nbsp; .<strong>css</strong>",
                         this.descriptionStyle)

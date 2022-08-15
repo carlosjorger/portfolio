@@ -21,7 +21,7 @@ export class TittleComponent implements OnInit {
   public fontSizeSate = new StateStyle("7vw", 1.3, true);
   public subtitleFontSizeSate = new StateStyle("6vw", 1.3, true);
   
-  public topSate = new StateStyle("1%", 20, true);
+  public topSate = new StateStyle("1%", 10, true);
 
 
 
