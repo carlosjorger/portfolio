@@ -14,6 +14,7 @@ export class CaptionStates {
             fontSize: new StateStyle("4vw", 2,true),
             top: new StateStyle("30%", 1,false),
             maxWidth: new StateStyle("40%", 2,true),
+            
         });
     subTitleStyle = new CaptionStateStyle(500,
         {
@@ -21,7 +22,7 @@ export class CaptionStates {
             top: new StateStyle("45%", 0.9,false),
             maxWidth: new StateStyle("40%", 2,true),
         });
-    descriptionStyle = new CaptionStateStyle(400,
+    descriptionStyle = new CaptionStateStyle(300,
         {
             fontSize: new StateStyle("1.5vw", 2.5,true),
             top: new StateStyle("50%", 0.95,false),
