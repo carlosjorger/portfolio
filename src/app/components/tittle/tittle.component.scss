@@ -78,13 +78,13 @@ h3 {
     min-width: 20vw;
     min-height: 20vw;
     transform: translateX(60vw);
-    clip-path: polygon(35% 35%,
-            70% 35%,
-            70% calc(100% - 35%),
-            90% calc(100% - 35%),
-            52.5% calc(100% - 5%),
-            15% calc(100% - 35%),
-            35% calc(100% - 35%),
+    clip-path: polygon(35% 0%,
+            70% 0%,
+            70% calc(100% - 70%),
+            90% calc(100% - 70%),
+            52.5% calc(100% - 45%),
+            15% calc(100% - 70%),
+            35% calc(100% - 70%),
 
 
         );

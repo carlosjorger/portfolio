@@ -10,7 +10,7 @@ export class AnimationPatameter {
     transition: Transition) {
     this.FirstPositionFontWeight = firstState?.captionStyle?.fontweight;
     this.SecondPositionFontWeight = secondState?.captionStyle?.fontweight
-    this.Seconds = transition.second
+    this.Seconds = transition.second+transition.delay
   }
   toPlainObj(): {
     FirstPositionFontWeight: number
@@ -83,7 +83,7 @@ export let showIntro = trigger('showIntro', [
       group(
         [
           query("@*", [animateChild()], { optional: true }),
-          animate('{{Seconds}}s {{Delay}}s cubic-bezier(0.4,0.7,0.7,0.4)',
+          animate('{{Seconds}}s cubic-bezier(0.4,0.7,0.7,0.4)',
             keyframes(
               [
                 style({

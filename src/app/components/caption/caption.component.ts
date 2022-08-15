@@ -66,7 +66,7 @@ export class CaptionComponent implements OnInit {
     this.keepTrackScroll();
     this.updateresponsiveState();
   }
-  public updateresponsiveState():void{
+  public updateresponsiveState(): void {
     this.firsPosition.captionStyle.styles.forEach((style, key) => {
       let result = this.responsiveService.getResponsiveValue(style);
       this.responsiveState.setValue(key, result, style.unit)
@@ -77,13 +77,15 @@ export class CaptionComponent implements OnInit {
       async targetPage => {
         if (targetPage != this.page) {
           this.transition = this.updateTransitionPage(targetPage);
-          await this.delayTimeServiceService.delayTimeAndDo(
-            this.transition.delay,
-            () => {
-              this.page = targetPage;
-              this.updateTextByPage();
-            }
-          );
+          // await this.delayTimeServiceService.delayTimeAndDo(
+          //   this.transition.delay,
+          //   () => {
+          //     this.page = targetPage;
+          //     this.updateTextByPage();
+          //   }
+          // );
+          this.page = targetPage;
+          this.updateTextByPage();
           this.ref.detectChanges();
         }
       }
