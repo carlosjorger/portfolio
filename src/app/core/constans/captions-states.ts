@@ -18,13 +18,13 @@ export class CaptionStates {
     subTitleStyle = new CaptionStateStyle(500,
         {
             fontSize: new StateStyle("1.5vw", 2.8,true),
-            top: new StateStyle("42%", 1,false),
+            top: new StateStyle("45%", 0.9,false),
             maxWidth: new StateStyle("40%", 2,true),
         });
     descriptionStyle = new CaptionStateStyle(400,
         {
             fontSize: new StateStyle("1.5vw", 2.5,true),
-            top: new StateStyle("45%", 1.15,false),
+            top: new StateStyle("50%", 0.95,false),
             maxWidth: new StateStyle("40%", 2,true),
         });
 
