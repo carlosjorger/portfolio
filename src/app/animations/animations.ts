@@ -27,13 +27,8 @@ export let showIntro = trigger('showIntro', [
   state('*',
     style({
       backgroundSize: '0% 100%',
-      fontWeight: '{{FirstPositionFontWeight}}',
     }),
-    {
-      params: {
-        FirstPositionFontWeight: 500,
-      }
-    }
+
   ),
   transition('*=>void', [
     animate('{{Seconds}}s {{Delay}}s cubic-bezier(0.2,0.9,0.9,0.2)',
@@ -44,7 +39,6 @@ export let showIntro = trigger('showIntro', [
             backgroundPosition: '0% 0%',
             backgroundSize: '0% 100%',
             offset: 0,
-            fontWeight: '{{FirstPositionFontWeight}}',
           }),
           style({
             backgroundSize: '100% 100%',
@@ -58,8 +52,7 @@ export let showIntro = trigger('showIntro', [
           style({
             backgroundSize: '0% 100%',
             offset: 1,
-            fontWeight: '{{SecondPositionFontWeight}}',
-
+      
           })
         ]
       )
@@ -68,8 +61,7 @@ export let showIntro = trigger('showIntro', [
     params: {
       Seconds: '0.3',
       Delay: '0',
-      FirstPositionFontWeight: 500,
-      SecondPositionFontWeight: 500,
+   
     }
   }),
   transition('*=>*',
@@ -85,7 +77,6 @@ export let showIntro = trigger('showIntro', [
                   backgroundPosition: '0% 0%',
                   backgroundSize: '0% 100%',
                   offset: 0,
-                  fontWeight: '{{FirstPositionFontWeight}}',
                 }),
                 style({
                   backgroundSize: '100% 100%',
@@ -100,7 +91,6 @@ export let showIntro = trigger('showIntro', [
                 style({
                   backgroundSize: '0% 100%',
                   offset: 1,
-                  fontWeight: '{{SecondPositionFontWeight}}',
                 })
               ]
             )
@@ -111,8 +101,6 @@ export let showIntro = trigger('showIntro', [
       params: {
         Seconds: '0.8',
         Delay: '0',
-        FirstPositionFontWeight: 500,
-        SecondPositionFontWeight: 500,
       }
     }),
 ]);
