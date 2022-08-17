@@ -9,20 +9,20 @@ export class CaptionStates {
     contact: string = "Contact";
     profetion: string = 'FullStack Engineer - Computer Scientific';
 
-    titleStyle = new CaptionStateStyle(600,
+    titleStyle = new CaptionStateStyle(
         {
             fontSize: new StateStyle("4vw", 2,true),
             top: new StateStyle("30%", 1,false),
             maxWidth: new StateStyle("40%", 2,true),
             
         });
-    subTitleStyle = new CaptionStateStyle(500,
+    subTitleStyle = new CaptionStateStyle(
         {
             fontSize: new StateStyle("1.5vw", 2.8,true),
             top: new StateStyle("45%", 0.9,false),
             maxWidth: new StateStyle("40%", 2,true),
         });
-    descriptionStyle = new CaptionStateStyle(300,
+    descriptionStyle = new CaptionStateStyle(
         {
             fontSize: new StateStyle("1.5vw", 2.5,true),
             top: new StateStyle("50%", 0.95,false),
@@ -34,13 +34,8 @@ export class CaptionStates {
     description: Caption = new Caption([], []);;
 
     get ContactPos(): number {
-        for (let index = 0; index < this.title.states.length; index++) {
-            const element = this.title.states[index];
-            if (element.text == this.contact) {
-                return index;
-            }
-        }
-        return 0;
+        return this.title.states.
+                        findIndex((state)=>state.text==this.contact)
     };
 
     constructor() {

@@ -65,7 +65,7 @@ export class CaptionComponent implements OnInit {
     this.updateresponsiveState();
   }
   public updateresponsiveState(): void {
-    this.firsPosition.captionStyle.styles.forEach((style, key) => {
+    this.firsPosition.captionStyle.responsiveStyles.forEach((style, key) => {
       let result = this.responsiveService.getResponsiveValue(style);
       this.responsiveState.setValue(key, result, style.unit)
     });

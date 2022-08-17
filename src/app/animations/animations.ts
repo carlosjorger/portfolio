@@ -3,19 +3,13 @@ import { animate, keyframes, state, style, transition, trigger, AnimationEvent, 
 import { CaptionState, Transition } from "../core/models/caption-model";
 import { ResponsiveState } from "../core/models/responsive-state";
 export class AnimationPatameter {
-  public FirstPositionFontWeight: number;
-  public SecondPositionFontWeight: number;
   public Seconds: number;
   constructor(firstState: CaptionState, secondState: CaptionState,
     transition: Transition) {
-    this.FirstPositionFontWeight = firstState?.captionStyle?.fontweight;
-    this.SecondPositionFontWeight = secondState?.captionStyle?.fontweight
     this.Seconds = transition.second+transition.delay
   }
   toPlainObj(): {
-    FirstPositionFontWeight: number
-    , SecondPositionFontWeight: number
-    , Seconds: number
+    Seconds: number
   } {
     return Object.assign({}, this);
   }
