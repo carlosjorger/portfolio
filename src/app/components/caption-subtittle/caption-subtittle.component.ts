@@ -18,11 +18,10 @@ export class CaptionSubtittleComponent extends CaptionComponent {
 
   constructor(_serviceScrollService: ServiceScrollService,
     _ref: ChangeDetectorRef, _captionStates: CaptionStates,
-    _responsiveService: ResponsiveValueService,
     _responsive: BreakpointObserver
   ) {
     super(_serviceScrollService, _ref, _captionStates,
-      _responsiveService, _responsive);
+       _responsive);
 
   }
 }

@@ -3,14 +3,8 @@
         params:getAnimationParamter()
     }" [ngClass]="{
         'is-phone-portrait': isPhonePortrait, 
-        'is-web':isWeb
+        'is-web':isWeb,
+        'is-table':isTable
     }">
     {{text}}
 </div>
-
-<!-- [@changeIntroPosition]="{   
-    value:page>0,
-    params:getAnimationParamter()
-}" 
-(@changeIntroPosition.start)="captureStartEvent($event)"
-(@changeIntroPosition.done)="captureDoneEvent($event)" -->

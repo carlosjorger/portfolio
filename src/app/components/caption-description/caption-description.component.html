@@ -5,7 +5,8 @@
     }" 
     [ngClass]="{
         'is-phone-portrait': isPhonePortrait, 
-        'is-web':isWeb
+        'is-web':isWeb,
+        'is-table':isTable
     }"
 >
     <div  *ngIf="(page==contactPosition); else other_content" [@showContacts]>

@@ -2,12 +2,9 @@ import { ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, In
 
 import { ServiceScrollService } from 'src/app/services/service-scroll.service';
 import { AnimationPatameter, showContacts, showIntro } from '../../animations/animations';
-import { Caption, CaptionState, CaptionStateStyle, Transition } from '../../core/models/caption-model';
+import { Caption, CaptionState, Transition } from '../../core/models/caption-model';
 import { CaptionStates } from 'src/app/core/constans/captions-states';
-import { ResponsiveValueService } from 'src/app/services/responsive-value.service';
-import { ResponsiveState } from 'src/app/core/models/responsive-state';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { style } from '@angular/animations';
 @Component({
 
   selector: 'app-caption',
@@ -23,8 +20,6 @@ import { style } from '@angular/animations';
 export class CaptionComponent implements OnInit {
   @Input() captionStates: Caption = new Caption([]);
 
-  public responsiveState: ResponsiveState = new ResponsiveState();
-
   text: String = "";
   page: number = 0;
 
@@ -38,6 +33,7 @@ export class CaptionComponent implements OnInit {
 
   public isPhonePortrait = false;
   public isWeb = false;
+  public isTable = false;
 
 
   public get firsPosition(): CaptionState {
@@ -54,7 +50,7 @@ export class CaptionComponent implements OnInit {
 
   constructor(private serviceScrollService: ServiceScrollService,
     private ref: ChangeDetectorRef, private captionState: CaptionStates,
-    private responsiveService: ResponsiveValueService, private responsive: BreakpointObserver) {
+    private responsive: BreakpointObserver) {
     this.contactPosition = captionState.ContactPos + this.firstPages;
 
   }
@@ -66,35 +62,19 @@ export class CaptionComponent implements OnInit {
           [i + this.firstPages, caption]
       )
     );
+    // console.log(Breakpoints.Tablet)
     this.updateTextByPage();
     this.keepTrackScroll();
-    this.updateresponsiveState();
-    console.log(this.responsiveState.rawStyle)
-    this.responsive.observe([Breakpoints.HandsetPortrait, Breakpoints.Medium,Breakpoints.Large])
+    this.responsive.observe([Breakpoints.HandsetPortrait, Breakpoints.TabletPortrait,Breakpoints.Medium ,Breakpoints.Large,])
       .subscribe(result => {
         const breakpoints = result.breakpoints;
-        this.isPhonePortrait = false;
-        this.isWeb = false;
-
-        if (breakpoints[Breakpoints.HandsetPortrait]) {
-          this.isPhonePortrait = true;
-        }
-        if (breakpoints[Breakpoints.Medium]) {
-          this.isWeb = true;
-        }
-        if (breakpoints[Breakpoints.Large]) {
-          this.isWeb = true;
-        }
+        this.isPhonePortrait = breakpoints[Breakpoints.HandsetPortrait];
+        this.isWeb = breakpoints[Breakpoints.Large]||breakpoints[Breakpoints.Medium];
+        this.isTable=breakpoints[Breakpoints.TabletPortrait];
       }
-      );
+    );
   }
-  public updateresponsiveState(): void {
-    this.firsPosition.captionStyle.responsiveStyles.forEach((style, key) => {
-      let result = this.responsiveService.getResponsiveValue(style);
-      console.log(key, result)
-      this.responsiveState.setValue(key, result, style.unit)
-    });
-  }
+
   public keepTrackScroll(): void {
     this.serviceScrollService.keepTrackScroll().subscribe(
       async targetPage => {

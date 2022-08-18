@@ -8,23 +8,7 @@ export class Transition {
     constructor(public second: number, public delay: number) { }
 }
 export class CaptionState {
-    constructor(public text: string, public captionStyle: CaptionStateStyle) { }
-}
-export class CaptionStateStyle {
-    public responsiveStyles: Map<string, StateStyle>;
-    constructor(
-        rawResponsiveStyle: {} = {},
-        ) {
-        this.responsiveStyles = this.transformRawToMap(rawResponsiveStyle);
-    }
-    private transformRawToMap(rawStyle: {}): Map<string, StateStyle> {
-        return new Map<string, StateStyle>(
-            Object.keys(rawStyle).map((v) => (
-                [v, rawStyle[v as keyof typeof rawStyle]]
-            ))
-        );
-    }
-
+    constructor(public text: string) { }
 }
 export class StateStyle {
     constructor(public property: string, public scale: number, public isWidthScale: boolean) {

@@ -1,16 +1,24 @@
 
 .magical-underline {
-    font-family: DynaPuff;
-    font-weight: 400;
+    font-family: Montserrat;
 }
 .magical-underline.is-phone-portrait {
     max-width: 80%;
     font-size: 8vw;
     top:30%;
+    font-weight:bold ;
+}
+.magical-underline.is-table {
+    max-width: 56%;
+    font-size: 6vw;
+    top:30%;
+    font-weight: 600;
+
 }
 .magical-underline.is-web {
     max-width: 56%;
-    font-size: 5.6vw;
-    top:30%;
+    font-size: 5vw;
+    top:25%;
+    font-weight: 600;
 
 }

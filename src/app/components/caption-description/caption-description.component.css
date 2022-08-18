@@ -1,10 +1,16 @@
 .magical-underline.is-phone-portrait {
     max-width: 80%;
     font-size: 3.2vw;
-    top:41.1%;
+    top:40.6%;
 }
-.magical-underline.is-web{
+.magical-underline.is-table{
     max-width: 56%;
     font-size: 2vw;
-    top: 55%;
+    top: 45%;
+}
+
+.magical-underline.is-web{
+    max-width: 56%;
+    font-size: 1.8vw;
+    top: 52%;
 }

@@ -1,5 +1,3 @@
-import { StateStyle } from "./caption-model";
-
 export class ResponsiveState {
     public styles:Map<string,string>;
     constructor(obj:{}={ }) {

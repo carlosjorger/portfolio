@@ -1,11 +1,12 @@
 <div class="magical-underline" *ngIf="page>0" 
-    [ngStyle]="responsiveState.rawStyle" [@showIntro]="{
+    [@showIntro]="{
         value:text,
         params:getAnimationParamter()
     }"
     [ngClass]="{
         'is-phone-portrait': isPhonePortrait, 
-        'is-web':isWeb
+        'is-web':isWeb,
+        'is-table':isTable
     }"
     >
     {{text}}
