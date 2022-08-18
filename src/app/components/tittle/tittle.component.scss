@@ -19,9 +19,9 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 40vw;
+    min-height: 30vw;
     position: relative;
-    top:10%
+    top: 5%
 }
 
 .title {
@@ -30,7 +30,6 @@ h3 {
 
 .title span {
     font-family: DynaPuff;
-    font-size: 7vw;
     color: $purple;
     position: relative;
     display: inline-block;
@@ -52,7 +51,8 @@ h3 {
         opacity: 1;
 
     }
-    100%{
+
+    100% {
         color: $purple;
         transform: translateY(0);
         opacity: 1;
@@ -67,8 +67,8 @@ h3 {
 }
 
 .arrow {
-    min-width: 20vw;
-    min-height: 20vw;
+    min-width: 15vw;
+    min-height: 15vw;
     display: flex;
     // justify-content: center;
     // align-items: center;
@@ -79,8 +79,8 @@ h3 {
 .arrow:before {
     content: "";
     background: $purple;
-    min-width: 20vw;
-    min-height: 20vw;
+    min-width: 15vw;
+    min-height: 15vw;
     transform: translateX(60vw);
     clip-path: polygon(35% 0%,
             70% 0%,
@@ -102,6 +102,7 @@ h3 {
         // opacity: 0;
         background: $purple;
     }
+
     50% {
         transform: translateY(10vw) translateX(60vw);
         // opacity: 0;
@@ -116,4 +117,32 @@ h3 {
     }
 
 
+}
+
+.word.is-phone-portrait {
+    font-size: 8.5vw;
+    font-weight: bold;
+}
+
+.word.is-table {
+    font-size: 8vw;
+    font-weight: 600;
+}
+
+.word.is-web {
+    font-size: 6vw;
+}
+.presentation{
+    position: relative;
+}
+.presentation.is-phone-portrait {
+    top:12%
+}
+
+.presentation.is-table {
+    top:9%
+}
+
+.presentation.is-web {
+    top:0%
 }

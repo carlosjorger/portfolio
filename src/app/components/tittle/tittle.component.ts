@@ -2,8 +2,6 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { } from 'src/app/animations/animations';
 import * as AOS from 'aos';
 import { ResponsiveValueService } from 'src/app/services/responsive-value.service';
-import { ResponsiveState } from 'src/app/core/models/responsive-state';
-import { StateStyle } from 'src/app/core/models/caption-model';
 import { Monad } from 'src/app/core/decorators/Monad';
 
 @Component({
@@ -18,37 +16,35 @@ export class TittleComponent implements OnInit {
   lastName: string = 'Rodriguez Cuello'
   profesion: string = 'FullStack Engineer.'
 
-  public fontSizeSate = new StateStyle("7vw", 1.3, true);
-  public subtitleFontSizeSate = new StateStyle("6vw", 1.3, true);
-
-  public topSate = new StateStyle("1%", 10, true);
-  public bodyTitleResponsiveState: ResponsiveState=new ResponsiveState({});
-
   constructor(private responsiveService: ResponsiveValueService) {
     this.updateBodyTitleResponsiveState();
     
   }
   scrollRef: number = 0;
-  
+  public get isPhonePortrait():boolean{
+    return this.responsiveService.isPhonePortrait;
+  }
+  public get isWeb():boolean{
+    return this.responsiveService.isWeb;
+  }
+  public get isTable():boolean{
+    return this.responsiveService.isTable;
+  }
+
   ngOnInit(): void {
+    this.updateBodyTitleResponsiveState();
   }
   @HostListener('window:resize', ['$event'])
   updateBodyTitleResponsiveState():void{
-    this.bodyTitleResponsiveState=new ResponsiveState({
-      position:'relative',
-      top:`${this.responsiveService.getResponsiveValue(this.topSate)}%`
-    })
+    this.responsiveService.getResponsiveFormat();
   }
   @Monad<string>()
-  splitDescription(theString: string,stateStyle:StateStyle): { letter: string, responsiveState: ResponsiveState }[] {
+  splitDescription(theString: string): { letter: string, delay:string }[] {
     let scala: number = 1.2;
     return [...theString].map((v, i) => (
       {
         letter: v == " " ? "&nbsp;" : v,
-        responsiveState: new ResponsiveState({
-          animationDelay:`${this.animationDelay(theString,i,scala)}s`,
-          fontSize: `${this.responsiveService.getResponsiveValue(stateStyle)}vw`
-        })
+        delay:`${this.animationDelay(theString,i,scala)}s`,
       }
     ));
   }

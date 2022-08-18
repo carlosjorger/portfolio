@@ -1,5 +1,5 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { HostListener, Injectable } from '@angular/core';
-import { StateStyle } from '../core/models/caption-model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,21 +11,30 @@ export class ResponsiveValueService {
 
   private computerHeigth:number=650;
   private phoneHeigth:number=812;
-  constructor() { }
-  
- 
-  private getResponsiveValueByAxis(computer:number,phone:number,
-    windowAxis:number,
-    stateStyle:StateStyle): number {
-    var transformValue =stateStyle.value * stateStyle.scale;
-    var a = ((stateStyle.value - transformValue) / (computer - phone))
-    var b=transformValue - phone * a;
-    return Math.round((a * windowAxis +b)*100)/100;
+
+  private  _isPhonePortrait = false;
+  private  _isWeb = false;
+  private  _isTable = false;
+
+  public get isPhonePortrait():boolean{
+    return this._isPhonePortrait;
   }
-  public getResponsiveValue(stateStyle:StateStyle): number {
-    if (stateStyle.isWidthScale) {
-      return this.getResponsiveValueByAxis(this.computerWidth,this.phoneWidth,window.innerWidth,stateStyle) 
-    }
-    return this.getResponsiveValueByAxis(this.computerHeigth,this.phoneHeigth,window.innerHeight,stateStyle) 
+  public get isWeb():boolean{
+    return this._isWeb;
+  }
+  public get isTable():boolean{
+    return this._isTable;
+  }
+  constructor(private responsive: BreakpointObserver) { }
+  
+  public getResponsiveFormat(){
+    this.responsive.observe([Breakpoints.HandsetPortrait, Breakpoints.TabletPortrait,Breakpoints.Medium ,Breakpoints.Large,])
+      .subscribe(result => {
+        const breakpoints = result.breakpoints;
+        this._isPhonePortrait = breakpoints[Breakpoints.HandsetPortrait];
+        this._isWeb = breakpoints[Breakpoints.Large]||breakpoints[Breakpoints.Medium];
+        this._isTable=breakpoints[Breakpoints.TabletPortrait];
+      }
+    );
   }
 }
