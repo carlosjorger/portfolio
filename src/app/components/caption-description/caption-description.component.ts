@@ -3,6 +3,7 @@ import { CaptionStates } from 'src/app/core/constans/captions-states';
 import { ResponsiveValueService } from 'src/app/services/responsive-value.service';
 import { ServiceScrollService } from 'src/app/services/service-scroll.service';
 import { CaptionComponent } from '../caption/caption.component';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-caption-description',
@@ -12,14 +13,17 @@ import { CaptionComponent } from '../caption/caption.component';
 export class CaptionDescriptionComponent extends CaptionComponent {
 
 
-  constructor( _serviceScrollService: ServiceScrollService,
-    _ref: ChangeDetectorRef,_captionStates:CaptionStates,
+  constructor(_serviceScrollService: ServiceScrollService,
+    _ref: ChangeDetectorRef, _captionStates: CaptionStates,
     _responsiveService: ResponsiveValueService,
-    ) { 
-      super(_serviceScrollService,_ref,_captionStates,
-        _responsiveService);
-      
-    }
+    _responsive: BreakpointObserver
+  ) {
+    super(_serviceScrollService, _ref, _captionStates,
+      _responsiveService, _responsive);
+
+
+  }
   
+
 
 }

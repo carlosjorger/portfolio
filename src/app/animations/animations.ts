@@ -1,7 +1,6 @@
 import { animate, keyframes, state, style, transition, trigger, AnimationEvent, query, animateChild, group } from "@angular/animations";
 
 import { CaptionState, Transition } from "../core/models/caption-model";
-import { ResponsiveState } from "../core/models/responsive-state";
 export class AnimationPatameter {
   public Seconds: number;
   constructor(firstState: CaptionState, secondState: CaptionState,

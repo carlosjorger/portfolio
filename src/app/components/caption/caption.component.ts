@@ -6,6 +6,8 @@ import { Caption, CaptionState, CaptionStateStyle, Transition } from '../../core
 import { CaptionStates } from 'src/app/core/constans/captions-states';
 import { ResponsiveValueService } from 'src/app/services/responsive-value.service';
 import { ResponsiveState } from 'src/app/core/models/responsive-state';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { style } from '@angular/animations';
 @Component({
 
   selector: 'app-caption',
@@ -34,6 +36,10 @@ export class CaptionComponent implements OnInit {
 
   public transition: Transition = this.updateTransitionPage(this.page);
 
+  public isPhonePortrait = false;
+  public isWeb = false;
+
+
   public get firsPosition(): CaptionState {
     return this.captionStates.states[Math.min(this.page,
       this.captionStates.transition.length - 1)];
@@ -48,7 +54,7 @@ export class CaptionComponent implements OnInit {
 
   constructor(private serviceScrollService: ServiceScrollService,
     private ref: ChangeDetectorRef, private captionState: CaptionStates,
-    private responsiveService: ResponsiveValueService) {
+    private responsiveService: ResponsiveValueService, private responsive: BreakpointObserver) {
     this.contactPosition = captionState.ContactPos + this.firstPages;
 
   }
@@ -63,10 +69,29 @@ export class CaptionComponent implements OnInit {
     this.updateTextByPage();
     this.keepTrackScroll();
     this.updateresponsiveState();
+    console.log(this.responsiveState.rawStyle)
+    this.responsive.observe([Breakpoints.HandsetPortrait, Breakpoints.Medium,Breakpoints.Large])
+      .subscribe(result => {
+        const breakpoints = result.breakpoints;
+        this.isPhonePortrait = false;
+        this.isWeb = false;
+
+        if (breakpoints[Breakpoints.HandsetPortrait]) {
+          this.isPhonePortrait = true;
+        }
+        if (breakpoints[Breakpoints.Medium]) {
+          this.isWeb = true;
+        }
+        if (breakpoints[Breakpoints.Large]) {
+          this.isWeb = true;
+        }
+      }
+      );
   }
   public updateresponsiveState(): void {
     this.firsPosition.captionStyle.responsiveStyles.forEach((style, key) => {
       let result = this.responsiveService.getResponsiveValue(style);
+      console.log(key, result)
       this.responsiveState.setValue(key, result, style.unit)
     });
   }

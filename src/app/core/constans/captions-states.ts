@@ -11,22 +11,22 @@ export class CaptionStates {
 
     titleStyle = new CaptionStateStyle(
         {
-            fontSize: new StateStyle("4vw", 2,true),
-            top: new StateStyle("30%", 1,false),
-            maxWidth: new StateStyle("40%", 2,true),
+            // fontSize: new StateStyle("4vw", 2,true),
+            // top: new StateStyle("30%", 1,false),
+            // maxWidth: new StateStyle("40%", 2,true),
             
         });
     subTitleStyle = new CaptionStateStyle(
         {
-            fontSize: new StateStyle("1.5vw", 2.8,true),
-            top: new StateStyle("45%", 0.9,false),
-            maxWidth: new StateStyle("40%", 2,true),
+            // fontSize: new StateStyle("1.5vw", 2.8,true),
+            // top: new StateStyle("45%", 0.9,false),
+            // maxWidth: new StateStyle("40%", 2,true),
         });
     descriptionStyle = new CaptionStateStyle(
         {
-            fontSize: new StateStyle("1.5vw", 2.5,true),
-            top: new StateStyle("50%", 0.95,false),
-            maxWidth: new StateStyle("40%", 2,true),
+            // fontSize: new StateStyle("1.5vw", 2.5,true),
+            // top: new StateStyle("50%", 0.95,false),
+            // maxWidth: new StateStyle("40%", 2,true),
         });
 
     title: Caption = new Caption([], []);

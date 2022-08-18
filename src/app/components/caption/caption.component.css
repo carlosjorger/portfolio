@@ -3,3 +3,14 @@
     font-family: DynaPuff;
     font-weight: 400;
 }
+.magical-underline.is-phone-portrait {
+    max-width: 80%;
+    font-size: 8vw;
+    top:30%;
+}
+.magical-underline.is-web {
+    max-width: 56%;
+    font-size: 5.6vw;
+    top:30%;
+
+}

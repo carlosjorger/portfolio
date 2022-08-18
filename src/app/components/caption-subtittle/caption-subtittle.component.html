@@ -1,9 +1,13 @@
 <div class="magical-underline" *ngIf="page>0" 
-    [ngStyle]="responsiveState.rawStyle" 
-    [@showIntro]="{
+    [ngStyle]="responsiveState.rawStyle" [@showIntro]="{
         value:text,
         params:getAnimationParamter()
-    }">
+    }"
+    [ngClass]="{
+        'is-phone-portrait': isPhonePortrait, 
+        'is-web':isWeb
+    }"
+    >
     {{text}}
     <span *ngIf="(page==contactPosition)" [@showContacts]>
         <a href="https://github.com/CarlosJorgeR/Portafolio"> Portafolio</a>
