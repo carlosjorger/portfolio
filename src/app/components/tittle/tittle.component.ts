@@ -15,11 +15,13 @@ export class TittleComponent implements OnInit {
   name: string = 'Carlos Jorge'
   lastName: string = 'Rodriguez Cuello'
   profesion: string = 'FullStack Engineer.'
-
-  constructor(private responsiveService: ResponsiveValueService) {
-    this.updateBodyTitleResponsiveState();
-    
-  }
+  public get classes() {
+    return {
+      'is-phone-portrait': this.isPhonePortrait,
+      'is-web': this.isWeb,
+      'is-table': this.isTable
+    };
+  };
   scrollRef: number = 0;
   public get isPhonePortrait():boolean{
     return this.responsiveService.isPhonePortrait;
@@ -29,6 +31,11 @@ export class TittleComponent implements OnInit {
   }
   public get isTable():boolean{
     return this.responsiveService.isTable;
+  }
+  
+  constructor(private responsiveService: ResponsiveValueService) {
+    this.updateBodyTitleResponsiveState();
+    
   }
 
   ngOnInit(): void {

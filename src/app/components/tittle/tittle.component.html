@@ -1,42 +1,31 @@
 <section>
-    <div class="presentation" [ngClass]="{
-        'is-phone-portrait': isPhonePortrait, 
-        'is-web':isWeb,
-        'is-table':isTable
-    }">
+    <div class="presentation" [ngClass]="classes">
         <div class="titleBody">
 
-            <h1 class="title">
+            <h1 class="title" [ngClass]="classes">
                 <h3>Hello, I'm</h3>
                 <div>
-                    <span class="word" *ngFor="let item of splitDescription(name)" [ngClass]="{
-                    'is-phone-portrait': isPhonePortrait, 
-                    'is-web':isWeb,
-                    'is-table':isTable
-                }" [ngStyle]="{
-                    animationDelay:item.delay
-                }" [innerHTML]="item.letter">
+                    <span class="word" *ngFor="let item of splitDescription(name)" [ngClass]="classes" 
+                        [ngStyle]="{
+                            animationDelay:item.delay
+                        }" 
+                        [innerHTML]="item.letter">
                     </span>
                 </div>
                 <div>
-                    <span class="word" *ngFor="let item of splitDescription(lastName)" [ngClass]="{
-                    'is-phone-portrait': isPhonePortrait, 
-                    'is-web':isWeb,
-                    'is-table':isTable
-                }" [ngStyle]="{
-                    animationDelay:item.delay
-                }" [innerHTML]="item.letter">
+                    <span class="word" *ngFor="let item of splitDescription(lastName)" [ngClass]="classes" 
+                        [ngStyle]="{
+                            animationDelay:item.delay
+                        }" 
+                        [innerHTML]="item.letter">
                     </span>
                 </div>
                 <div>
-                    <span class="word" *ngFor="let item of splitDescription(profesion)" [ngClass]="{
-                    'is-phone-portrait': isPhonePortrait, 
-                    'is-web':isWeb,
-                    'is-table':isTable,
-                    animationDelay:item.delay
-                }" [ngStyle]="{
-                    animationDelay:item.delay
-                }" [innerHTML]="item.letter">
+                    <span class="word" *ngFor="let item of splitDescription(profesion)" [ngClass]="classes" 
+                        [ngStyle]="{
+                            animationDelay:item.delay
+                        }" 
+                        [innerHTML]="item.letter">
                     </span>
                 </div>
             </h1>
@@ -44,7 +33,7 @@
 
 
         </div>
-        <div class="arrow">
+        <div class="arrow"  [ngClass]="classes">
 
         </div>
     </div>
