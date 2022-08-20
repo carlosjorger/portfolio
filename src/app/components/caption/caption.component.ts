@@ -34,7 +34,14 @@ export class CaptionComponent implements OnInit {
   public isPhonePortrait = false;
   public isWeb = false;
   public isTable = false;
-
+  
+  public get classes() {
+    return {
+      'is-phone-portrait': this.isPhonePortrait,
+      'is-web': this.isWeb,
+      'is-table': this.isTable
+    };
+  };
 
   public get firsPosition(): CaptionState {
     return this.captionStates.states[Math.min(this.page,
@@ -65,14 +72,14 @@ export class CaptionComponent implements OnInit {
     // console.log(Breakpoints.Tablet)
     this.updateTextByPage();
     this.keepTrackScroll();
-    this.responsive.observe([Breakpoints.HandsetPortrait, Breakpoints.TabletPortrait,Breakpoints.Medium ,Breakpoints.Large,])
+    this.responsive.observe([Breakpoints.HandsetPortrait, Breakpoints.TabletPortrait, Breakpoints.Medium, Breakpoints.Large,])
       .subscribe(result => {
         const breakpoints = result.breakpoints;
         this.isPhonePortrait = breakpoints[Breakpoints.HandsetPortrait];
-        this.isWeb = breakpoints[Breakpoints.Large]||breakpoints[Breakpoints.Medium];
-        this.isTable=breakpoints[Breakpoints.TabletPortrait];
+        this.isWeb = breakpoints[Breakpoints.Large] || breakpoints[Breakpoints.Medium];
+        this.isTable = breakpoints[Breakpoints.TabletPortrait];
       }
-    );
+      );
   }
 
   public keepTrackScroll(): void {

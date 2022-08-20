@@ -3,11 +3,7 @@
         value:text,
         params:getAnimationParamter()
     }"
-    [ngClass]="{
-        'is-phone-portrait': isPhonePortrait, 
-        'is-web':isWeb,
-        'is-table':isTable
-    }"
+    [ngClass]="classes"
     >
     {{text}}
     <span *ngIf="(page==contactPosition)" [@showContacts]>
