@@ -3,7 +3,7 @@ import { animate, keyframes, state, style, transition, trigger, AnimationEvent, 
 import { CaptionState, Transition } from "../core/models/caption-model";
 export class AnimationPatameter {
   public Seconds: number;
-  constructor(firstState: CaptionState, secondState: CaptionState,
+  constructor(
     transition: Transition) {
     this.Seconds = transition.second+transition.delay
   }

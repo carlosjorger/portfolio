@@ -103,8 +103,6 @@ export class CaptionComponent implements OnInit {
   }
   public getAnimationParamter() {
     return new AnimationPatameter(
-      this.firsPosition,
-      this.secondPosition,
       this.transition).toPlainObj();
   }
 
