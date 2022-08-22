@@ -5,6 +5,7 @@ import { AnimationPatameter, showContacts, showIntro } from '../../animations/an
 import { Caption, CaptionState, Transition } from '../../core/models/caption-model';
 import { CaptionStates } from 'src/app/core/constans/captions-states';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { ResponsiveValueService } from 'src/app/services/responsive-value.service';
 @Component({
 
   selector: 'app-caption',
@@ -31,17 +32,9 @@ export class CaptionComponent implements OnInit {
 
   public transition: Transition = this.updateTransitionPage(this.page);
 
-  public isPhonePortrait = false;
-  public isWeb = false;
-  public isTable = false;
-  
-  public get classes() {
-    return {
-      'is-phone-portrait': this.isPhonePortrait,
-      'is-web': this.isWeb,
-      'is-table': this.isTable
-    };
-  };
+  public get classes():{}{
+    return this.responsiveService.classes;
+  }
 
   public get firsPosition(): CaptionState {
     return this.captionStates.states[Math.min(this.page,
@@ -57,11 +50,15 @@ export class CaptionComponent implements OnInit {
 
   constructor(private serviceScrollService: ServiceScrollService,
     private ref: ChangeDetectorRef, private captionState: CaptionStates,
-    private responsive: BreakpointObserver) {
+     private responsiveService:ResponsiveValueService) {
     this.contactPosition = captionState.ContactPos + this.firstPages;
 
   }
   @HostListener('window:resize', ['$event'])
+  updateBodyTitleResponsiveState():void{
+    this.responsiveService.getResponsiveFormat();
+  }
+
   ngOnInit(): void {
     this.GetCaptionStateByPage = new Map<number, CaptionState>(
       this.captionStates.states.map(
@@ -69,17 +66,8 @@ export class CaptionComponent implements OnInit {
           [i + this.firstPages, caption]
       )
     );
-    // console.log(Breakpoints.Tablet)
     this.updateTextByPage();
     this.keepTrackScroll();
-    this.responsive.observe([Breakpoints.HandsetPortrait, Breakpoints.TabletPortrait, Breakpoints.Medium, Breakpoints.Large,])
-      .subscribe(result => {
-        const breakpoints = result.breakpoints;
-        this.isPhonePortrait = breakpoints[Breakpoints.HandsetPortrait];
-        this.isWeb = breakpoints[Breakpoints.Large] || breakpoints[Breakpoints.Medium];
-        this.isTable = breakpoints[Breakpoints.TabletPortrait];
-      }
-      );
   }
 
   public keepTrackScroll(): void {
@@ -102,8 +90,7 @@ export class CaptionComponent implements OnInit {
     return this.captionStates.transition[index];
   }
   public getAnimationParamter() {
-    return new AnimationPatameter(
-      this.transition).toPlainObj();
+    return new AnimationPatameter(this.transition).toPlainObj();
   }
 
 }
