@@ -84,9 +84,9 @@ export let showIntro = trigger('showIntro', [
                 style({
                   backgroundPosition: '100% 100%',
                   color: '#ac4bf6',
-
                   offset: 0.6
                 }),
+              
                 style({
                   backgroundSize: '0% 100%',
                   offset: 1,
