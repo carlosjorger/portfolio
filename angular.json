@@ -25,7 +25,8 @@
             "assets": [
               "src/favicon.ico",
               "src/portfolio.ico",
-              "src/assets"
+              "src/assets",
+              "src/images/NET_Core_Logo.svg"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -99,7 +100,8 @@
             "assets": [
               "src/favicon.ico",
               "src/portfolio.ico",
-              "src/assets"
+              "src/assets",
+              "src/images/NET_Core_Logo.svg"
             ],
             "styles": [
               "src/styles.scss",

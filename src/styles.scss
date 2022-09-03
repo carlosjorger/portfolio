@@ -14,10 +14,10 @@
     // background-color: rgb(8, 1, 27);
     background: linear-gradient(90deg, rgb(32, 68, 109), rgb(8, 1, 27), rgb(8, 1, 27));
     // background: linear-gradient(132deg, #961629, #391478, rgb(8, 1, 27));
-    animation: Gradient 4s ease infinite;
+    animation: Gradient 8s ease infinite;
     position: relative;
     // overflow: hidden;
-    background-size: 160% 200%;
+    background-size: 160% 100%;
 
   }
 
@@ -35,6 +35,9 @@
     }
   }
 
+
+
+
   .magical-underline {
     color: $purple;
     /* background-image: linear-gradient(#4b9bf6 , #4b9bf6 ); */
@@ -48,4 +51,32 @@
     white-space: pre-line;
     left: 5%;
     max-width: 40%;
+  }
+
+  .svg {
+    position: absolute;
+    transform-style: preserve-3d;
+    bottom: 200vh;
+  }
+
+  $total: 10;
+
+  @for $i from 1 through $total {
+    $scale: random(2) - .4;
+
+    .svg:nth-child(#{$i}) {
+      left: random(120) * 1% - 20;
+      animation: raise#{$i} 6+random(15)+s linear infinite;
+      animation-delay: random(5) - 5 + s;
+      transform: scale(.3 * $i - .6) rotate(random(360) + deg);
+      z-index: $i - 7;
+      filter: blur($i - 6 + px);
+
+      @keyframes raise#{$i} {
+        to {
+          bottom: 150vh;
+          transform: scale(.3 * $i - .6) rotate(random(360) + deg);
+        }
+      }
+    }
   }
