@@ -1,6 +1,16 @@
 $purple: #ac4bf6;
 $aqua: #4b9bf6;
 
+@function makelongshadow($color,$deep) {
+    $val: 0px 0px $color;
+
+    @for $i from 1 through $deep {
+        $val: #{$val},
+        #{$i}px #{$i}px #{$color};
+    }
+
+    @return $val;
+}
 
 * {
     padding: 0;
@@ -27,17 +37,19 @@ h3 {
 .title {
     position: relative;
 }
+
 .title.is-phone-portrait {
-    top:-10%
+    top: -10%
 }
 
 .title.is-table {
-    top:0%
+    top: 0%
 }
 
 .title.is-web {
-    top:0%
+    top: 0%
 }
+
 .title span {
     font-family: DynaPuff;
     color: $purple;
@@ -45,6 +57,7 @@ h3 {
     display: inline-block;
     animation: title 8s ease infinite;
     transition: all .2s ease;
+    // text-shadow: makelongshadow(#3E3E40);
 }
 
 @keyframes title {
@@ -58,9 +71,13 @@ h3 {
     20% {
         color: $purple;
         transform: translateY(0);
-        opacity: 1;
+        opacity: 1
 
     }
+    40%{
+        text-shadow: makelongshadow(#3E3E40,20);
+    }
+   
 
     100% {
         color: $purple;
@@ -77,12 +94,13 @@ h3 {
 }
 
 .arrow {
-    
+
     display: flex;
     position: relative;
 }
+
 .arrow.is-phone-portrait {
-    top:-1vh;
+    top: -1vh;
     min-width: 15vw;
     min-height: 8vh;
     // font-weight: bold;
@@ -91,14 +109,15 @@ h3 {
 .arrow.is-table {
     min-width: 17vw;
     min-height: 12vh;
-    top:-1vh
+    top: -1vh
 }
 
 .arrow.is-web {
     min-width: 15vw;
     min-height: 15vw;
-    top:-5vh
+    top: -5vh
 }
+
 .arrow:before {
     content: "";
     background: $purple;
@@ -121,7 +140,7 @@ h3 {
 @keyframes arrow {
 
     0% {
-        transform:  translateX(60vw);
+        transform: translateX(60vw);
         // opacity: 0;
         background: $purple;
     }
@@ -133,7 +152,7 @@ h3 {
     }
 
     100% {
-        transform:  translateX(60vw);
+        transform: translateX(60vw);
         background: $purple;
 
 
@@ -155,17 +174,19 @@ h3 {
 .word.is-web {
     font-size: 6vw;
 }
-.presentation{
+
+.presentation {
     position: relative;
 }
+
 .presentation.is-phone-portrait {
-    top:12%
+    top: 12%
 }
 
 .presentation.is-table {
-    top:12%
+    top: 12%
 }
 
 .presentation.is-web {
-    top:0%
+    top: 0%
 }

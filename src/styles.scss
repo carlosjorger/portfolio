@@ -1,6 +1,6 @@
   $purple: #ac4bf6;
   $aqua: #4b9bf6;
-
+  
   section {
     width: 100%;
     height: 250vh;
@@ -11,9 +11,7 @@
   }
 
   body {
-    // background-color: rgb(8, 1, 27);
     background: linear-gradient(90deg, rgb(32, 68, 109), rgb(8, 1, 27), rgb(8, 1, 27));
-    // background: linear-gradient(132deg, #961629, #391478, rgb(8, 1, 27));
     animation: Gradient 8s ease infinite;
     position: relative;
     // overflow: hidden;
@@ -35,9 +33,6 @@
     }
   }
 
-
-
-
   .magical-underline {
     color: $purple;
     /* background-image: linear-gradient(#4b9bf6 , #4b9bf6 ); */
@@ -51,6 +46,7 @@
     white-space: pre-line;
     left: 5%;
     max-width: 40%;
+    // text-shadow: makelongshadow(#3E3E40);
   }
 
   .svg {
@@ -59,24 +55,24 @@
     bottom: 200vh;
   }
 
-  $total: 10;
+  // $total: 10;
 
-  @for $i from 1 through $total {
-    $scale: random(2) - .4;
+  // @for $i from 1 through $total {
+  //   $scale: random(2) - .4;
 
-    .svg:nth-child(#{$i}) {
-      left: random(120) * 1% - 20;
-      animation: raise#{$i} 6+random(15)+s linear infinite;
-      animation-delay: random(5) - 5 + s;
-      transform: scale(.3 * $i - .6) rotate(random(360) + deg);
-      z-index: $i - 7;
-      filter: blur($i - 6 + px);
+  //   .svg:nth-child(#{$i}) {
+  //     left: random(120) * 1% - 20;
+  //     animation: raise#{$i} 6+random(15)+s linear infinite;
+  //     animation-delay: random(5) - 5 + s;
+  //     transform: scale(.3 * $i - .6) rotate(random(360) + deg);
+  //     z-index: $i - 7;
+  //     filter: blur($i - 6 + px);
 
-      @keyframes raise#{$i} {
-        to {
-          bottom: 150vh;
-          transform: scale(.3 * $i - .6) rotate(random(360) + deg);
-        }
-      }
-    }
-  }
+  //     @keyframes raise#{$i} {
+  //       to {
+  //         bottom: 150vh;
+  //         transform: scale(.3 * $i - .6) rotate(random(360) + deg);
+  //       }
+  //     }
+  //   }
+  // }
