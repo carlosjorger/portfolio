@@ -68,7 +68,7 @@ export let showIntro = trigger('showIntro', [
     [
       group(
         [
-          query("@*", [animateChild()], { optional: true }),
+          query("@showContacts", [animateChild()], { optional: true }),
           animate('{{Seconds}}s cubic-bezier(0.4,0.7,0.7,0.4)',
             keyframes(
               [
