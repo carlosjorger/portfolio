@@ -38,6 +38,7 @@ export let showIntro = trigger('showIntro', [
             backgroundPosition: '0% 0%',
             backgroundSize: '0% 100%',
             offset: 0,
+            textShadow: 'none',
           }),
           style({
             backgroundSize: '100% 100%',

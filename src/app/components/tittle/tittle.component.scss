@@ -58,7 +58,6 @@ h3 {
     display: inline-block;
     animation: title 8s ease infinite;
     transition: all .2s ease;
-    // text-shadow: makelongshadow(#3E3E40);
 }
 
 @keyframes title {
@@ -76,7 +75,7 @@ h3 {
 
     }
     40%{
-        text-shadow: makelongshadow(#3E3E40,10);
+        text-shadow: makelongshadow(#492367,10);
     }
    
 
