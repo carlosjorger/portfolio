@@ -51,7 +51,8 @@ h3 {
 }
 
 .title span {
-    font-family: DynaPuff;
+    font-family: DynaPuff,monospace;
+    font-weight: bold;
     color: $purple;
     position: relative;
     display: inline-block;

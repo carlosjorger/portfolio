@@ -1,6 +1,17 @@
   $purple: #ac4bf6;
   $aqua: #4b9bf6;
-  
+
+  @function makelongshadow($color, $deep) {
+    $val: 0px 0px $color;
+
+    @for $i from 1 through $deep {
+      $val: #{$val},
+      #{$i}px #{$i}px #{$color};
+    }
+
+    @return $val;
+  }
+
   section {
     width: 100%;
     height: 250vh;
@@ -41,18 +52,33 @@
     background-size: 100% 0%;
     background-position: 100% 0%;
     padding-bottom: 10px;
-    font-family: Montserrat;
+    font-family: Montserrat, monospace;
     position: fixed;
     white-space: pre-line;
     left: 5%;
     max-width: 40%;
-    // text-shadow: makelongshadow(#3E3E40);
+    animation: magical 8s ease infinite;
   }
 
   .svg {
     position: absolute;
     transform-style: preserve-3d;
     bottom: 200vh;
+  }
+
+  @keyframes magical {
+
+   
+    0% {
+      text-shadow: 0px 0px 0px rgba(0, 0, 0);
+    }
+    50% {
+      text-shadow: 2px 2px 3px rgba(0, 0, 0);
+    }
+    100% {
+      text-shadow: 0px 0px 0px rgba(0, 0, 0);
+    }
+
   }
 
   // $total: 10;
