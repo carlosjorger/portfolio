@@ -103,7 +103,6 @@ h3 {
     top: -1vh;
     min-width: 15vw;
     min-height: 8vh;
-    // font-weight: bold;
 }
 
 .arrow.is-table {
@@ -141,13 +140,11 @@ h3 {
 
     0% {
         transform: translateX(60vw);
-        // opacity: 0;
         background: $purple;
     }
 
     50% {
         transform: translateY(10vw) translateX(60vw);
-        // opacity: 0;
         background: $aqua;
     }
 
@@ -163,7 +160,6 @@ h3 {
 
 .word.is-phone-portrait {
     font-size: 8.5vw;
-    // font-weight: bold;
 }
 
 .word.is-table {
