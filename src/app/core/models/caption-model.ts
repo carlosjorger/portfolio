@@ -5,7 +5,7 @@ export class Caption {
 
 }
 export class Transition {
-    constructor(public second: number, public delay: number) { }
+    constructor(public second: number) { }
 }
 export class CaptionState {
     constructor(public text: string) { }

@@ -5,7 +5,7 @@ export class AnimationPatameter {
   public Seconds: number;
   constructor(
     transition: Transition) {
-    this.Seconds = transition.second+transition.delay
+    this.Seconds = transition.second
   }
   toPlainObj(): {
     Seconds: number
@@ -30,7 +30,7 @@ export let showIntro = trigger('showIntro', [
 
   ),
   transition('*=>void', [
-    animate('{{Seconds}}s {{Delay}}s cubic-bezier(0.2,0.9,0.9,0.2)',
+    animate('{{Seconds}}s cubic-bezier(0.2,0.9,0.9,0.2)',
       keyframes(
         [
           style({
@@ -60,7 +60,6 @@ export let showIntro = trigger('showIntro', [
   ], {
     params: {
       Seconds: '0.3',
-      Delay: '0',
    
     }
   }),
@@ -101,7 +100,7 @@ export let showIntro = trigger('showIntro', [
     {
       params: {
         Seconds: '0.8',
-        Delay: '0',
+    
       }
     }),
 ]);
@@ -122,18 +121,13 @@ export let showTittle = trigger('showTittle',
       style({ opacity: 0, transform: 'translateY(50%)' })),
     transition(':enter',
       [
-        animate('2s {{delay}}s ease-out',
+        animate('2s ease-out',
           style(
             {
               opacity: 1, transform: 'translateY(0%)'
             }
           )
         ),
-      ],
-      {
-        params: {
-          delay: '0'
-        }
-      }
+      ]
     )
   ]);
