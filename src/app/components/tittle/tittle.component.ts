@@ -16,33 +16,21 @@ export class TittleComponent implements OnInit {
   lastName: string = 'Rodriguez Cuello'
   profesion: string = 'FullStack Engineer.'
   scrollRef: number = 0;
-  
-  public get classes():{}{
+
+  public get classes(): {} {
     return this.responsiveService.classes;
   }
+  
   constructor(private responsiveService: ResponsiveValueService) {
     this.updateBodyTitleResponsiveState();
-    
   }
 
   ngOnInit(): void {
     this.updateBodyTitleResponsiveState();
   }
+
   @HostListener('window:resize', ['$event'])
-  updateBodyTitleResponsiveState():void{
+  updateBodyTitleResponsiveState(): void {
     this.responsiveService.getResponsiveFormat();
-  }
-  @Monad<string>()
-  splitDescription(theString: string): { letter: string, delay:string }[] {
-    let scala: number = 1.2;
-    return [...theString].map((v, i) => (
-      {
-        letter: v == " " ? "&nbsp;" : v,
-        delay:`${this.animationDelay(theString,i,scala)}s`,
-      }
-    ));
-  }
-  animationDelay(string:string,position:number,scala: number):number{
-    return Math.round(((position + 1) / string.length) * 10 * scala) / 10
   }
 }
