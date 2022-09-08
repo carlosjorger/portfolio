@@ -5,13 +5,13 @@
             <h1 class="title" [ngClass]="classes">
                 <h3>Hello, I'm</h3>
                 <div>
-                    <h3 class="animate-title"> {{name}}</h3>
+                    <h3 class="animate-title" [ngClass]="classes"> {{name}}</h3>
                 </div>
                 <div>
-                    <h3 class="animate-title"> {{lastName}}</h3>
+                    <h3 class="animate-title" [ngClass]="classes"> {{lastName}}</h3>
                 </div>
                 <div>
-                    <h3 class="animate-title"> {{profesion}}</h3>
+                    <h3 class="animate-title" [ngClass]="classes"> {{profesion}}</h3>
                 </div>
                 <!-- <div>
                     <span class="word" *ngFor="let item of splitDescription(name)" [ngClass]="classes" 
