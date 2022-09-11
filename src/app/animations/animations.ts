@@ -110,7 +110,7 @@ export let showContacts = trigger('showContacts',
     state('void',
       style({ opacity: 0 })),
     transition(':enter', [
-      animate('2s ease-in', style({
+      animate('1s ease-in', style({
         opacity: 1,
       })),
     ])
