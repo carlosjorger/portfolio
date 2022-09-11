@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto');
+
 $purple: #ac4bf6;
 $dark-purple: #751fb7;
 $aqua: #71adf3;
@@ -7,7 +9,7 @@ a {
     position: relative;
     color: $purple;
     border-color: $purple ;
-    font-family: Montserrat;
+    font-family: Roboto;
 }
 
 a::before {
@@ -37,15 +39,13 @@ a:hover {
     font-size: 3.5vw;
     font-weight: bold;
     top: 37%;
-    font-family: sans-serif, serif;
 }
 
 .magical-underline.is-table {
     max-width: 56%;
     font-size: 2vw;
-    top: 40%;
+    top: 38%;
     font-weight: bold;
-    font-family: sans-serif, serif;
 }
 
 .magical-underline.is-web {
@@ -53,5 +53,4 @@ a:hover {
     font-size: 1.8vw;
     top: 43.7%;
     font-weight: bold;
-    font-family: sans-serif, serif;
 }

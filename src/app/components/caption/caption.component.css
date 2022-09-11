@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto');
 
 .magical-underline {
-    font-family: Montserrat;
+    font-family: Roboto;
 }
 .magical-underline.is-phone-portrait {
     max-width: 80%;
