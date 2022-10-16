@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faGithub, IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import { showContacts } from 'src/app/animations/animations';
 
@@ -14,7 +15,7 @@ import { showContacts } from 'src/app/animations/animations';
   ]
 })
 export class ContactInfoComponent implements OnInit {
-  @Input() icon:IconDefinition=faGithub;
+  @Input() icon:IconProp=faGithub as IconProp;
   @Input() url:string="url";
   constructor() { 
     

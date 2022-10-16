@@ -7,8 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CaptionComponent } from './components/caption/caption.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { CaptionDescriptionComponent } from './components/caption-description/caption-description.component';
-import { FaIconLibrary,FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconLibrary,FontAwesomeModule, } from '@fortawesome/angular-fontawesome';
 import { faTwitter as farTwitter } from '@fortawesome/free-brands-svg-icons';
+import { library, IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { ContactInfoComponent } from './components/contact-info/contact-info.component';
 import { CaptionSectionComponent } from './components/caption-section/caption-section.component';
 import { TittleComponent } from './components/tittle/tittle.component';
@@ -38,8 +39,8 @@ import { CaptionSubtittleComponent } from './components/caption-subtittle/captio
   bootstrap: [AppComponent]
 })
 export class AppModule { 
-  constructor(library: FaIconLibrary) { 
-    library.addIcons(farTwitter);
+  constructor() { 
+    library.add(farTwitter as IconDefinition) ;
   }
   
 }
