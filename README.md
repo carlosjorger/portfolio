@@ -1,6 +1,25 @@
-# Portfolio
+# Portfolio / Angular 14
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.4.
+
+## Table of contents
+
+- [Status](#status)
+- [Quick start](#quick-start)
+- [Front-end](#front-end)
+- [Back-end](#back-end)
+- [Author](#author)
+- [Documentation](#documentation)
+
+
+### Front-end : What's included
+> Dependencies
+- [x] Angular : 14.2.6
+- [x] Angular CLI : 14.2.6
+- [x] Angular Universal : 14.2.0
+- [x] Bootstrap : 5.2.2
+- [x] Fontawesome : 6.1.0
+
 
 ## Install package
 
