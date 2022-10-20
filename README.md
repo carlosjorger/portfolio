@@ -58,9 +58,9 @@ in your browser go to [http://localhost:4200](http://localhost:4200)
 ### Compilation
 * `npm run build`
 
-<!-- ### Production
-* `npm run serve:ssr`
-* in your browser [http://localhost:4000](http://localhost:4000)  -->
+### Production
+* `ng deploy --base-href=/portfolio/`
+* in your browser [https://carlosjorger.github.io/portfolio/) 
 
 <!-- ### Bootstrap UI
 * `change directory` cd ui
