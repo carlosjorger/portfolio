@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { ServiceScrollService } from './services/service-scroll.service';
 
 
@@ -30,9 +31,14 @@ export class AppComponent implements OnInit {
   
 	constructor(
       private serviceScrollService: ServiceScrollService,
-      private ref: ChangeDetectorRef
+      private ref: ChangeDetectorRef,
+      private meta:Meta
     ) {
-    
+    this.meta.addTags([
+      {name:'description',content:"Carlos Jorge's personal portfolio"},
+      {name:'author',content:'carlosjorger'},
+      {name:'keywords', content:'Angular'}
+    ]);
     }
     ngAfterViewInit() {window.scrollTo(0, this.page );}
 }
