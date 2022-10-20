@@ -5,7 +5,7 @@
     }" 
     [ngClass]="classes"
 >
-    <div  *ngIf="(page==contactPosition); else other_content" [@showContacts]>
+    <div  *ngIf="(page===contactPosition); else other_content" [@showContacts]>
         <app-contact>
 
         </app-contact>
