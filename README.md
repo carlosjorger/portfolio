@@ -6,10 +6,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 - [Status](#status)
 - [Quick start](#quick-start)
-- [Front-end](#front-end)
-- [Back-end](#back-end)
+- [Angular](#angular)
 - [Author](#author)
-- [Documentation](#documentation)
 
 
 ### Front-end : What's included
@@ -20,31 +18,54 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [x] Bootstrap : 5.2.2
 - [x] Fontawesome : 6.1.0
 
+## Quick start
 
-## Install package
+```bash
+# select a repo from github or gitlab
 
-Run `npm install` to install the necessary packages
- 
-## Development server
+# download the example or clone the repo from github
+git clone https://github.com/CarlosJorgeR/Portafolio.git
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+# change directory
+cd Portafolio
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# install the repo with npm
+npm install
 
-## Build
+# start the server
+ng serve
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+in your browser go to [http://localhost:4200](http://localhost:4200) 
+## Angular
 
-## Running unit tests
+### Installation
+* `npm install` (installing dependencies)
+* `npm outdated` (verifying dependencies)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Developpement
+* `npm run start`
+* in your browser [http://localhost:4200](http://localhost:4200) 
 
-## Running end-to-end tests
+## Linter
+* `npm run lint`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+<!-- ## Tests
+* `npm run test`
+* `npm run coverage` -->
 
-## Further help
+### Compilation
+* `npm run build`       ( without SSR)
+* `npm run build:ssr`   ( with SSR)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<!-- ### Production
+* `npm run serve:ssr`
+* in your browser [http://localhost:4000](http://localhost:4000)  -->
+
+<!-- ### Bootstrap UI
+* `change directory` cd ui
+* Launch html pages in your browser -->
+
+### Author
+* Author  : carlosJorgeR
