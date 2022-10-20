@@ -109,12 +109,20 @@
             ],
             "scripts": [
               "../node_modules/bootstrap/dist/js/bootstrap.min.js"
-
             ]
           }
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -151,6 +159,9 @@
     }
   },
   "cli": {
-    "analytics": "37ff5e22-a25f-4754-a0b7-4e56e3d19061"
+    "analytics": "37ff5e22-a25f-4754-a0b7-4e56e3d19061",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
