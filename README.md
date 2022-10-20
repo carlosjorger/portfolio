@@ -56,8 +56,7 @@ in your browser go to [http://localhost:4200](http://localhost:4200)
 * `npm run coverage` -->
 
 ### Compilation
-* `npm run build`       ( without SSR)
-* `npm run build:ssr`   ( with SSR)
+* `npm run build`
 
 <!-- ### Production
 * `npm run serve:ssr`
