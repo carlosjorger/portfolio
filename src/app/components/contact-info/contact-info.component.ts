@@ -13,10 +13,12 @@ import { showContacts } from 'src/app/animations/animations';
 
   ]
 })
-export class ContactInfoComponent implements OnInit {
+export class ContactInfoComponent {
   @Input() icon:IconProp=faGithub as IconProp;
   @Input() url:string="url";
   constructor() { 
     
   }
+
+
 }
