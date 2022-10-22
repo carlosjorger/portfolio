@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { ServiceScrollService } from './services/service-scroll.service';
 
@@ -13,7 +13,7 @@ import { ServiceScrollService } from './services/service-scroll.service';
     // animation triggers go here
   ]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title: string = 'portfolio';
   pageNumber: number=3;
   realPage:number=0;

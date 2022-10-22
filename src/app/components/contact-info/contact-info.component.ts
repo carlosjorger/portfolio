@@ -1,4 +1,3 @@
-import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faGithub, IconDefinition } from '@fortawesome/free-brands-svg-icons';
@@ -20,8 +19,4 @@ export class ContactInfoComponent implements OnInit {
   constructor() { 
     
   }
-
-  ngOnInit(): void {
-  }
-
 }

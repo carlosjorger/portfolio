@@ -10,15 +10,8 @@ const routes: Routes = [];
 })
 export class AppRoutingModule { 
 
-  page: number = 0;
-  constructor(private serviceScrollService: ServiceScrollService) {
+  constructor() {
     
   }
-  ngOnInit(): void {
-    this.serviceScrollService.keepTrackScroll().subscribe(
-      async value => {
-        this.page=value;        
-      }
-    );
-  }
+ 
 }
