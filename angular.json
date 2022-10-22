@@ -27,7 +27,7 @@
               "src/portfolio.ico",
               "src/assets",
               "src/images/NET_Core_Logo.svg",
-              "src/images/logo.png"
+              "src/images/logo.jpg"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -103,7 +103,7 @@
               "src/portfolio.ico",
               "src/assets",
               "src/images/NET_Core_Logo.svg",
-              "src/images/logo.png"
+              "src/images/logo.jpg"
             ],
             "styles": [
               "src/styles.scss",
