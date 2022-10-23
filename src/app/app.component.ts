@@ -37,7 +37,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.meta.addTags([
       {name:'description',content:"Carlos Jorge's personal portfolio"},
       {name:'author',content:'carlosjorger'},
-      {name:'keywords', content:'Angular'}
+      {name:'keywords', content:'Angular'},
+      {property:'og:description',content:"Carlos Jorge's personal portfolio"},
     ]);
     }
     ngAfterViewInit() {window.scrollTo(0, this.page );}
