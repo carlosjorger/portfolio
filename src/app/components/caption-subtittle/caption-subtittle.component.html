@@ -1,12 +1,14 @@
-<div class="magical-underline" *ngIf="page>0" 
-    [@showIntro]="{
-        value:text,
-        params:getAnimationParamter()
-    }"
-    [ngClass]="classes"
-    >
-    {{text}}
-    <span *ngIf="(page===contactPosition)" [@showContacts]>
-        <a href="https://github.com/CarlosJorgeR/Portafolio"> Portafolio</a>
-    </span>
+<div
+  class="magical-underline"
+  *ngIf="page > 0"
+  [@showIntro]="{
+    value: text,
+    params: getAnimationParamter()
+  }"
+  [ngClass]="classes"
+>
+  {{ text }}
+  <span *ngIf="page === contactPosition" [@showContacts]>
+    <a href="https://github.com/carlosjorger/Portafolio"> Portafolio</a>
+  </span>
 </div>
